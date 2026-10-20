@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>数据分类 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">数据分类</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 25, 2026&nbsp;&nbsp;15:42:27</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E7%88%AC%E8%99%AB/">爬虫</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="数据分类"><a href="#数据分类" class="headerlink" title="数据分类"></a>数据分类</h1><p>对于爬取出来的数据，大体上可以分为结构化数据和非结构化数据</p>
+<h2 id="结构化数据"><a href="#结构化数据" class="headerlink" title="结构化数据"></a>结构化数据</h2><p>有一定结构的数据，比如json。<br>处理方式：直接转化为python类型或jsonpath</p>
+<h2 id="非结构化数据"><a href="#非结构化数据" class="headerlink" title="非结构化数据"></a>非结构化数据</h2><p>非结构化数据指的是没有预定义的数据模型或格式的数据，比如 html。<br>处理方式：正则表达式、xpath</p>
+<h1 id="数据提取"><a href="#数据提取" class="headerlink" title="数据提取"></a>数据提取</h1><h2 id="jsonpath"><a href="#jsonpath" class="headerlink" title="jsonpath"></a>jsonpath</h2><p>JSONPath 是一种用于在 JSON 数据中<strong>定位</strong>和<strong>提取数据</strong>的<strong>查询语言</strong>。</p>
+<p>JSONPath 是一门语言：定位和提取数据。</p>
+<p>讲这一段的目的 &#x3D;》体现 python 对象方式获取数据有什么缺点。</p>
+<p>需求：需求：找到 sku 对应的值 &amp; 价格。</p>
+<p>测试数据：文件：example.json</p>
+<p><strong>通过 python 对象获取目标数据</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;example.json&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = json.load(f)</span><br><span class="line">    <span class="comment"># 需求：找到 sku 对应的值 &amp; 价格</span></span><br><span class="line">    <span class="comment"># print(data)</span></span><br><span class="line">    <span class="comment"># 标题【组合】</span></span><br><span class="line">    sku = data[<span class="string">&quot;users&quot;</span>][<span class="number">0</span>][<span class="string">&quot;orders&quot;</span>][<span class="number">0</span>][<span class="string">&quot;items&quot;</span>][<span class="number">0</span>][<span class="string">&quot;sku&quot;</span>]</span><br><span class="line">    <span class="built_in">print</span>(sku)</span><br><span class="line">    <span class="comment"># 价格</span></span><br><span class="line">    price = data[<span class="string">&quot;users&quot;</span>][<span class="number">0</span>][<span class="string">&quot;orders&quot;</span>][<span class="number">0</span>][<span class="string">&quot;items&quot;</span>][<span class="number">0</span>][<span class="string">&quot;price&quot;</span>]</span><br><span class="line">    <span class="built_in">print</span>(price)</span><br></pre></td></tr></table></figure>
+
+<p>上面这种方式缺点：格式写的太丑，多个数据的匹配不太友好。</p>
+<p><strong>通过 jsonpath 取目标数据</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jsonpath</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;example.json&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = json.load(f)</span><br><span class="line"></span><br><span class="line">    sku = jsonpath.jsonpath(data, <span class="string">&#x27;$..sku&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(sku)</span><br><span class="line">    sku = jsonpath.jsonpath(data, <span class="string">&#x27;$..price&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(sku)</span><br></pre></td></tr></table></figure>
+
+<p>下面这一个针对层数比较多，或数据比较杂的，适合使用。</p>
+<h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ol>
+<li>安装：pip install jsonpath </li>
+<li>调用：jsonpath.jsonpath(obj, expr)<ul>
+<li>obj：表示 json 数据【<strong>python 对象类型的</strong>】</li>
+<li>expr：表示筛选条件【表达式】</li>
+</ul>
+</li>
+<li>返回值：返回路径或值，没有筛选到则返回 false</li>
+</ol>
+<h3 id="jsonpath-语法"><a href="#jsonpath-语法" class="headerlink" title="jsonpath 语法"></a>jsonpath 语法</h3><p><img src="/img/notes/python-%E7%88%AC%E8%99%AB-%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB/image-20251205202310338.png" alt="image-20251205202310338"></p>
+<ul>
+<li>$:</li>
+<li>.:</li>
+<li>..:</li>
+<li>[]:</li>
+<li>[,] | [:]:</li>
+</ul>
+<p><strong>注意事项</strong>：jsonpath 匹配的数据最终都是以列表形式返回。</p>
+<p>做爬虫：主要目的是数据【能用什么技术简单方便快捷获取到数据，就用什么技术，不要强迫症的一定用某一种技术】。</p>
+<h2 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h2><p>主要用来处理 html 文本数据。</p>
+<p>用正则表达式获取数据的缺点？模糊，不精确。</p>
+<h3 id="使用步骤-1"><a href="#使用步骤-1" class="headerlink" title="使用步骤"></a>使用步骤</h3><ol>
+<li><p>安装：pip install lxml </p>
+</li>
+<li><p>匹配：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导包</span></span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转换 =》将 html 文本转换成 etree 对象【语法树】</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;top250.html&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># 参数一定是一个 html 文本</span></span><br><span class="line">    html = etree.HTML(f.read())</span><br><span class="line">    <span class="comment"># 使用路径匹配</span></span><br><span class="line">    res = html.xpath(<span class="string">&#x27;//title/text()&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>扩展【html】：</p>
+<ol>
+<li><p>标签：以 <strong>&lt;单词&gt;</strong> 格式存在就称为标签。</p>
+<p><strong>&lt;单词&gt; 内容 &lt;&#x2F;单词&gt;</strong> 在开始和结束标签中间包含的内容都属于这个标签【子元素】。</p>
+</li>
+<li><p>属性：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;末代皇帝&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://img3.dou.../public/p452089833.webp&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>src：属性【修饰，width 宽度，修饰图片的宽度】。</p>
+<p>id：是一个特殊的属性，绝对唯一【ID CARD 身份证】。</p>
+</li>
+</ol>
+<p>通过 xpath 获取数据主要来源：</p>
+<ul>
+<li>文本内容</li>
+<li>属性值</li>
+</ul>
+<h3 id="xpath-语法"><a href="#xpath-语法" class="headerlink" title="xpath 语法"></a>xpath 语法</h3><p><img src="/img/notes/python-%E7%88%AC%E8%99%AB-%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB/image-20251205212531228.png" alt="image-20251205212531228"></p>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>如果从根节点进行匹配，会非常的长，可以先找到一个唯一的属性值匹配到一个相对较近的节点，再向下匹配。</li>
+<li>xpath 的下标是从 1 开始。</li>
+</ul>
+<h1 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h1><p>JSON 数据可以直接转为 Python 对象保存起来，为什么还要 JSONPath？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SON → Python 对象</span><br><span class="line">相当于：把书从英文翻译成中文</span><br><span class="line">JSONPath</span><br><span class="line">相当于：直接在书里搜索关键词</span><br><span class="line">你翻译完了，不代表你找内容方便！</span><br><span class="line">JSONPath 就是 JSON 里的搜索神器</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/03/25/python-%E7%88%AC%E8%99%AB-%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB/">http://example.com/2026/03/25/python-%E7%88%AC%E8%99%AB-%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%88%AC%E8%99%AB/"># 爬虫</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/03/26/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+            
+            
+            <a class="next" rel="next" href="/2026/03/25/python-%E7%88%AC%E8%99%AB-%E4%BB%A3%E7%90%86ip%E5%8F%8A%E5%8A%9F%E8%83%BD%E5%AE%8C%E5%96%84/">代理ip及功能完善</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

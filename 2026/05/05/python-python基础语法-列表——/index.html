@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>列表—— | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">列表——</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">May 5, 2026&nbsp;&nbsp;9:51:44</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">python基础语法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="11-列表——"><a href="#11-列表——" class="headerlink" title="11_列表——"></a>11_列表——</h1><p><strong>定义</strong>：由<strong>有限个元素</strong>组成的<strong>有序序列</strong>，元素按插入顺序排列，可通过<strong>索引</strong>访问。</p>
+<p>作用:一次性存储多个数据，而且可以为不同数据类型</p>
+<p>格式：变量名&#x3D;[元素1， 元素2，元素3…]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True]</span><br><span class="line">print(lst, type(lst))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[21, 21.003, &#x27;hello&#x27;, (5+2j), True, [&#x27;python&#x27;, 65]] &lt;class &#x27;list&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>0开始</p>
+<p>1.根据索引值，输出元素值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">print(lst[0])</span><br><span class="line">print(lst[-1])</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">21</span><br><span class="line">[&#x27;python&#x27;, 65]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.嵌套的列表，只占用一个元素位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">print(lst[-1][0])</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python</span><br></pre></td></tr></table></figure>
+
+
+
+<p>3.根据元素值，输出索引值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">print(lst.index(21))</span><br><span class="line">print(lst[-1].index(65))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+
+
+<p>3.索引值超出范围，进行报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(lst[10])</span><br><span class="line">print(lst.index(99))</span><br></pre></td></tr></table></figure>
+
+<p>查找元素不在列表中，报错</p>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>[起始值:结束值:步长]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">print(lst[0:3])</span><br></pre></td></tr></table></figure>
+
+<p>输出:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[21, 21.003, &#x27;hello&#x27;]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="成员运算符-in-not-in"><a href="#成员运算符-in-not-in" class="headerlink" title="成员运算符 in  not in"></a>成员运算符 in  not in</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">print(99 in lst)</span><br><span class="line">print(99 not in lst)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">False</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="长度–len-迭代对象"><a href="#长度–len-迭代对象" class="headerlink" title="长度–len(迭代对象)"></a>长度–len(迭代对象)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">print(len(lst))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="次数–count"><a href="#次数–count" class="headerlink" title="次数–count()"></a>次数–count()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">print(lst.count(10))</span><br><span class="line">print(lst.count(21))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="列表的添加-增"><a href="#列表的添加-增" class="headerlink" title="列表的添加(增)"></a>列表的添加(增)</h2><p><code>insert()</code>   <code>append() </code> <code>extend()</code>  <code>+</code></p>
+<h3 id="insert-–插入"><a href="#insert-–插入" class="headerlink" title="insert()–插入"></a>insert()–插入</h3><p>格式： 列表对象.insert(索引位置, 要插入的元素)</p>
+<p>原位置及后面的元素自动向后顺延，列表长度 + 1</p>
+<p>支持正索引（从前往后）、负索引（从后往前）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">lst.insert(0, &#x27;这是一个列表&#x27;)</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;这是一个列表&#x27;, 21, 21.003, &#x27;hello&#x27;, (5+2j), True, [&#x27;python&#x27;, 65]]</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">lst.insert(-1, &#x27;这是一个列表&#x27;)</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[21, 21.003, &#x27;hello&#x27;, (5+2j), True, &#x27;这是一个列表&#x27;, [&#x27;python&#x27;, 65]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：</strong></p>
+<p>1.insert() 方法没有返回值（返回 None），所以打印结果为 None，但列表本身会被修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">print(lst.insert(-1, &#x27;这是一个列表&#x27;))</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">None</span><br><span class="line">[21, 21.003, &#x27;hello&#x27;, (5+2j), True, &#x27;这是一个列表&#x27;, [&#x27;python&#x27;, 65]]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.添加元素至最后一位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lst.insert(len(lst), 元素)</span><br></pre></td></tr></table></figure>
+
+<p>索引值大于长度不会报错而是添加元素至最后一位，负数同理（不会报索引越界错误）</p>
+<h3 id="append-–元素追加到列表的尾部"><a href="#append-–元素追加到列表的尾部" class="headerlink" title="append()–元素追加到列表的尾部"></a>append()–元素追加到列表的尾部</h3><p>格式：列表名.append(元素值&#x2F;变量)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">new_lst = [&#x27;学习&#x27;, &#x27;写作业&#x27;]</span><br><span class="line">lst.append(&#x27;这是一个列表&#x27;)</span><br><span class="line">#lst.append(&#x27;学习&#x27;, &#x27;写作业&#x27;)  # 多元素写入，报错，存放变量再进行追加，但添加的是列表</span><br><span class="line">lst.append(new_lst)</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[21, 21.003, &#x27;hello&#x27;, (5+2j), True, [&#x27;python&#x27;, 65], &#x27;这是一个列表&#x27;, [&#x27;学习&#x27;, &#x27;写作业&#x27;]]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="extend-–字符串-列表"><a href="#extend-–字符串-列表" class="headerlink" title="extend()–字符串&#x2F;列表"></a>extend()–字符串&#x2F;列表</h3><p>格式：列表.extend(可迭代对象)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">new_lst = [&#x27;学习&#x27;, &#x27;写作业&#x27;]  # 列表的遍历根据索引值</span><br><span class="line">lst.extend(new_lst)</span><br><span class="line">lst.extend(&#x27;hello&#x27;)  # 字符串作为可迭代对象，每迭代一次，取一个字母存放到列表</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[21, 21.003, &#x27;hello&#x27;, (5+2j), True, [&#x27;python&#x27;, 65], &#x27;学习&#x27;, &#x27;写作业&#x27;, &#x27;h&#x27;, &#x27;e&#x27;, &#x27;l&#x27;, &#x27;l&#x27;, &#x27;o&#x27;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="拼接–相同数据类型进行拼接"><a href="#拼接–相同数据类型进行拼接" class="headerlink" title="+拼接–相同数据类型进行拼接"></a>+拼接–相同数据类型进行拼接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">new_lst = [&#x27;hello&#x27;]</span><br><span class="line"></span><br><span class="line">print(lst + new_lst)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[21, 21.003, &#x27;hello&#x27;, (5+2j), True, [&#x27;python&#x27;, 65], &#x27;hello&#x27;, &#x27;9&#x27;]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>insert(索引值，插入的元素值)–不能在列表的尾部进行插入</p>
+<p>append(追加的元素值)–只能在列表的尾部进行追加，一个参数</p>
+<p>extend(迭代对象)–字符串（迭代时把每个字母拆分成元素插入），列表（通过索引值遍历）</p>
+<p>+拼接 碧玺相同数据类型才可进行拼接</p>
+<h2 id="列表的删除-删"><a href="#列表的删除-删" class="headerlink" title="列表的删除(删)"></a>列表的删除(删)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop()   remove()   del     clear()</span><br></pre></td></tr></table></figure>
+
+<h3 id="pop-索引值"><a href="#pop-索引值" class="headerlink" title="pop(索引值)"></a>pop(索引值)</h3><p>默认删除列表最后一个元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">lst.pop(1)</span><br><span class="line">lst.pop()</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[21, &#x27;hello&#x27;, (5+2j), True]</span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<p><strong>按索引删除</strong>，如果索引不存在，会报**索引越界 **（IndexError）</p>
+<h3 id="remove-元素值"><a href="#remove-元素值" class="headerlink" title="remove(元素值)"></a>remove(元素值)</h3><p>元素移除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">lst.remove(21.003)</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[21, &#x27;hello&#x27;, (5+2j), True, [&#x27;python&#x27;, 65]]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="del"><a href="#del" class="headerlink" title="del"></a>del</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst = [1, 2, 3, 4, 5]</span><br><span class="line">del lst[0]</span><br><span class="line"># del lst  # 删除的是变量名，变量名被删除后，变量名不存在，输出会报错</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="clear-–清除列表所有元素"><a href="#clear-–清除列表所有元素" class="headerlink" title="clear()–清除列表所有元素"></a>clear()–清除列表所有元素</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">lst.clear()</span><br><span class="line">print(lst, type(lst))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[] &lt;class &#x27;list&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>list.pop(索引值)<br>list.remove(元素值)<br>del list[索引值]<br>list.clear() 清除列表中所有元素<br>强调点–删除时，列表索引值变化的（复制新列表遍历&#x2F;倒序的遍历）</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>删除列表里的偶数</p>
+<p>方法1：复制一个新列表，新列表作为遍历对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">list_num = [1, 7, 9, 8, 12, 33, 1]</span><br><span class="line">list_num2 = [1, 7, 9, 8, 12, 33, 1]</span><br><span class="line">for value in list_num2:</span><br><span class="line">    if value % 2 == 0:</span><br><span class="line">        list_num.remove(value)</span><br><span class="line">print(list_num)</span><br></pre></td></tr></table></figure>
+
+<h3 id="注"><a href="#注" class="headerlink" title="注"></a>注</h3><p>for循环通过索引值遍历，删除时列表长度变化，所以pop(索引值)删除时要注意</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 目标：删除所有等于 3 的元素</span><br><span class="line">nums = [1, 2, 3, 3, 5]</span><br><span class="line">for i in range(len(nums)):</span><br><span class="line">    if nums[i] == 3:</span><br><span class="line">        nums.pop(i)  # 删除后列表变短，后续索引错位</span><br><span class="line"></span><br><span class="line">print(nums) 	#会报索引越界（IndexError）</span><br></pre></td></tr></table></figure>
+
+<p>方法1：复制一个新列表，新列表作为遍历对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nums = [1, 2, 3, 3, 5]</span><br><span class="line">new_nums = [1, 2, 3, 3, 5]</span><br><span class="line">for i in range(len(new_nums)):</span><br><span class="line">    if new_nums[i] == 3:</span><br><span class="line">        idx = nums.index(item) 	# 找到当前 item 在原列表中的索引并删除</span><br><span class="line">        nums.pop(i) </span><br><span class="line">print(nums) </span><br></pre></td></tr></table></figure>
+
+<p>方法2：逆序输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list_num = [1, 2, 3, 3, 5]</span><br><span class="line">for i in range(len(list_num)-1, -1, -1):</span><br><span class="line">    if list_num[i] == 3:</span><br><span class="line">        del list_num[i]</span><br><span class="line">print(list_num)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">不会漏删（核心原理）</span><br><span class="line">正序遍历删除：删除一个元素后，后面元素向前移动，下一轮循环会跳过补位上来的元素（容易漏删）。</span><br><span class="line">倒序遍历删除：从后往前删，删除后面元素只会影响已遍历过的索引，未遍历的前面索引完全不受影响，所有元素都能被检查到</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="列表修改"><a href="#列表修改" class="headerlink" title="列表修改"></a>列表修改</h1><p>list[索引值] &#x3D; 新元素值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">lst[0] = &#x27;world&#x27;</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="列表查找"><a href="#列表查找" class="headerlink" title="列表查找"></a>列表查找</h1><h2 id="查找元素对应的索引值index"><a href="#查找元素对应的索引值index" class="headerlink" title="查找元素对应的索引值index()"></a>查找元素对应的索引值index()</h2><p>语法：index(元素，索引开始位置，结束位置) </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">print(lst.index(21))</span><br><span class="line">print(lst.index(&#x27;hello&#x27;, 2, 5))  # 若查找内容不存在，报错</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="判断元素类型isinstance"><a href="#判断元素类型isinstance" class="headerlink" title="判断元素类型isinstance()"></a>判断元素类型isinstance()</h2><p>isinstance(value, int&#x2F;float&#x2F;str&#x2F;complex等其他数据类型)</p>
+<p>complex（复数，a + bj）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">value = 2 + 3j</span><br><span class="line">print(isinstance(value, int))</span><br><span class="line">print(isinstance(value, complex))</span><br></pre></td></tr></table></figure>
+
+<p>输出:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">False</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+<p>对象为列表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">print(isinstance(value, (int, float, str, complex,bool,list)))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">True</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>sort()   sorted()    reverse()</p>
+<h3 id="sort-key-选择属性进行排序-reverse-排序先后"><a href="#sort-key-选择属性进行排序-reverse-排序先后" class="headerlink" title="sort(key&#x3D;选择属性进行排序,reverse&#x3D;排序先后)"></a>sort(key&#x3D;选择属性进行排序,reverse&#x3D;排序先后)</h3><p>reverse默认等于False，从小到大排序，可选参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">users = [</span><br><span class="line">    &#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20&#125;,</span><br><span class="line">    &#123;&quot;name&quot;: &quot;李四&quot;, &quot;age&quot;: 18&#125;,</span><br><span class="line">    &#123;&quot;name&quot;: &quot;王五&quot;, &quot;age&quot;: 22&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 按 age 升序（默认）</span><br><span class="line">users.sort(key=lambda x: x[&quot;age&quot;])</span><br><span class="line">print(users)</span><br><span class="line"># 按 age 降序</span><br><span class="line">users.sort(key=lambda x: x[&quot;age&quot;], reverse=True)</span><br><span class="line">print(users)</span><br><span class="line"></span><br><span class="line">#list.sort() 是原地排序，返回 None，所以直接 print(users.sort(...)) 只会输出 None</span><br><span class="line">print(users.sort(key=lambda x: x[&quot;age&quot;], reverse=True)) </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[&#123;&#x27;name&#x27;: &#x27;李四&#x27;, &#x27;age&#x27;: 18&#125;, &#123;&#x27;name&#x27;: &#x27;张三&#x27;, &#x27;age&#x27;: 20&#125;, &#123;&#x27;name&#x27;: &#x27;王五&#x27;, &#x27;age&#x27;: 22&#125;]</span><br><span class="line">[&#123;&#x27;name&#x27;: &#x27;王五&#x27;, &#x27;age&#x27;: 22&#125;, &#123;&#x27;name&#x27;: &#x27;张三&#x27;, &#x27;age&#x27;: 20&#125;, &#123;&#x27;name&#x27;: &#x27;李四&#x27;, &#x27;age&#x27;: 18&#125;]</span><br><span class="line">None</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="sorted-可迭代对象-key-排序函数-reverse-False"><a href="#sorted-可迭代对象-key-排序函数-reverse-False" class="headerlink" title="sorted(可迭代对象, key&#x3D;排序函数, reverse&#x3D;False)"></a>sorted(可迭代对象, key&#x3D;排序函数, reverse&#x3D;False)</h3><p>新列表 &#x3D; sorted(可迭代对象, key&#x3D;排序函数, reverse&#x3D;False)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">users = [    &#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20&#125;,    &#123;&quot;name&quot;: &quot;李四&quot;, &quot;age&quot;: 18&#125;,    &#123;&quot;name&quot;: &quot;王五&quot;, &quot;age&quot;: 22&#125; ] </span><br><span class="line"># 按 age 升序（默认） </span><br><span class="line">users_sorted = sorted(users, key=lambda x: x[&quot;age&quot;]) </span><br><span class="line"># 按 age 降序 </span><br><span class="line">users_sorted_desc = sorted(users, key=lambda x: x[&quot;age&quot;], reverse=True)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>sort()</code>与 <code>sorted()</code>区别</p>
+<p><code>sort()</code>（列表方法）和 <code>sorted()</code>（内置函数）</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>原地修改</th>
+<th>返回值</th>
+<th>适用对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>list.sort()</code></td>
+<td>✅ 是</td>
+<td><code>None</code></td>
+<td>仅列表</td>
+</tr>
+<tr>
+<td><code>sorted()</code></td>
+<td>❌ 否</td>
+<td>新列表</td>
+<td>所有可迭代对象</td>
+</tr>
+</tbody></table>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><h4 id="key：按-“属性-字段”-排序"><a href="#key：按-“属性-字段”-排序" class="headerlink" title="key：按 “属性 &#x2F; 字段” 排序"></a>key：按 “属性 &#x2F; 字段” 排序</h4><p>作用：传入<strong>一元函数</strong>，从每个元素中提取排序依据（键）</p>
+<p>常用写法：</p>
+<p>内置函数：<code>len</code>（按长度）、<code>str.lower</code>（不区分大小写）。</p>
+<p><code>lambda</code> 匿名函数：取元素的<strong>索引 &#x2F; 键 &#x2F; 属性</strong>。</p>
+<p><code>operator.itemgetter</code>&#x2F;<code>attrgetter</code>：更高效的批量取值。</p>
+<p>按属性排序</p>
+<h4 id="字典列表：按字典键排序"><a href="#字典列表：按字典键排序" class="headerlink" title="字典列表：按字典键排序"></a>字典列表：按字典键排序</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">users = [</span><br><span class="line">    &#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20&#125;,</span><br><span class="line">    &#123;&quot;name&quot;: &quot;李四&quot;, &quot;age&quot;: 18&#125;,</span><br><span class="line">    &#123;&quot;name&quot;: &quot;王五&quot;, &quot;age&quot;: 22&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 按 age 升序（默认）</span><br><span class="line">users_sorted = sorted(users, key=lambda x: x[&quot;age&quot;])</span><br><span class="line"># 按 age 降序</span><br><span class="line">users_sorted_desc = sorted(users, key=lambda x: x[&quot;age&quot;], reverse=True)</span><br></pre></td></tr></table></figure>
+
+<h4 id="自定义对象：按对象属性排序"><a href="#自定义对象：按对象属性排序" class="headerlink" title="自定义对象：按对象属性排序"></a>自定义对象：按对象属性排序</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Student:</span><br><span class="line">    def __init__(self, name, score):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.score = score</span><br><span class="line"></span><br><span class="line">students = [Student(&quot;小明&quot;, 85), Student(&quot;小红&quot;, 92), Student(&quot;小刚&quot;, 78)]</span><br><span class="line"></span><br><span class="line"># 按 score 升序</span><br><span class="line">sorted_stu = sorted(students, key=lambda s: s.score)</span><br><span class="line"># 按 score 降序</span><br><span class="line">sorted_stu_desc = sorted(students, key=lambda s: s.score, reverse=True)</span><br></pre></td></tr></table></figure>
+
+<h4 id="元组列表：按元组索引排序"><a href="#元组列表：按元组索引排序" class="headerlink" title="元组列表：按元组索引排序"></a>元组列表：按元组索引排序</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data = [(&quot;苹果&quot;, 5), (&quot;香蕉&quot;, 3), (&quot;橙子&quot;, 8)]</span><br><span class="line"># 按价格（索引1）升序</span><br><span class="line">data_sorted = sorted(data, key=lambda x: x[1])</span><br><span class="line"># 按价格降序</span><br><span class="line">data_sorted_desc = sorted(data, key=lambda x: x[1], reverse=True)</span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串：按长度-不区分大小写排序"><a href="#字符串：按长度-不区分大小写排序" class="headerlink" title="字符串：按长度 &#x2F; 不区分大小写排序"></a>字符串：按长度 &#x2F; 不区分大小写排序</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">words = [&quot;banana&quot;, &quot;Apple&quot;, &quot;cherry&quot;, &quot;date&quot;]</span><br><span class="line"># 按长度升序</span><br><span class="line">print(sorted(words, key=len))  # [&#x27;date&#x27;, &#x27;Apple&#x27;, &#x27;banana&#x27;, &#x27;cherry&#x27;]</span><br><span class="line"># 不区分大小写升序</span><br><span class="line">print(sorted(words, key=str.lower))  # [&#x27;Apple&#x27;, &#x27;banana&#x27;, &#x27;cherry&#x27;, &#x27;date&#x27;]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="reverse-–倒序输出"><a href="#reverse-–倒序输出" class="headerlink" title="reverse()–倒序输出"></a>reverse()–倒序输出</h3><p>无排序功能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [21, 21.003, &#x27;hello&#x27;, 5+2j, True, [&#x27;python&#x27;, 65]]</span><br><span class="line">lst.reverse()</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[&#x27;python&#x27;, 65], True, (5+2j), &#x27;hello&#x27;, 21.003, 21]</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/05/05/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%88%97%E8%A1%A8%E2%80%94%E2%80%94/">http://example.com/2026/05/05/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%88%97%E8%A1%A8%E2%80%94%E2%80%94/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"># python基础语法</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/05/05/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E5%85%B8/">字典</a>
+            
+            
+            <a class="next" rel="next" href="/2026/05/05/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%85%83%E7%BB%84%E2%80%94%E2%80%94/">元组——</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>pyecharts模块介绍 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">pyecharts模块介绍</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">May 11, 2026&nbsp;&nbsp;11:14:21</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
+                            
+                                <a href="/categories/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/pyecharts%E6%A8%A1%E5%9D%97/">pyecharts模块</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="pyecharts-简介"><a href="#pyecharts-简介" class="headerlink" title="pyecharts 简介"></a>pyecharts 简介</h1><p><strong>pyecharts官网地址：<a target="_blank" rel="noopener" href="https://pyecharts.org/#/zh-cn/intro">简介 - pyecharts - A Python Echarts Plotting Library built with love.</a></strong></p>
+<p>pyecharts是基于Echart图表的一个类库，而Echart是百度开源的一个可视化JavaScript库</p>
+<p>pyecharts主要基于web浏览器进行显示，绘制的图形比较多，包括折线图，柱状图、饼图、漏斗图、地图、极坐标图等，代码量很少，而且很灵活，绘制出来的图形很美观</p>
+<p>使用pyecharts时，需要安装相应的库，安装命令为：    pip install pyecharts</p>
+<p>图形绘制过程，基本上所有的图表类型都是这样绘制的</p>
+<p>pyecharts是百度开源的数据可视化工具，交互性良好，图表设计精巧，非常适合用于数据处理。</p>
+<ol>
+<li>支持30+常见图表  </li>
+<li>支持notebook环境（jupyter）</li>
+<li>集成Flask、Django等主流框架</li>
+<li>400+地图文件</li>
+<li>……</li>
+</ol>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h4 id="1-1pip安装"><a href="#1-1pip安装" class="headerlink" title="1.1pip安装"></a>1.1pip安装</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install pyecharts</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-源码安装"><a href="#1-2-源码安装" class="headerlink" title="1.2 源码安装"></a>1.2 源码安装</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd pyecharts</span><br><span class="line">pip install -r requirements.txt</span><br><span class="line">python setup.py install# 或者执行 python install.py</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="柱状图"><a href="#柱状图" class="headerlink" title="柱状图"></a>柱状图</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyecharts.charts <span class="keyword">import</span> Bar</span><br><span class="line"></span><br><span class="line">bar = Bar()</span><br><span class="line">bar.add_xaxis([<span class="string">&quot;衬衫&quot;</span>, <span class="string">&quot;羊毛衫&quot;</span>, <span class="string">&quot;雪纺衫&quot;</span>, <span class="string">&quot;裤子&quot;</span>, <span class="string">&quot;高跟鞋&quot;</span>, <span class="string">&quot;袜子&quot;</span>])</span><br><span class="line">bar.add_yaxis(<span class="string">&quot;商家A&quot;</span>, [<span class="number">5</span>, <span class="number">20</span>, <span class="number">36</span>, <span class="number">10</span>, <span class="number">75</span>, <span class="number">90</span>])</span><br><span class="line"><span class="comment"># render 会生成本地 HTML 文件，默认会在当前目录生成 render.html 文件</span></span><br><span class="line"><span class="comment"># 也可以传入路径参数，如 bar.render(&quot;mycharts.html&quot;)</span></span><br><span class="line">bar.render()</span><br><span class="line">bar.render_notebook()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pyecharts%E6%A8%A1%E5%9D%97-pyecharts%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/image-20260122144429098.png" alt="image-20260122144429098"></p>
+<h4 id="1-2-链式调用"><a href="#1-2-链式调用" class="headerlink" title="1.2 链式调用"></a>1.2 链式调用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from pyecharts.charts import Bar</span><br><span class="line"></span><br><span class="line">bar = (</span><br><span class="line">    Bar()</span><br><span class="line">    .add_xaxis([&quot;衬衫&quot;, &quot;羊毛衫&quot;, &quot;雪纺衫&quot;, &quot;裤子&quot;, &quot;高跟鞋&quot;, &quot;袜子&quot;])</span><br><span class="line">    .add_yaxis(&quot;商家A&quot;, [5, 20, 36, 10, 75, 90])</span><br><span class="line">)</span><br><span class="line">bar.render()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pyecharts%E6%A8%A1%E5%9D%97-pyecharts%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/image-20260122144536937.png" alt="image-20260122144536937"></p>
+<h2 id="创建折线图"><a href="#创建折线图" class="headerlink" title="创建折线图"></a>创建折线图</h2><p>3.1 创建.py文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyecharts.charts <span class="keyword">import</span> Line</span><br><span class="line"><span class="comment">#得到折线图对象</span></span><br><span class="line">line = Line()</span><br><span class="line"><span class="comment">#添加x轴数据</span></span><br><span class="line">line.add_xaxis([<span class="string">&quot;衬衫&quot;</span>,<span class="string">&quot;羊毛衫&quot;</span>,<span class="string">&quot;雪纺衫&quot;</span>])</span><br><span class="line"><span class="comment">#添加y轴数据</span></span><br><span class="line">line.add_yaxis(<span class="string">&quot;商家A&quot;</span>,[<span class="number">5</span>,<span class="number">20</span>,<span class="number">36</span>])</span><br><span class="line"><span class="comment">#生成图表</span></span><br><span class="line">line.render()</span><br></pre></td></tr></table></figure>
+
+<p>3.2 在.py文件中右键运行</p>
+<p>3.3 在项目根目录中会生成一个render.html文件</p>
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pyecharts%E6%A8%A1%E5%9D%97-pyecharts%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/image-20241018135317245.png" alt="image-20241018135317245"></p>
+<p>3.4 浏览器中打开此页面，就能得到对应的折线图</p>
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pyecharts%E6%A8%A1%E5%9D%97-pyecharts%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/image-20241018135422346.png" alt="image-20241018135422346"></p>
+<h3 id="1-常用配置项"><a href="#1-常用配置项" class="headerlink" title="1.常用配置项"></a>1.常用配置项</h3><p>pyecharts配置项分为：全局配置选项和系列配置选项</p>
+<p>全局配置选项</p>
+<p>​	基本介绍：针对整个图像进行设置，比如图像的标题，图像的图例，工具箱</p>
+<p>​	设置方法：使用set_global_opts方法进行设置，具体有那些配置项可以去<a target="_blank" rel="noopener" href="https://pyecharts.org/#/zh-cn/global_options">官网</a>查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">from pyecharts.charts import Line</span><br><span class="line">from pyecharts import options as opts</span><br><span class="line">#得到折线图对象</span><br><span class="line">line = Line()</span><br><span class="line">#添加x轴数据</span><br><span class="line">line.add_xaxis([&quot;衬衫&quot;,&quot;羊毛衫&quot;,&quot;雪纺衫&quot;])</span><br><span class="line">#添加y轴数据</span><br><span class="line">line.add_yaxis(&quot;商家A&quot;,[5,20,36])</span><br><span class="line">#设置全局配置项</span><br><span class="line">line.set_global_opts(</span><br><span class="line">    #设置标题，设置居中展示，设置距离底部0%的距离</span><br><span class="line">    title_opts=opts.TitleOpts(title=&quot;这是主标题&quot;, subtitle=&quot;这是副标题&quot;,pos_left=&quot;center&quot;,pos_bottom=&quot;0%&quot;),</span><br><span class="line">    #控制图例，图例是默认显示的</span><br><span class="line">    legend_opts=opts.LegendOpts(is_show=True),</span><br><span class="line">    #设置工具箱</span><br><span class="line">    toolbox_opts=opts.ToolboxOpts(is_show=True),</span><br><span class="line">    #设置视觉映射</span><br><span class="line">    visualmap_opts=opts.VisualMapOpts(is_show=True)</span><br><span class="line">)</span><br><span class="line">#生成图表</span><br><span class="line">line.render()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pyecharts%E6%A8%A1%E5%9D%97-pyecharts%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/image-20241018135808508.png" alt="image-20241018135808508"></p>
+<h3 id="2-系列配置选项"><a href="#2-系列配置选项" class="headerlink" title="2.系列配置选项"></a>2.系列配置选项</h3><p>​		基本介绍：针对具体的轴数据进行配置，比如y轴的某个数据</p>
+<p>​		设置方法：在设置y轴数据时，后面添加各种配置项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from pyecharts.charts import Line</span><br><span class="line">from pyecharts import options as opts</span><br><span class="line">#得到折线图对象</span><br><span class="line">line = Line()</span><br><span class="line">#添加x轴数据</span><br><span class="line">line.add_xaxis([&quot;衬衫&quot;,&quot;羊毛衫&quot;,&quot;雪纺衫&quot;])</span><br><span class="line">#添加y轴数据，配置不显示y轴每个具体数据值的展示</span><br><span class="line">line.add_yaxis(&quot;商家A&quot;,[5,20,36], label_opts=opts.LabelOpts(is_show=False))</span><br><span class="line">#生成图表</span><br><span class="line">line.render()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pyecharts%E6%A8%A1%E5%9D%97-pyecharts%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/image-20241018140012601.png" alt="image-20241018140012601"></p>
+<h2 id="创建柱状图"><a href="#创建柱状图" class="headerlink" title="创建柱状图"></a>创建柱状图</h2><h3 id="1-创建基本柱状图"><a href="#1-创建基本柱状图" class="headerlink" title="1.创建基本柱状图"></a>1.创建基本柱状图</h3><p>在创建柱状图前，需要了解第二步中的基础入门介绍，以便更好理解代码内容和执行流程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from pyecharts.charts import Bar</span><br><span class="line">from pyecharts import options as opts</span><br><span class="line">#得到柱状图对象</span><br><span class="line">bar = Bar()</span><br><span class="line">#添加x轴数据</span><br><span class="line">bar.add_xaxis([&quot;衬衫&quot;,&quot;羊毛衫&quot;,&quot;雪纺衫&quot;])</span><br><span class="line">#添加y轴数据</span><br><span class="line">bar.add_yaxis(&quot;商家A&quot;,[5,20,36], label_opts=opts.LabelOpts(is_show=False))</span><br><span class="line">#生成图表</span><br><span class="line">bar.render()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pyecharts%E6%A8%A1%E5%9D%97-pyecharts%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/image-20241018140339140.png" alt="image-20241018140339140"></p>
+<h3 id="2-创建反转柱状图"><a href="#2-创建反转柱状图" class="headerlink" title="2.创建反转柱状图"></a>2.创建反转柱状图</h3><p>基本柱状图是以x轴为底座，y轴为数据展示，想要将x轴和y轴的功能反转可以如下操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from pyecharts.charts import Bar</span><br><span class="line">from pyecharts import options as opts</span><br><span class="line">#得到折线图对象</span><br><span class="line">bar = Bar()</span><br><span class="line">#添加x轴数据</span><br><span class="line">bar.add_xaxis([&quot;衬衫&quot;,&quot;羊毛衫&quot;,&quot;雪纺衫&quot;])</span><br><span class="line">#添加y轴数据，并设置系列配置选项（数字默认是在柱状图中间显示的，这是设置数字居右显示）</span><br><span class="line">bar.add_yaxis(&quot;商家A&quot;,[5,20,36],label_opts=opts.LabelOpts(position=&quot;right&quot;))</span><br><span class="line">#反转x轴和y轴</span><br><span class="line">bar.reversal_axis()</span><br><span class="line">#生成图表</span><br><span class="line">bar.render()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pyecharts%E6%A8%A1%E5%9D%97-pyecharts%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/image-20241018140605641.png" alt="image-20241018140605641"></p>
+<h3 id="3-创建含有时间线的柱状图"><a href="#3-创建含有时间线的柱状图" class="headerlink" title="3.创建含有时间线的柱状图"></a>3.创建含有时间线的柱状图</h3><p>想要创建一个根据不同的时间动态显示柱状图，从而能动态查看到柱状图不同类别的数据变化，其原理就是创建一个时间线对象，再创建多个柱状图，将柱状图分别添加到时间线对象中，设置时间线对象的自动播放</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">from pyecharts.charts import Bar, Timeline</span><br><span class="line">from pyecharts import options as opts</span><br><span class="line">from pyecharts.globals import ThemeType</span><br><span class="line"></span><br><span class="line"># 第一步：创建柱状图对象</span><br><span class="line">bar1 = Bar()</span><br><span class="line">bar1.add_xaxis([&quot;衬衫&quot;, &quot;羊毛衫&quot;, &quot;雪纺衫&quot;])</span><br><span class="line">bar1.add_yaxis(&quot;商家A&quot;, [5, 20, 30], label_opts=opts.LabelOpts(position=&quot;right&quot;))</span><br><span class="line">bar1.reversal_axis()</span><br><span class="line"></span><br><span class="line">bar2 = Bar()</span><br><span class="line">bar2.add_xaxis([&quot;衬衫&quot;, &quot;羊毛衫&quot;, &quot;雪纺衫&quot;])</span><br><span class="line">bar2.add_yaxis(&quot;商家A&quot;, [10, 15, 25], label_opts=opts.LabelOpts(position=&quot;right&quot;))</span><br><span class="line">bar2.reversal_axis()</span><br><span class="line"></span><br><span class="line">bar3 = Bar()</span><br><span class="line">bar3.add_xaxis([&quot;羊毛衫&quot;,&quot;衬衫&quot;, &quot;雪纺衫&quot;])			#这里想要在图表中将数据大的放上面，则需要按从小到大的顺序排序</span><br><span class="line">bar3.add_yaxis(&quot;商家A&quot;, [10, 15, 20], label_opts=opts.LabelOpts(position=&quot;right&quot;))</span><br><span class="line">bar3.reversal_axis()</span><br><span class="line"></span><br><span class="line"># 第二步：创建时间线对象</span><br><span class="line">#timeline = Timeline()          #此为创建空的时间线对象</span><br><span class="line">timeline = Timeline(&#123;           #创建带主题的时间线对象</span><br><span class="line">    &quot;theme&quot;: ThemeType.LIGHT,  #设置主题</span><br><span class="line">&#125;)</span><br><span class="line"># 第三步：在时间线内添加柱状图对象</span><br><span class="line">timeline.add(bar1, &quot;点1&quot;)</span><br><span class="line">timeline.add(bar2, &quot;点2&quot;)</span><br><span class="line">timeline.add(bar3, &quot;点3&quot;)</span><br><span class="line"></span><br><span class="line"># 第四步：设置自动播放</span><br><span class="line">timeline.add_schema(</span><br><span class="line">    play_interval=1000,     # 自动播放的时间间隔，单位毫秒</span><br><span class="line">    is_timeline_show=True,  # 在自动播放时，是否显示时间线</span><br><span class="line">    is_auto_play=True,      # 是否自动播放</span><br><span class="line">    is_loop_play=True,      # 是否循环播放</span><br><span class="line">)</span><br><span class="line"># 第五步：生成图表，这里是用时间线对象生成图标，而不是柱状图对象</span><br><span class="line">timeline.render()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pyecharts%E6%A8%A1%E5%9D%97-pyecharts%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/image-20241018141702011.png" alt="image-20241018141702011"></p>
+<h3 id="4-pyecharts绘制饼图"><a href="#4-pyecharts绘制饼图" class="headerlink" title="4.pyecharts绘制饼图"></a>4.pyecharts绘制饼图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 导入模块</span><br><span class="line">from pyecharts import options as opts</span><br><span class="line">from pyecharts.charts import Pie</span><br><span class="line">#准备数据</span><br><span class="line">label=[&#x27;Mac口红&#x27;,&#x27;Tom Ford口红&#x27;,&#x27;圣罗兰&#x27;,&#x27;纪梵希&#x27;,&#x27;花西子&#x27;,&#x27;迪奥&#x27;,&#x27;阿玛尼&#x27;,&#x27;香奈儿&#x27;]  </span><br><span class="line">values = [300,300,300,300,44,300,300,300]</span><br><span class="line"># 自定义函数</span><br><span class="line">def pie_base():</span><br><span class="line">    c = (</span><br><span class="line">        Pie()</span><br><span class="line">        .add(&quot;&quot;,[list(z) for z in zip(label,values)])</span><br><span class="line">        .set_global_opts(title_opts = opts.TitleOpts(title=&quot;口红品牌分析&quot;))</span><br><span class="line">        .set_series_opts(label_opts=opts.LabelOpts(formatter=&quot;&#123;b&#125;:&#123;c&#125; &#123;d&#125;%&quot;))   # 值得一提的是，&#123;d&#125;%为百分比</span><br><span class="line">    )</span><br><span class="line">    return c</span><br><span class="line"># 调用自定义函数生成render.html</span><br><span class="line">pie_base().render()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pyecharts%E6%A8%A1%E5%9D%97-pyecharts%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/image-20241018183430768.png" alt="image-20241018183430768"></p>
+<p><strong>官方地址：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://gallery.pyecharts.org/#/Boxplot/boxplot_light_velocity">https://gallery.pyecharts.org/#/Boxplot/boxplot_light_velocity</a></p>
+<p><a target="_blank" rel="noopener" href="https://pyecharts.org/#/zh-cn/intro">https://pyecharts.org/#/zh-cn/intro</a></p>
+<h2 id="Faker"><a href="#Faker" class="headerlink" title="Faker"></a>Faker</h2><p>用于<strong>测试、数据库填充、原型开发、数据脱敏</strong>等场景。</p>
+<p>应用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from pyecharts import options as opts</span><br><span class="line">from pyecharts.charts import Bar</span><br><span class="line">from pyecharts.faker import Faker</span><br><span class="line"></span><br><span class="line">c = (</span><br><span class="line">    Bar()</span><br><span class="line">    .add_xaxis(Faker.choose())</span><br><span class="line">    .add_yaxis(&quot;商家A&quot;, Faker.values(), stack=&quot;stack1&quot;)</span><br><span class="line">    .add_yaxis(&quot;商家B&quot;, Faker.values(), stack=&quot;stack1&quot;)</span><br><span class="line">    .set_series_opts(label_opts=opts.LabelOpts(is_show=False))</span><br><span class="line">    .set_global_opts(title_opts=opts.TitleOpts(title=&quot;Bar-堆叠数据（全部）&quot;))</span><br><span class="line">    .render(&quot;bar_stack0.html&quot;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/05/11/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pyecharts%E6%A8%A1%E5%9D%97-pyecharts%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/">http://example.com/2026/05/11/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pyecharts%E6%A8%A1%E5%9D%97-pyecharts%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/pyecharts%E6%A8%A1%E5%9D%97/"># pyecharts模块</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/05/11/java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/">字符串处理</a>
+            
+            
+            <a class="next" rel="next" href="/2026/05/10/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/">模块与包</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

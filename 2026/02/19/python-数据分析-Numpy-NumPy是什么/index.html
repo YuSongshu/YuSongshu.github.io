@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>NumPy是什么 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">NumPy是什么</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 19, 2026&nbsp;&nbsp;2:52:41</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
+                            
+                                <a href="/categories/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Numpy/">Numpy</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="01NumPy是什么——"><a href="#01NumPy是什么——" class="headerlink" title="01NumPy是什么——"></a>01NumPy是什么——</h1><p>NumPy 的全称是“ Numeric [Python]”，它是 Python 的第三方扩展包，主要用来计算、处理一维或多维数组。</p>
+<p>在数组算术计算方面， NumPy 提供了大量的数学函数。NumPy 的底层主要用 C语言编写，因此它能够高速地执行数值计算。NumPy 还提供了多种[数据结构]，这些数据结构能够非常契合的应用在数组和矩阵的运算上。</p>
+<p>NumPy 的前身是 Numeric 程序包，该包由 Jim Hugunin 开发，在这之后，他还开发了另一个类似的的程序包 Numarray，相比前者而言 Numarray 具有更加全面的功能 。在 2005 年，Travis Oliphant 通过整合 Numarray 与 Numeric 软件包的功能，从而集成了 NumPy。NumPy 的最新版本 1.19.2 已于 2020 年 9 月10 日发布。</p>
+<blockquote>
+<p>NumPy 作为一个开源项目，它由许多协作者共同开发维护，这也是 NumPy 的优势之一。</p>
+</blockquote>
+<h2 id="NumPy使用需求"><a href="#NumPy使用需求" class="headerlink" title="NumPy使用需求"></a>NumPy使用需求</h2><p>随着数据科学（Data Science，简称 DS，包括大数据分析与处理、大数据存储、数据抓取等分支）的蓬勃发展，像 NumPy、SciPy（Python科学计算库）、Pandas（基于NumPy的数据处理库） 等数据分析库都有了大量的增长，它们都具有较简单的语法格式。</p>
+<p>在矩阵乘法与数组形状处理上，NumPy 有着非常不错的性能，再加上 NumPy 的计算速度很快，这些都是 NumPy 成为一款数据分析工具的重要原因。</p>
+<blockquote>
+<p>数组形状可以理解为数组的维度，比如一维数组、二维数组、三维数组等；以二维数组为例，改变数组形状就是交换数组的行和列，也即将数组旋转 90 度。</p>
+</blockquote>
+<p>NumPy 可以很便捷高效地处理大量数据，那么使用 NumPy 做数据处理有哪些优点呢？总结如下：</p>
+<ul>
+<li>NumPy 是 Python 科学计算基础库；</li>
+<li>NumPy 可以对数组进行高效的数学运算；</li>
+<li>NumPy 的 ndarray 对象可以用来构建多维数组；</li>
+<li>NumPy 能够执行傅立叶变换与重塑多维数组形状；</li>
+<li>NumPy 提供了线性代数，以及随机数生成的内置函数。</li>
+</ul>
+<h2 id="NumPy应用场景"><a href="#NumPy应用场景" class="headerlink" title="NumPy应用场景"></a>NumPy应用场景</h2><p>NumPy 通常与 SciPy（Python科学计算库）和 Matplotlib（Python绘图库）等软件包组合使用，这种组合方式被用来广泛地代替 MatLab 的使用。</p>
+<p>MatLab 是一款强大的数学计算软件，广泛应用在数据分析、电子通信、深度学习、图像处理、机器视觉、量化金融等领域，但近些年随着 Python 语言的迅猛发展，Python 被看作是一种更适合代替  MatLab 的编程语言。您可以使用 NumPy、SciPy 与 Matplotlib 等 Python 工具包搭建科学计算环境，比如 Anaconda 就是是一个开源的 Python 发行版本，它包含了 Python 、NumPy 等 180 多个科学包及其依赖项。</p>
+<p>因为 NumPy 是 Python 的扩展程序包，所以您在学习 NumPy 之前应该具备一些 Python 基础知识，这对本教程的学习将大有裨益。如果您想了解关于 NumPy 更多的知识可浏览 NumPy 官网：<a target="_blank" rel="noopener" href="https://numpy.org/">NumPy -</a></p>
+<h2 id="NumPy下载与安装"><a href="#NumPy下载与安装" class="headerlink" title="NumPy下载与安装"></a>NumPy下载与安装</h2><p>NumPy 是 [Python] 的第三方扩展包，但它并没有包含在 Python 标准库中，因此您需要单独安装它。本节介绍如何在不同的操作系统上安装 NumPy。</p>
+<h3 id="Windows系统安装"><a href="#Windows系统安装" class="headerlink" title="Windows系统安装"></a>Windows系统安装</h3><p>在 Windows 系统下安装 NumPy 有两种常用方式，下面分别对其进行介绍。</p>
+<p>使用 Python 包管理器<code>pip</code>来安装 NumPy，是一种最简单、最轻量级的方法。只需执行以下命令即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install numpy</span><br></pre></td></tr></table></figure>
+
+<p>在实际项目中， NumPy 通常与 SciPy 程序包一起使用，SciPy 可以看做对 NumPy 库的扩展，它在 NumPy 的基础上又增加了许多工程计算函数。因此将它们同时安装是一个不错的选择。但如果你只想针对 NumPy 进行学习，可以不用考虑这种安装方法。</p>
+<p>注意：在 Windows 下直接使用 pip 安装 SciPy 会发生报错，需要我们解决 SciPy 的依赖项问题，所以不推荐使用<code>pip</code>安装 SciPy 程序包。下面介绍如何使用 SciPy 栈安装。</p>
+<p>首先我们要知道什么是 SciPy 栈？其实它是一个科学计算软件包的集成平台，这类平台囊括了常用的数值计算与机器学习库，比如 NumPy、Matplotlib、SciPy 库、IPython 等，并且它可以自动解决包之间的依赖问题。通过安装一个集成平台就可以实现上述所有软件包的安装，何乐而不为呢</p>
+<p>下面介绍几种常用的 SciPy 栈，主要有以下几种：</p>
+<p>Anaconda（官网下载：<a target="_blank" rel="noopener" href="https://www.anaconda.com/%EF%BC%89%E6%98%AF%E4%B8%80%E4%B8%AA%E5%BC%80%E6%BA%90%E7%9A%84">https://www.anaconda.com/）是一个开源的</a> Python 发行版，它包含了 NumPy、SciPy 等180多个科学包及其依赖项。除了支持 Windows 外，也支持 Linux 和 Mac 系统。Anaconda 就目前应用较为广泛，因此建议安装。</p>
+<blockquote>
+<p>Anaconda 的下载文件约 500 MB 左右，你可以选择安装 Miniconda，它是 Anaconda 的轻巧版，只需 40 余兆。</p>
+</blockquote>
+<p>Python(x,y)（下载地址：<a target="_blank" rel="noopener" href="https://python-xy.github.io/%EF%BC%89%E6%98%AF%E4%B8%80%E6%AC%BE%E5%9F%BA%E4%BA%8E">https://python-xy.github.io/）是一款基于</a> Python、<a target="_blank" rel="noopener" href="https://c.biancheng.net/qt/">Qt</a> （图形用户界面）和 Spyder （交互式开发环境）开发的软件，主要用于数值计算、数据分析和数据可视化等工程项目，目前只支持 Python 2 版本。</p>
+<p>Pyzo（下载地址：<a target="_blank" rel="noopener" href="https://pyzo.org/%EF%BC%89%E6%98%AF%E4%B8%80%E4%B8%AA%E8%B7%A8%E5%B9%B3%E5%8F%B0">https://pyzo.org/）是一个跨平台</a> Python IDE，基于 Python 3 编写，非常适合科学计算，它设计的宗旨就是为了简化和提供效率。</p>
+<p>WinPython（下载地址：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/winpython/files/%EF%BC%89%E5%85%8D%E8%B4%B9%E7%9A%84">https://sourceforge.net/projects/winpython/files/）免费的</a> Python 发行版，包含了常用的科学计算包与 Spyder IDE 开发环境，但仅支持 Windows 系统。</p>
+<h3 id="MacOSX系统安装"><a href="#MacOSX系统安装" class="headerlink" title="MacOSX系统安装"></a>MacOSX系统安装</h3><p>Mac 系统虽然自带包管理器<code>Homebrew</code>，但是它不能下载 NumPy 等科学计算包，所以需要使用下列方式安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip3 install numpy scipy matplotlib -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<p>注意：-i 参数后指的是国内下载源，加快下载的速度。</p>
+<h3 id="Linux系统安装"><a href="#Linux系统安装" class="headerlink" title="Linux系统安装"></a>Linux系统安装</h3><p>在 Linux 系统中，您可以选择只单独安装 NumPy 一个软件包，也可以同时安装多个软件包。下面介绍了不同的 Linux 发行版具体的安装命令，如下所示：</p>
+<h4 id="1-Ubuntu-Debian"><a href="#1-Ubuntu-Debian" class="headerlink" title="1) Ubuntu&#x2F;Debian"></a>1) Ubuntu&#x2F;Debian</h4><p>对于 Ubuntu&#x2F;Debian 系统，可以在终端上执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose </span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-Redhat-CentOS"><a href="#2-Redhat-CentOS" class="headerlink" title="2) Redhat&#x2F;CentOS"></a>2) Redhat&#x2F;CentOS</h4><p>在 Redhat&#x2F;CentOS 系统上执行以下命令来安装 NumPy 与其它科学计算包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install numpy scipy python-matplotlib ipython python-pandas sympy python-nose</span><br></pre></td></tr></table></figure>
+
+<p>注意：不同的软件包之间必须使用“一个空格”隔开。</p>
+<p>最后验证是否安装成功，如下所示：</p>
+<p>打开 Python 交互解释器 ，并导入 NumPy 模块，如下图 2 所示如果未出现错误提示，则表示已安装成功。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意：这里是以 Windows 系统为例进行验证的，Linux 验证方式与其相同。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="NumPy-ndarray对象"><a href="#NumPy-ndarray对象" class="headerlink" title="NumPy ndarray对象"></a>NumPy ndarray对象</h2><p>NumPy 定义了一个 n 维数组对象，简称 ndarray 对象，它是一个一系列相同类型元素组成的数组集合。数组中的每个元素都占有大小相同的内存块，您可以使用索引或切片的方式获取数组中的每个元素。</p>
+<blockquote>
+<p>ndarray 对象有一个 dtype 属性，该属性用来描述元素的数据类型，</p>
+</blockquote>
+<p>ndarray 对象采用了数组的索引机制，将数组中的每个元素映射到内存块上，并且按照一定的布局对内存块进行排列，常用的布局方式有两种，即按行或者按列。</p>
+<h3 id="创建-ndarray-对象"><a href="#创建-ndarray-对象" class="headerlink" title="创建 ndarray 对象"></a>创建 ndarray 对象</h3><p>通过 NumPy 的内置函数 array() 可以创建 ndarray 对象，其语法格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.array(object,ndmin = 0)</span><br></pre></td></tr></table></figure>
+
+<p>下面表格对其参数做了说明：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>参数</th>
+<th>描述说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>object</td>
+<td>表示一个数组序列。</td>
+</tr>
+</tbody></table>
+<p>| 2    | dtype  | 可选参数，通过它可以更改数组的数据类型。                     </p>
+<p>| 3   | ndim   | 用于指定数组的维度。                                         </p>
+<p>| 4   | reshape   | 用于改变行数和列数</p>
+<p>创建一维数组：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=numpy.array([1,2,3])</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import numpy</span><br><span class="line">a=numpy.array([1,2,3])#使用列表构建一维数组</span><br><span class="line">print(a)</span><br><span class="line">[1 2 3]</span><br><span class="line">print(type(a))</span><br><span class="line">#ndarray数组类型</span><br><span class="line">&lt;class &#x27;numpy.ndarray&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>创建多维数组：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b=numpy.array([[1,2,3],[4,5,6]])</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">b=numpy.array([[1,2,3],[4,5,6]])</span><br><span class="line">print(b)</span><br><span class="line">[[1 2 3]</span><br><span class="line">[4 5 6]]</span><br></pre></td></tr></table></figure>
+
+<p>如果要改变数组元素的数据类型，可以使用通过设置 dtype，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c=numpy.array([2,4,6,8],dtype=&quot;数据类型名称&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>array() 是创建 ndarray 对象的基本方法，在后续内容中还会介绍其他方法。</p>
+<h3 id="ndim查看数组维数"><a href="#ndim查看数组维数" class="headerlink" title="ndim查看数组维数"></a>ndim查看数组维数</h3><p>通过 ndim 可以查看数组的维度：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np </span><br><span class="line">arr = np.array([[1, 2, 3, 4], [4, 5, 6, 7], [9, 10, 11, 23]]) </span><br><span class="line">print(arr.ndim) </span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<p>您也可以使用 ndim 参数创建不同维度的数组：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#输出一个二维数组</span><br><span class="line">import numpy as np</span><br><span class="line">a = np.array([1, 2, 3,4,5], ndimn = 2)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[1 2 3 4 5]]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="reshape数组变维"><a href="#reshape数组变维" class="headerlink" title="reshape数组变维"></a>reshape数组变维</h3><p>数组的形状指的是多维数组的行数和列数。Numpy 模块提供 reshape() 函数可以改变多维数组行数和列数，从而达到数组变维的目的。因此数组变维即对数组形状的重塑：</p>
+<p>reshape() 函数可以接受一个元组作为参数，用于指定了新数组的行数和列数，示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np </span><br><span class="line">e = np.array([[1,2],[3,4],[5,6]]) </span><br><span class="line">print(&quot;原数组&quot;,e) </span><br><span class="line">e=e.reshape(2,3) </span><br><span class="line">print(&quot;新数组&quot;,e)  </span><br></pre></td></tr></table></figure>
+
+<p>输出如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">原数组 [[1 2]</span><br><span class="line">[3 4]</span><br><span class="line">[5 6]]</span><br><span class="line">新数组 [[1 2 3]</span><br><span class="line">[4 5 6]]</span><br><span class="line">​```xxxxxxxxxx 原数组 [[1 2][3 4][5 6]]新数组 [[1 2 3][4 5 6]]</span><br></pre></td></tr></table></figure>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/02/19/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-Numpy-NumPy%E6%98%AF%E4%BB%80%E4%B9%88/">http://example.com/2026/02/19/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-Numpy-NumPy%E6%98%AF%E4%BB%80%E4%B9%88/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Numpy/"># Numpy</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/02/19/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-Numpy-%E5%B9%BF%E6%92%AD%E5%92%8C%E8%BF%AD%E4%BB%A3/">广播和迭代</a>
+            
+            
+            <a class="next" rel="next" href="/2026/02/19/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-Numpy-NumPy_%E5%88%87%E7%89%87%E5%92%8C%E7%B4%A2%E5%BC%95/">NumPy 切片和索引</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

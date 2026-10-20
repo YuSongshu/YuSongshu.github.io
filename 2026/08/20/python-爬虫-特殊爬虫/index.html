@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>特殊爬虫 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">特殊爬虫</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 20, 2026&nbsp;&nbsp;23:42:45</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E7%88%AC%E8%99%AB/">爬虫</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="21特殊爬虫"><a href="#21特殊爬虫" class="headerlink" title="21特殊爬虫"></a>21特殊爬虫</h1><h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><p>Scrapy中间件是一个处理Scrapy请求和响应的机制，Scrapy中间件分为下载器中间件（loaderMiddleware）和爬虫中间件（SpiderMiddleware）。</p>
+<h3 id="SPIDER-MIDDLEWARES（爬虫中间件）"><a href="#SPIDER-MIDDLEWARES（爬虫中间件）" class="headerlink" title="SPIDER_MIDDLEWARES（爬虫中间件）"></a>SPIDER_MIDDLEWARES（爬虫中间件）</h3><p>SPIDER_MIDDLEWARES（爬虫中间件）：夹在引擎和爬虫中间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SPIDER_MIDDLEWARES = &#123;</span><br><span class="line">	爬虫中间件: 优先级,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="DOWNLOADER-MIDDLEWARES（下载器中间件）"><a href="#DOWNLOADER-MIDDLEWARES（下载器中间件）" class="headerlink" title="DOWNLOADER_MIDDLEWARES（下载器中间件）"></a>DOWNLOADER_MIDDLEWARES（下载器中间件）</h3><p>DOWNLOADER_MIDDLEWARES（下载器中间件）：夹在引擎和下载器中间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="line">	下载器中间件: 优先级,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1.process_request：处理请求，中间件中添加请求头</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def process_request(self, request, spider):</span><br><span class="line">    # 中间件中添加请求头</span><br><span class="line">    request.headers[&#x27;User-Agent&#x27;] = &#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0&#x27;</span><br><span class="line">    request.headers[&#x27;referer&#x27;] = &#x27;https://www.baidu.com/&#x27;</span><br><span class="line">    # 添加代理：后面的值是完整的 ip 代理地址</span><br><span class="line">    request.meta[&quot;proxy&quot;] = &quot;http://127.0.0.1:8080&quot;</span><br></pre></td></tr></table></figure>
+
+<p>注：可以配合ua池</p>
+<p>2.process_response：处理响应</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>1.创建中间件类（处于 middlewares.py 文件中）</p>
+<p>2.中间件处理请求和响应 class 中间件类:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def process_request(self, request, spider):</span><br><span class="line">	request.headers[&#x27;User-Agent&#x27;] = &quot;self user-agent&quot; return None</span><br></pre></td></tr></table></figure>
+
+<p>3.配置中间件 （处于 settings.py 文件中）</p>
+<p>​	中间件配置好后（取消注释），发送请求后，自动执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="line">#    &quot;baidu.middlewares.BaiduDownloaderMiddleware&quot;: 543,</span><br><span class="line"># &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="CrawlSpider"><a href="#CrawlSpider" class="headerlink" title="CrawlSpider"></a>CrawlSpider</h2><p>CrawlSpider 是 Scrapy 框架提供的一个高级爬虫类，它封装了许多常见爬取网站 的逻辑，使得编写爬虫更加简单和快速，CrawlSpider 类继承自 scrapy.Spider 类，并额外提供了一些功能来处理网页链 接的跟踪和提取，并自动生成新的请求</p>
+<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><p>1.创建一个 CrawlSpider 子类 通过命令快速生成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scrapy genspider -t crawl &lt;爬虫名&gt; &lt;allowed_domail&gt;</span><br><span class="line">scrapy genspider -t crawl cdb https://movie.douban.com/top250</span><br></pre></td></tr></table></figure>
+
+<p>2.定义规则 spider 中的 rules 属性： </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from scrapy.linkextractors import LinkExtractor</span><br><span class="line">from scrapy.spiders import CrawlSpider, Rule</span><br><span class="line">rules = (Rule(LinkExtractor(allow=r&quot;Items/&quot;), callback=&quot;parse_item&quot;, follow=True),)</span><br></pre></td></tr></table></figure>
+
+<p>rules 是<strong>元组</strong>，末尾逗号不能丢 <code>(...,)</code>，少逗号会报错。</p>
+<p>3.编写回调函数<br>4.运行爬虫</p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th align="left">普通 Spider</th>
+<th>CrawlSpider</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>链接提取</td>
+<td align="left">手动写 xpath&#x2F;css 提取链接，手动<code>yield Request()</code></td>
+<td>通过<code>Rule</code> + <code>LinkExtractor</code>自动提取页面内链接，自动生成请求</td>
+</tr>
+<tr>
+<td>主要用途</td>
+<td align="left">已知目标 URL，少量页面、定向抓取</td>
+<td>全站爬取、递归爬网页、分页、整站采集</td>
+</tr>
+<tr>
+<td>回调函数</td>
+<td align="left"><code>parse()</code>，自己解析、自己发请求</td>
+<td>**不能重写 parse ()**，用<code>rules</code>里的<code>callback</code>做解析；parse 被父类占用做链接提取逻辑</td>
+</tr>
+<tr>
+<td>分页处理</td>
+<td align="left">自己提取下一页链接，手动构造 Request</td>
+<td>规则配置即可自动跟进下一页</td>
+</tr>
+<tr>
+<td>灵活性</td>
+<td align="left">极高，完全自定义逻辑</td>
+<td>受 Rule 规则约束，适合规则清晰的网站，复杂反爬 &#x2F; 特殊逻辑不如普通 Spider 灵活</td>
+</tr>
+</tbody></table>
+<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><p>分布式是指将不同的数据分散到不同的地理位置进行存储和计算，以获得更好的性 能和扩展性</p>
+<h3 id="scrapy-redis"><a href="#scrapy-redis" class="headerlink" title="scrapy-redis"></a>scrapy-redis</h3><p>Scrapy-redis是一个用于Scrapy框架的Redis扩展，它可以将Scrapy的爬虫和中间件存储在 Redis中，以便于管理和控制爬虫的访问。</p>
+<h4 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h4><p>安装：pip install scrapy-redis </p>
+<p>创建 spider，修改 spider 的父类为 RedisSpider </p>
+<p>​	from scrapy_redis.spiders import RedisSpider </p>
+<p>修改 start_urls 为 redis_key </p>
+<p>​	这个 key 需要在 redis 中设置 key: url </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Redis 的命令</span><br><span class="line">LPUSH key https://www.bilibili.com/		# key 就是 redis_key 的值</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件（不需要记，直接复制粘贴就行） </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># redis 配置</span><br><span class="line">REDIS_HOST = &#x27;localhost&#x27;  # 本地的，不要改</span><br><span class="line">REDIS_PORT = 6379  # 默认的不要改</span><br><span class="line">REDIS_DB = 0  # 表示数据库</span><br><span class="line">#启用 Scrapy-Redis 扩展</span><br><span class="line"># 使用 scrapy_redis.scheduler.Scheduler 作为调度器</span><br><span class="line">SCHEDULER = &quot;scrapy_redis.scheduler.Scheduler&quot;</span><br><span class="line"># 使用 scrapy_redis.dupefilter.RFPDupeFilter 作为去重过滤器</span><br><span class="line">DUPEFILTER_CLASS = &quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;</span><br><span class="line"># 配置持久化支持，在爬虫关闭时是否保留 Redis 中的请求队列和去重集合，</span><br><span class="line"># 可选值为 True 和 False，默认为 False</span><br><span class="line">SCHEDULER_PERSIST = True</span><br></pre></td></tr></table></figure>
+
+
+
+<p>提供起始 URL </p>
+<p>​	也就是第二点设置的 url，设置方式：lpush key url</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/08/20/python-%E7%88%AC%E8%99%AB-%E7%89%B9%E6%AE%8A%E7%88%AC%E8%99%AB/">http://example.com/2026/08/20/python-%E7%88%AC%E8%99%AB-%E7%89%B9%E6%AE%8A%E7%88%AC%E8%99%AB/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%88%AC%E8%99%AB/"># 爬虫</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/08/23/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas-Pandas_%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/">Pandas 读取数据</a>
+            
+            
+            <a class="next" rel="next" href="/2026/08/12/python-%E7%88%AC%E8%99%AB-scrapy%E6%A1%86%E6%9E%B6/">scrapy框架</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

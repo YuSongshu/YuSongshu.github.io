@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>初识爬虫 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">初识爬虫</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 25, 2026&nbsp;&nbsp;19:26:36</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E7%88%AC%E8%99%AB/">爬虫</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="初识爬虫"><a href="#初识爬虫" class="headerlink" title="初识爬虫"></a>初识爬虫</h1><p>什么是爬虫？<br>​    生活中<br>​        爬虫：爬行的虫子。 &#x3D;》蜘蛛<br>​        网：蜘蛛网<br>​        蜘蛛在网上爬？捕食，抓东西。</p>
+<p>​	网络中：<br>​    		网页蜘蛛, 网络机器人 &#x3D;》爬虫。<br>​    		网：互联网。<br>​    		捕食 &#x3D;》抓东西。<br>​    		需要有一个这样的爬虫 &#x3D;》咱们的程序。<br>​    		爬虫是一个在互联网上捕获东西的程序。</p>
+<p>​    东西？<br>​        数据 &#x3D;》在网络上能看到的任何东西都可以叫做数据。<br>​        没有爬虫程序也能采集数据。</p>
+<p>为什么学习爬虫？<br>​    因为效率。<br>​    因为爬虫采集数据会比人为采集快非常多。<br>​    1人1秒一张 &#x3D;》40个人【节约资本】。</p>
+<h2 id="大纲："><a href="#大纲：" class="headerlink" title="大纲："></a>大纲：</h2><p>​    1.爬虫基础<br>​        掌握1-8 &#x3D;》采集网站的数据<br>​        100~500<br>​    2.逆向<br>​        模拟浏览器发送请求<br>​        登录：用户名和密码给网站【admin 123456】将数据加密<br>​        浏览器发送请求的时候，上面的密码加密了。<br>​        我们在写代码发送请求的时候，是不是也要加密呢？<br>​        逆向去找他怎么加密的。<br>​        更多的在于你们多练习。<br>​    3.自动化【自动化测试】<br>​        通过代码操作浏览器。<br>​        逆向不会，你就用自动化【让ai帮你写大部分代码】。<br>​        如果你要找工作，那么必须掌握逆向。<br>​    4.scrapy框架【数据量比较大的时候用它】<br>​ </p>
+<p>CSDN</p>
+<p>爬虫流程 1<br>课程大纲 2</p>
+<p>爬虫流程<br>​    1. url 队列：拿网址<br>​        <a target="_blank" rel="noopener" href="https://www.quark.cn/picture?&q=360%E5%A3%81%E7%BA%B8&from=kkframenew">https://www.quark.cn/picture?&amp;q=360%E5%A3%81%E7%BA%B8&amp;from=kkframenew</a><br>​    2. 发送请求获取响应<br>​        输入网址之后，按回车的操作<br>​        页面出来，叫响应。<br>​    3. 解析响应<br>​        在整个页面找自己喜欢的【找需要的数据】<br>​    4. 保存数据<br>​        保存图片</p>
+<p>Robots 协议 &#x3D;》君子协议<br>​    可以完全不用管。<br>​    如果遵守，根本拿不到数据。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/08/25/python-%E7%88%AC%E8%99%AB-%E5%88%9D%E8%AF%86%E7%88%AC%E8%99%AB/">http://example.com/2026/08/25/python-%E7%88%AC%E8%99%AB-%E5%88%9D%E8%AF%86%E7%88%AC%E8%99%AB/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%88%AC%E8%99%AB/"># 爬虫</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/08/26/python-%E7%88%AC%E8%99%AB-%E9%AA%8C%E8%AF%81%E7%A0%81%E5%A4%84%E7%90%86/">验证码处理</a>
+            
+            
+            <a class="next" rel="next" href="/2026/08/23/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas-Pandas_%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/">Pandas 读取数据</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

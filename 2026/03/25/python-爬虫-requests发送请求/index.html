@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>requests发送请求 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">requests发送请求</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 25, 2026&nbsp;&nbsp;14:29:05</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E7%88%AC%E8%99%AB/">爬虫</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="requests发送请求"><a href="#requests发送请求" class="headerlink" title="requests发送请求"></a>requests发送请求</h1><p>requests是 Python 爬虫开发中最常使用到的库，它提供了简单易用的API，使得<br>在 Python 中发送 HTTP 请求变得非常容易</p>
+<p>库是什么？<br>​    如果你们只学习 Python 基础，让你去开发游戏，用什么知识点？<br>​    pygame：封装，类里面实现了游戏开发的功能。<br>​        把别人封装好的这个工具，拿过来使用。<br>​    让你们去对百度首页发请求，你怎么做？<br>​        Python基础没有办法实现的东西，别人有没有制作好工具，直接使用。<br>​            requests</p>
+<p>pip是什么？<br>​    专门用来管理这些工具。<br>​    去百度搜 &#x3D;》别人实现的代码段。<br>​    你要用的这个工具叫什么名字。<br>​    pip 库管理工具【帮你拿功能库（pygame）的工具】<br>如何使用？<br>​    pip install 库名称    &#x3D;》使用 pip 工具 安装 库<br>​    安装 requests 库：pip install requests<br>​         already 表示已经安装过。<br>​         黄色表示警告：不用管<br>​         红色表示报错：表示没下载成功</p>
+<pre><code>        1. 网络问题
+            为什么会存在网络问题？
+            ​    工具存放在哪里？
+            ​        国外【进口】
+            ​        能不能用国内的？
+            ​            可以
+
+            -i
+            pip install requests -i 镜像原地址
+            ​    -i 指定镜像原地址：表示工具从哪个地方拿
+            ​    其他国内镜像源
+            ​        清华大学TUNA镜像源： https://pypi.tuna.tsinghua.edu.cn/simple
+            ​        阿里云镜像源： http://mirrors.aliyun.com/pypi/simple/
+            ​        中国科学技术大学镜像源： https://mirrors.ustc.edu.cn/pypi/simple/
+            ​        华为云镜像源： https://repo.huaweicloud.com/repository/pypi/simple/
+            ​        腾讯云镜像源：https://mirrors.cloud.tencent.com/pypi/simple/
+            ​    pip install requests -i http://mirrors.aliyun.com/pypi/simple/
+            ​    pip install pygame -i http://mirrors.aliyun.com/pypi/simple/
+
+                        2. 名称问题【版本】
+</code></pre>
+<h2 id="requests-使用："><a href="#requests-使用：" class="headerlink" title="requests 使用："></a>requests 使用：</h2><pre><code> import requests
+response = requests.get(url,headers=headers,params,timeout)
+</code></pre>
+<p>参数说明：<br>​    • url：要抓取的 url 地址；【必须传递】<br>​    【下面的都是可选】<br>​    • headers：用于包装请求头信息；<br>​    • params：请求时携带的查询字符串参数；<br>​    • timeout：超时时间，超过时间会抛出异常；<br>返回值：<br>​    • response：返回页面响应对象；<br>​        响应对象可以调用的一些属性和方法</p>
+<p>url 参数在真正发送请求的时候，并不是直接复制地址栏的网址。<br>​    发送请求本质是模拟浏览器的行为 &#x3D;》需要看浏览器做了什么。</p>
+<h2 id="开发者工具-网络："><a href="#开发者工具-网络：" class="headerlink" title="开发者工具 - 网络："></a>开发者工具 - 网络：</h2><p>监控【请求&#x2F;抓包】：<br>​        监视浏览器做了什么事情。</p>
+<p>响应<br>​    网站给我们的东西叫响应。<br>​    响应对象里面的东西。<br>​    报纸文章 &#x3D;》报文<br>​    搜索快捷键：<br>​        ctrl+f</p>
+<p>响应里面的属性和方法：<br>响应内容：<br>​    • text： 以字符串形式输出【获取响应文本】<br>​        针对文本数据<br>​    • content： 以字节流形式输出，若要保存下载图片需使用该属性<br>​        针对媒体数据<br>​    • json()： 获取json数据【暂时忽略】<br>响应属性：<br>​    • encoding： 查看或者指定响应字符编码<br>​    • status_code： 返回 HTTP 响应码<br>​    • url： 查看请求的 url 地址<br>​    • cookies： 查看 cookies</p>
+<p>浏览器中使用：<br>​    在浏览器里面直接搜索响应内容：<br>​        1. 点击响应内容里面<br>​        2. ctrl+f<br>​    定位请求 - 搜索：<br>​        1. 点击任意一个请求<br>​        2. ctrl+f</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/03/25/python-%E7%88%AC%E8%99%AB-requests%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82/">http://example.com/2026/03/25/python-%E7%88%AC%E8%99%AB-requests%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%88%AC%E8%99%AB/"># 爬虫</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/03/25/python-%E7%88%AC%E8%99%AB-%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0/">请求参数</a>
+            
+            
+            <a class="next" rel="next" href="/2026/03/25/java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-mysql%E5%88%9D%E8%AF%86/">mysql初识</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

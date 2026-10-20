@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>实战01 题目 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">实战01 题目</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 12, 2026&nbsp;&nbsp;21:24:23</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/java/">java</a>
+                            
+                                <a href="/categories/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">基础语法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="实战01-题目"><a href="#实战01-题目" class="headerlink" title="实战01_题目"></a>实战01_题目</h1><p>必须有主键  主键自增长<br>（建模的过程  设计表的过程 自己思考  （根据功能需求））<br>班级表<br>学生表（id，姓名，班级，专业，状态（’在读’&gt;1,’休学’&gt;0））<br>学生变动信息表</p>
+<p>成绩表（成绩、学分）		绩点&#x3D;》 (学科成绩+学分)*0.1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE class (</span><br><span class="line">    cid INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">    cname VARCHAR(50) NOT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</span><br><span class="line"></span><br><span class="line">CREATE TABLE student (</span><br><span class="line">    sid INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">    sname VARCHAR(50) NOT NULL,</span><br><span class="line">    cid INT NOT NULL,</span><br><span class="line">    zy VARCHAR(50),</span><br><span class="line">    zt TINYINT DEFAULT 1,</span><br><span class="line">    FOREIGN KEY (cid) REFERENCES class(cid)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</span><br><span class="line"></span><br><span class="line">CREATE TABLE student_change (</span><br><span class="line">    id INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">    sid INT NOT NULL,</span><br><span class="line">    old_cid INT NOT NULL,</span><br><span class="line">    new_cid INT NOT NULL,</span><br><span class="line">    old_sname VARCHAR(50) NOT NULL, </span><br><span class="line">    new_sname VARCHAR(50) NOT NULL, </span><br><span class="line">    old_zy VARCHAR(50), </span><br><span class="line">    new_zy VARCHAR(50),</span><br><span class="line">    old_zt TINYINT,</span><br><span class="line">    new_zt TINYINT,</span><br><span class="line">    FOREIGN KEY (sid) REFERENCES student(sid),</span><br><span class="line">    FOREIGN KEY (old_cid) REFERENCES class(cid),</span><br><span class="line">    FOREIGN KEY (new_cid) REFERENCES class(cid)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</span><br><span class="line"></span><br><span class="line">CREATE TABLE score (</span><br><span class="line">    scid INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">    sid INT NOT NULL,</span><br><span class="line">    kc VARCHAR(50) NOT NULL,</span><br><span class="line">    cj DECIMAL(5,2),</span><br><span class="line">    xf DECIMAL(5,3),</span><br><span class="line">    FOREIGN KEY (sid) REFERENCES student(sid)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO class (cname) VALUES</span><br><span class="line">(&#x27;3年2班&#x27;),</span><br><span class="line">(&#x27;3年1班&#x27;),</span><br><span class="line">(&#x27;2年2班&#x27;),</span><br><span class="line">(&#x27;2年1班&#x27;),</span><br><span class="line">(&#x27;1年2班&#x27;),</span><br><span class="line">(&#x27;1年1班&#x27;);</span><br><span class="line"></span><br><span class="line">INSERT INTO student (sname, cid, zy) VALUES</span><br><span class="line">(&#x27;张三&#x27;, 1, &#x27;信息安全&#x27;),</span><br><span class="line">(&#x27;李四&#x27;, 1, &#x27;信息安全&#x27;),</span><br><span class="line">(&#x27;王五&#x27;, 2, &#x27;软件工程&#x27;),</span><br><span class="line">(&#x27;赵六&#x27;, 2, &#x27;软件工程&#x27;),</span><br><span class="line">(&#x27;小何&#x27;, 3, &#x27;信息安全&#x27;),</span><br><span class="line">(&#x27;小王&#x27;, 3, &#x27;计算机科学&#x27;),</span><br><span class="line">(&#x27;小丽&#x27;, 4, &#x27;计算机科学&#x27;),</span><br><span class="line">(&#x27;小美&#x27;, 4, &#x27;计算机科学&#x27;),</span><br><span class="line">(&#x27;小帅&#x27;, 5, &#x27;电子信息&#x27;),</span><br><span class="line">(&#x27;小状&#x27;, 5, &#x27;电子信息&#x27;),</span><br><span class="line">(&#x27;小李&#x27;, 6, &#x27;人工智能&#x27;),</span><br><span class="line">(&#x27;小张&#x27;, 6, &#x27;人工智能&#x27;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">INSERT INTO score (sid, kc, cj, xf) VALUES</span><br><span class="line">(1, &#x27;高等数学&#x27;, 88.5, 4.000),</span><br><span class="line">(1, &#x27;大学英语&#x27;, 92.0, 3.230),</span><br><span class="line"></span><br><span class="line">(2, &#x27;高等数学&#x27;, 76.0, 4.000),</span><br><span class="line">(2, &#x27;大学英语&#x27;, 85.5, 3.500),</span><br><span class="line"></span><br><span class="line">(3, &#x27;高等数学&#x27;, 90.0, 3.560),</span><br><span class="line">(3, &#x27;大学英语&#x27;, 95.0, 2.500),</span><br><span class="line"></span><br><span class="line">(4, &#x27;高等数学&#x27;, 82.0, 3.500),</span><br><span class="line">(4, &#x27;大学英语&#x27;, 79.5, 4.870),</span><br><span class="line"></span><br><span class="line">(5, &#x27;高等数学&#x27;, 93.0, 4.660),</span><br><span class="line">(5, &#x27;大学英语&#x27;, 71.5, 4.060),</span><br><span class="line"></span><br><span class="line">(6, &#x27;高等数学&#x27;, 87.0, 2.500),</span><br><span class="line">(6, &#x27;大学英语&#x27;, 83.5, 3.070),</span><br><span class="line"></span><br><span class="line">(7, &#x27;高等数学&#x27;, 96.0, 3.000),</span><br><span class="line">(7, &#x27;大学英语&#x27;, 80.0, 4.000),</span><br><span class="line"></span><br><span class="line">(8, &#x27;高等数学&#x27;, 91.5, 3.000),</span><br><span class="line">(8, &#x27;大学英语&#x27;, 89.0, 4.000),</span><br><span class="line"></span><br><span class="line">(9, &#x27;高等数学&#x27;, 94.5, 3.000),</span><br><span class="line">(9, &#x27;大学英语&#x27;, 80.0, 4.550),</span><br><span class="line"></span><br><span class="line">(10, &#x27;高等数学&#x27;, 96.0, 3.500),</span><br><span class="line">(10, &#x27;大学英语&#x27;, 83.5, 4.090),</span><br><span class="line"></span><br><span class="line">(11, &#x27;高等数学&#x27;, 91.5, 3.000),</span><br><span class="line">(11, &#x27;大学英语&#x27;, 89.0, 4.000),</span><br><span class="line"></span><br><span class="line">(12, &#x27;高等数学&#x27;, 91.5, 3.000),</span><br><span class="line">(12, &#x27;大学英语&#x27;, 89.0, 4.000);</span><br></pre></td></tr></table></figure>
+
+<p>思考上面表的级联关系应该怎么建立</p>
+<h2 id="教务管理系统（学生管理模块）"><a href="#教务管理系统（学生管理模块）" class="headerlink" title="教务管理系统（学生管理模块）"></a>教务管理系统（学生管理模块）</h2><p>1.开学添加新班（开班）<br>2.新生录入 （在录入的时候可以有自己的班级  按照班级分类录入 （选1年1班  录入的时候就是1年1班的了））</p>
+<p>​		1与2见上</p>
+<p>3.按照班级查询学生 （先显示所有的班级，在输入班级编号查询学生 班级表的主键查询学生表中的外键）</p>
+<p>4.统计每个班级学生总人数（先显示所有的班级，在输入班级编号 显示班级总人数）</p>
+<p>5.按照学生编号对学生降班（显示学生  输入编号 显示学生可以降的班级，选择班级编号进行降班 （修改外键））<br>6.按照学生编号对学生休学 （外键改成null）<br>7.按照学生编号修改学生信息<br>8.按照学生编号对学生复课（修改外键不为空）<br>9.按照学生编号可以查看每个学生的详细学习变动情况。（要求5,6,7,8功能只要执行了就要往变动表里填记录）10.统计所有学生中事最多的学生</p>
+<p>11.根据编号调整某个学生的专业（专业调剂）</p>
+<p>新增功能<br>学生可以根据自己的学号查看自己的变动信息<br>12.学生可以查看自己每个科目的成绩<br>（功能12 新增成绩表 列数根据需求自定义 关系如何和之前的表连接自己思考）<br>13.学生可以根据学号统计自己的一个学期的总成绩</p>
+<p>14.学生可以根据学号统计自己的一个学期的平均成绩</p>
+<p>15.学生可以根据学号查看自己一个学期的总绩点 （绩点算法 (学科成绩+学分)*0.1）</p>
+<p>16.学生可以根据学科编号选择进行选修课选课<br>（功能 16增加课程表 列数根据需求自定义 关系如何和之前的表连接自己思考）<br>（此功能16 为选做功能  做了加10分）</p>
+<p>标准所有功能必须高度人性化（必须封装） 工具 测试  菜单</p>
+<p>%80以上算合格</p>
+<p>做项目并不难<br>难点<br>    1.建模<br>    2.调错 （浪费你们大量的时间）<br>    3.业务难点（技术难点  不要先分析）		如果太难自己解决不了  可以借鉴思路</p>
+<p>不要抄袭 （个人最烦感）</p>
+<h2 id="涨知识"><a href="#涨知识" class="headerlink" title="涨知识"></a>涨知识</h2><h3 id="检查型异常"><a href="#检查型异常" class="headerlink" title="检查型异常"></a>检查型异常</h3><p>用了 JDBC 这些方法：</p>
+<ul>
+<li><code>Class.forName(...)</code></li>
+<li><code>getConnection(...)</code></li>
+<li><code>executeQuery(...)</code></li>
+<li><code>executeUpdate(...)</code></li>
+</ul>
+<p>这些<strong>自带 “检查型异常”</strong>，Java 强制要求：</p>
+<p>要么：方法后面写 <code>throws Exception</code></p>
+<p>要么：方法里面写 <code>try-catch</code></p>
+<p>即</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public void addClass(Statement stmt) throws Exception &#123;</span><br><span class="line">	System.out.print(&quot;输入班级名：&quot;);</span><br><span class="line">    String cname = scan.nextLine();</span><br><span class="line">    String sql = &quot;INSERT INTO class(cname) VALUES(&#x27;&quot;+cname+&quot;&#x27;)&quot;;</span><br><span class="line">    stmt.executeUpdate(sql);</span><br><span class="line">    System.out.println(&quot;添加成功！&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public void addClass(Statement stmt) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        System.out.print(&quot;输入班级名：&quot;);</span><br><span class="line">        String cname = scan.nextLine();</span><br><span class="line">        String sql = &quot;INSERT INTO class(cname) VALUES(&#x27;&quot;+cname+&quot;&#x27;)&quot;;</span><br><span class="line">        stmt.executeUpdate(sql);</span><br><span class="line">        System.out.println(&quot;添加成功！&quot;);</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用封装方法时，必须把 Statement 对象传给它，它在里面用</p>
+<h3 id="String-format-格式化输出"><a href="#String-format-格式化输出" class="headerlink" title="String.format() 格式化输出"></a>String.format() 格式化输出</h3><p>内容长短不一样就会错位，控制台无法自动对齐、</p>
+<p>最佳解决方案：用 <code>String.format()</code> 格式化输出</p>
+<p>语法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String.format(&quot;格式字符串&quot;, 参数1, 参数2, 参数3...);</span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 表头（固定宽度）</span><br><span class="line">System.out.println(String.format(&quot;%-8s %-8s %-12s %-6s&quot;, &quot;编号&quot;, &quot;姓名&quot;, &quot;专业&quot;, &quot;状态&quot;));</span><br><span class="line"></span><br><span class="line">// 数据行</span><br><span class="line">while (rs.next()) &#123;</span><br><span class="line">    int zt = rs.getInt(&quot;zt&quot;);</span><br><span class="line">    String zt2 = (rs.wasNull() || zt == 0) ? &quot;休学&quot; : &quot;在读&quot;;</span><br><span class="line">    </span><br><span class="line">    // 格式化输出，自动对齐</span><br><span class="line">    System.out.println(String.format(&quot;%-8d %-8s %-12s %-6s&quot;,</span><br><span class="line">        rs.getInt(&quot;sid&quot;),</span><br><span class="line">        rs.getString(&quot;sname&quot;),</span><br><span class="line">        rs.getString(&quot;zy&quot;),</span><br><span class="line">        zt2));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<p><code>%-8s</code>：字符串左对齐，占 8 个字符宽度</p>
+<p><code>%-8d</code>：整数左对齐，占 8 个字符宽度</p>
+<p><code>%10s</code>:  字符串右对齐，占10个字符</p>
+<p><code>%8d </code>:   整数右对齐,占 8 个字符宽度</p>
+<p> 居中对齐（Java 原生不支持）</p>
+<p>常用占位符</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>作用</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>%s</code></td>
+<td>字符串</td>
+<td>“姓名”</td>
+</tr>
+<tr>
+<td><code>%d</code></td>
+<td>整数（int&#x2F;long）</td>
+<td>100</td>
+</tr>
+<tr>
+<td><code>%f</code></td>
+<td>浮点数（float&#x2F;double）</td>
+<td>99.9</td>
+</tr>
+<tr>
+<td><code>%b</code></td>
+<td>布尔值</td>
+<td>true&#x2F;false</td>
+</tr>
+<tr>
+<td><code>%t</code></td>
+<td>日期时间</td>
+<td>2025-12-29</td>
+</tr>
+</tbody></table>
+<p>如果输出的内容实际长度超过了指定的格式化宽度</p>
+<p>结果<strong>绝对不会截断</strong>，它会<strong>自动溢出</strong></p>
+<p>解决方案</p>
+<p>格式化之前手动截断</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 假设专业最多显示 8 个字符</span><br><span class="line">String zy = rs.getString(&quot;zy&quot;);</span><br><span class="line">// 如果长度超过 8，就截取前 8 个字符并加省略号</span><br><span class="line">String displayZy = zy.length() &gt; 8 ? zy.substring(0, 8) + &quot;...&quot; : zy;</span><br><span class="line"></span><br><span class="line">// 输出时限制宽度（此时不用担心溢出，因为我们已经处理过了）</span><br><span class="line">System.out.println(String.format(&quot;%-8s&quot;, displayZy));</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="分隔符截取字符串"><a href="#分隔符截取字符串" class="headerlink" title="分隔符截取字符串"></a>分隔符截取字符串</h3><p>语法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUBSTRING_INDEX(str, delimiter, count)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUBSTRING_INDEX(c.cname, &#x27;年&#x27;, 1) AS old_grade_num</span><br></pre></td></tr></table></figure>
+
+
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>本例取值</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>str</code></td>
+<td>原始字符串</td>
+<td><code>c.cname</code></td>
+<td>班级名称（如 “2 年 1 班”）</td>
+</tr>
+<tr>
+<td><code>delimiter</code></td>
+<td>分隔符</td>
+<td><code>&#39;年&#39;</code></td>
+<td>截取边界标识（中文 “年”）</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>截取计数</td>
+<td><code>1</code></td>
+<td>正数：从左往右取第 <code>count</code> 个分隔符<strong>之前</strong>的内容</td>
+</tr>
+</tbody></table>
+<p>应用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT   s.cid old_cid,SUBSTRING_INDEX(c.cname,&#x27;年&#x27;,1)+0 grade FROM student s   JOIN class c ON s.cid=c.cid WHERE s.sid=1; </span><br></pre></td></tr></table></figure>
+
+<p>字符串 + 0 会自动尝试转为数值</p>
+<h3 id="1248报错（派生表的使用）"><a href="#1248报错（派生表的使用）" class="headerlink" title="1248报错（派生表的使用）"></a>1248报错（派生表的使用）</h3><p>中间这层派生表要起别名，否则MySQL 不识别这个临时表，直接报错1248</p>
+<p>示例</p>
+<p> 错误示范</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT sid, COUNT(*) &#x27;变动次数&#x27; FROM student_change GROUP BY sid HAVING COUNT(*) = ( SELECT MAX(cnt) FROM (SELECT COUNT(*) cnt FROM student_change GROUP BY sid))</span><br></pre></td></tr></table></figure>
+
+<p>订正</p>
+<p>派生表起别名（<code>... AS temp</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT sid, COUNT(*) &#x27;变动次数&#x27; FROM student_change GROUP BY sid HAVING COUNT(*) = ( SELECT MAX(cnt) FROM (SELECT COUNT(*) cnt FROM student_change GROUP BY sid) AS temp)</span><br></pre></td></tr></table></figure>
+
+
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/04/12/java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AE%9E%E6%88%9801_%E9%A2%98%E7%9B%AE/">http://example.com/2026/04/12/java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AE%9E%E6%88%9801_%E9%A2%98%E7%9B%AE/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"># 基础语法</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/04/17/java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AE%9E%E6%88%9801_%E4%BB%A3%E7%A0%81%E5%A4%87%E4%BB%BD/">实战01 代码备份</a>
+            
+            
+            <a class="next" rel="next" href="/2026/04/12/java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-DQL(%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80)/">DQL(数据查询语言)</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

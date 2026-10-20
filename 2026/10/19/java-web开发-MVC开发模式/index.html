@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>MVC开发模式 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">MVC开发模式</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 19, 2026&nbsp;&nbsp;7:57:58</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/java/">java</a>
+                            
+                                <a href="/categories/java/web%E5%BC%80%E5%8F%91/">web开发</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="30-MVC开发模式"><a href="#30-MVC开发模式" class="headerlink" title="30_MVC开发模式"></a>30_MVC开发模式</h1><p>MVC：软件架构思想、设计规范。遵守后 JavaWeb 程序结构更清晰，每个模块只做自己的事。</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>全称</th>
+<th>职责</th>
+<th>本 Demo 对应</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>M</strong></td>
+<td>Model</td>
+<td>实体 + 业务 + Dao</td>
+<td><code>User</code> &#x2F; <code>UserService</code> &#x2F; <code>UserDao</code></td>
+</tr>
+<tr>
+<td><strong>V</strong></td>
+<td>View</td>
+<td>视图，数据展示</td>
+<td><code>login.jsp</code> &#x2F; <code>index.jsp</code> &#x2F; <code>adminHome.jsp</code></td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>Controller</td>
+<td>控制器，接请求、调 M、决定去哪个 V</td>
+<td><code>Login</code>（Servlet）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="三层职责再拆"><a href="#三层职责再拆" class="headerlink" title="三层职责再拆"></a>三层职责再拆</h2><p><strong>Model（模型）</strong></p>
+<ul>
+<li><strong>实体类</strong>：承载业务数据（数据库查出的数据赋值到实体类），如 <code>User</code></li>
+<li><strong>业务类</strong>：针对功能写逻辑，如 <code>UserService.login()</code></li>
+<li><strong>Dao</strong>：专门写数据库代码、拼 SQL 的类，如 <code>UserDao</code></li>
+</ul>
+<p><strong>View（视图）</strong></p>
+<ul>
+<li>JSP，只负责展示数据</li>
+</ul>
+<p><strong>Controller（控制器）</strong></p>
+<ul>
+<li>Servlet：接收请求和参数 → 调用 Model → 根据处理结果跳转到对应 View</li>
+</ul>
+<hr>
+<h2 id="Demo-需求"><a href="#Demo-需求" class="headerlink" title="Demo 需求"></a>Demo 需求</h2><p>用户表两种身份：管理员、用户。</p>
+<p>启动后首页：</p>
+<ul>
+<li>登录：管理员进后台界面，普通用户回首页</li>
+<li>数据展示：点「查看详情」检测是否登录，未登录先登录，已登录正常查看</li>
+</ul>
+<p>登录之后就可以做后台数据维护了。</p>
+<hr>
+<h2 id="示例项目结构"><a href="#示例项目结构" class="headerlink" title="示例项目结构"></a>示例项目结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">11/</span><br><span class="line">├── src/</span><br><span class="line">│   ├── db.properties                 数据库配置</span><br><span class="line">│   └── com/la/mvc/</span><br><span class="line">│       ├── bean/User.java            实体类</span><br><span class="line">│       ├── controller/Login.java     控制器（Servlet）</span><br><span class="line">│       ├── dao/UserDao.java          数据库访问</span><br><span class="line">│       ├── service/UserService.java  业务逻辑</span><br><span class="line">│       └── tools/</span><br><span class="line">│           ├── DbUtils.java          数据库工具类</span><br><span class="line">│           └── FileUpload.java       文件上传工具类</span><br><span class="line">└── web/</span><br><span class="line">    ├── index.jsp                     首页</span><br><span class="line">    ├── login.jsp                     登录页</span><br><span class="line">    ├── adminHome.jsp                 管理员后台</span><br><span class="line">    └── WEB-INF/lib/                  jar 包</span><br></pre></td></tr></table></figure>
+
+<p>分层依赖方向（Controller → Service → Dao → DbUtils）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">flowchart LR</span><br><span class="line">  V[&quot;View&lt;br/&gt;login.jsp&quot;] --&gt; C[&quot;Controller&lt;br/&gt;Login.java&quot;]</span><br><span class="line">  C --&gt; S[&quot;Service&lt;br/&gt;UserService&quot;]</span><br><span class="line">  S --&gt; D[&quot;Dao&lt;br/&gt;UserDao&quot;]</span><br><span class="line">  D --&gt; T[&quot;Tools&lt;br/&gt;DbUtils&quot;]</span><br><span class="line">  S --&gt; B[&quot;Bean&lt;br/&gt;User&quot;]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="M：实体类-User"><a href="#M：实体类-User" class="headerlink" title="M：实体类 User"></a>M：实体类 User</h2><p>对应 user 表，属性与列一一对应：<code>id</code>、<code>username</code>、<code>password</code>、<code>role</code>、<code>money</code>、<code>createTime</code>。</p>
+<p>要点：</p>
+<ol>
+<li>私有属性 + getter&#x2F;setter</li>
+<li>无参构造 + 全参构造</li>
+<li>重写 <code>toString()</code>（IDEA：<code>Alt + Insert</code> → <code>toString()</code>，模板选 String concatenation）</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> Integer role;</span><br><span class="line">    <span class="keyword">private</span> Double money;</span><br><span class="line">    <span class="keyword">private</span> String createTime;</span><br><span class="line">    <span class="comment">// getter / setter / 构造 / toString</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实体类作用：把 <code>HashMap</code> &#x2F; 查询结果变成有类型、好点号调用的对象。</p>
+<hr>
+<h2 id="M：Dao-层-UserDao"><a href="#M：Dao-层-UserDao" class="headerlink" title="M：Dao 层 UserDao"></a>M：Dao 层 UserDao</h2><p>只做数据库 CRUD，不管业务判断。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDao</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">DbUtils</span> <span class="variable">dbUtils</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DbUtils</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">ArrayList</span>&lt;HashMap&lt;String, Object&gt;&gt; <span class="title function_">queryUserByUsername</span><span class="params">(String username)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;select * from user where username = &#x27;&quot;</span> + username + <span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> dbUtils.query(sql);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="M：业务层-UserService"><a href="#M：业务层-UserService" class="headerlink" title="M：业务层 UserService"></a>M：业务层 UserService</h2><p>调 Dao 拿数据 → 装进 User → 做业务判断 → 返回结果标识。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">UserDao</span> <span class="variable">userDao</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserDao</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">String</span> <span class="title function_">login</span><span class="params">(String username, String password)</span> &#123;</span><br><span class="line">        <span class="comment">// 1. 通过 username 查用户</span></span><br><span class="line">        <span class="type">ArrayList</span>&lt;HashMap&lt;String, Object&gt;&gt; <span class="variable">list</span> <span class="operator">=</span> userDao.queryUserByUsername(username);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 用 User 实体承载数据</span></span><br><span class="line">        <span class="keyword">if</span> (list.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">HashMap</span>&lt;String, Object&gt; <span class="variable">map</span> <span class="operator">=</span> list.get(<span class="number">0</span>);</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(</span><br><span class="line">                Integer.parseInt(map.get(<span class="string">&quot;id&quot;</span>).toString()),</span><br><span class="line">                map.get(<span class="string">&quot;username&quot;</span>).toString(),</span><br><span class="line">                map.get(<span class="string">&quot;password&quot;</span>).toString(),</span><br><span class="line">                Integer.parseInt(map.get(<span class="string">&quot;role&quot;</span>).toString()),</span><br><span class="line">                Double.parseDouble(map.get(<span class="string">&quot;money&quot;</span>).toString()),</span><br><span class="line">                map.get(<span class="string">&quot;create_time&quot;</span>).toString()</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3. 校验密码</span></span><br><span class="line">        <span class="keyword">if</span> (!user.getPassword().equals(password)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4. 判断身份：role == 0 → 普通用户</span></span><br><span class="line">        <span class="keyword">if</span> (user.getRole() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;user&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;admin&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>登录返回三种结果：</p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>含义</th>
+<th>控制器跳转</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&quot;user&quot;</code></td>
+<td>普通用户登录成功</td>
+<td><code>index.jsp</code></td>
+</tr>
+<tr>
+<td><code>&quot;admin&quot;</code></td>
+<td>管理员登录成功</td>
+<td><code>adminHome.jsp</code></td>
+</tr>
+<tr>
+<td><code>&quot;error&quot;</code></td>
+<td>用户不存在或密码错误</td>
+<td><code>login.jsp?error=500</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="C：控制器-Login（Servlet）"><a href="#C：控制器-Login（Servlet）" class="headerlink" title="C：控制器 Login（Servlet）"></a>C：控制器 Login（Servlet）</h2><p>只做「接值 → 调 Model → 跳页面」，不写业务。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet(name = &quot;Login&quot;, value = &quot;/Login&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Login</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line">            <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="comment">// 接值</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">password</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;password&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调业务类</span></span><br><span class="line">        <span class="type">UserService</span> <span class="variable">service</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserService</span>();</span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> service.login(username, password);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据结果跳转</span></span><br><span class="line">        <span class="keyword">if</span> (result.equals(<span class="string">&quot;user&quot;</span>)) &#123;</span><br><span class="line">            response.sendRedirect(<span class="string">&quot;index.jsp&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (result.equals(<span class="string">&quot;error&quot;</span>)) &#123;</span><br><span class="line">            response.sendRedirect(<span class="string">&quot;login.jsp?error=500&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            response.sendRedirect(<span class="string">&quot;adminHome.jsp&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line">            <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="V：视图层"><a href="#V：视图层" class="headerlink" title="V：视图层"></a>V：视图层</h2><h3 id="login-jsp"><a href="#login-jsp" class="headerlink" title="login.jsp"></a>login.jsp</h3><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ <span class="type">taglib</span> <span class="variable">prefix</span><span class="operator">=</span><span class="string">&quot;c&quot;</span> uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> %&gt;</span><br><span class="line">&lt;<span class="type">form</span> <span class="variable">action</span><span class="operator">=</span><span class="string">&quot;Login&quot;</span> method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">  &lt;p&gt;&lt;<span class="type">input</span> <span class="variable">type</span><span class="operator">=</span><span class="string">&quot;text&quot;</span> name=<span class="string">&quot;username&quot;</span> placeholder=<span class="string">&quot;用户名&quot;</span>&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;<span class="type">input</span> <span class="variable">type</span><span class="operator">=</span><span class="string">&quot;password&quot;</span> name=<span class="string">&quot;password&quot;</span> placeholder=<span class="string">&quot;密码&quot;</span>&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;button&gt;Login&lt;/button&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">  &lt;c:<span class="type">if</span> <span class="variable">test</span><span class="operator">=</span><span class="string">&quot;$&#123;param.error != null&#125;&quot;</span>&gt;</span><br><span class="line">    &lt;p&gt;账号密码错误&lt;/p&gt;</span><br><span class="line">  &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>EL 表达式：<code>$&#123;值&#125;</code>，接收传到页面的数据</li>
+<li>JSTL 标签库：<code>&lt;c:if&gt;</code> 条件判断（注意引入 taglib）</li>
+<li><code>param.error</code> 取 URL 上的 <code>error</code> 参数，用来显示错误提示</li>
+</ul>
+<p>注：</p>
+<table>
+<thead>
+<tr>
+<th>jar包</th>
+<th>角色</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>jstl.jar</code></td>
+<td>接口 &#x2F; API</td>
+<td>JSTL 标签的定义</td>
+</tr>
+<tr>
+<td><code>standard.jar</code></td>
+<td>实现</td>
+<td>标签真正执行的代码（Jakarta Taglibs）</td>
+</tr>
+</tbody></table>
+<p>常用标签</p>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;c:if&gt;</code></td>
+<td>条件判断</td>
+</tr>
+<tr>
+<td><code>&lt;c:choose&gt;/&lt;c:when&gt;/&lt;c:otherwise&gt;</code></td>
+<td>多分支</td>
+</tr>
+<tr>
+<td><code>&lt;c:forEach&gt;</code></td>
+<td>遍历集合</td>
+</tr>
+<tr>
+<td><code>&lt;c:out&gt;</code></td>
+<td>输出（可转义）</td>
+</tr>
+<tr>
+<td><code>&lt;c:set&gt;</code> &#x2F; <code>&lt;c:remove&gt;</code></td>
+<td>设置 &#x2F; 移除变量</td>
+</tr>
+</tbody></table>
+<p>这两个包是 JSP 里用 JSTL 标签（如 <code>&lt;c:if&gt;</code>）的必备依赖，<code>jstl.jar</code> 给接口，<code>standard.jar</code> 给实现。</p>
+<h3 id="index-jsp-adminHome-jsp"><a href="#index-jsp-adminHome-jsp" class="headerlink" title="index.jsp &#x2F; adminHome.jsp"></a>index.jsp &#x2F; adminHome.jsp</h3><p>首页放登录链接；后台页先简单展示，后续做数据维护。</p>
+<hr>
+<h2 id="登录完整流程"><a href="#登录完整流程" class="headerlink" title="登录完整流程"></a>登录完整流程</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">用户打开 login.jsp 输入账号密码</span><br><span class="line">        ↓ POST /Login</span><br><span class="line">Login（Servlet）getParameter 接值</span><br><span class="line">        ↓</span><br><span class="line">UserService.login(username, password)</span><br><span class="line">        ↓</span><br><span class="line">UserDao.queryUserByUsername → DbUtils 查库</span><br><span class="line">        ↓</span><br><span class="line">HashMap → new User(...) 装载</span><br><span class="line">        ↓</span><br><span class="line">校验密码、判断 role</span><br><span class="line">        ↓</span><br><span class="line">返回 &quot;user&quot; / &quot;admin&quot; / &quot;error&quot;</span><br><span class="line">        ↓</span><br><span class="line">Servlet 重定向到对应页面</span><br><span class="line">        ↓</span><br><span class="line">login.jsp 用 &lt;c:if&gt; + EL 显示错误（若是 error）</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="工具类说明"><a href="#工具类说明" class="headerlink" title="工具类说明"></a>工具类说明</h2><h3 id="DbUtils"><a href="#DbUtils" class="headerlink" title="DbUtils"></a>DbUtils</h3><ul>
+<li>静态代码块读 <code>db.properties</code>、加载驱动、获取连接</li>
+<li><code>query(sql)</code>：普通查询，返回 <code>ArrayList&lt;HashMap&lt;String, Object&gt;&gt;</code></li>
+<li><code>preparedQuery(sql, param...)</code>：预处理查询，<code>?</code> 占位防 SQL 注入</li>
+<li><code>update(sql)</code>：执行增删改</li>
+</ul>
+<p><code>db.properties</code>：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">db.driver</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">db.url</span>=<span class="string">jdbc:mysql://localhost:3308/ht20</span></span><br><span class="line"><span class="attr">db.username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">db.password</span>=<span class="string">mysql</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="FileUpload（文件上传工具类）"><a href="#FileUpload（文件上传工具类）" class="headerlink" title="FileUpload（文件上传工具类）"></a>FileUpload（文件上传工具类）</h3><p>把 commons-fileupload 流程封装成方法，一次拿到表单所有值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">HashMap</span>&lt;String, String&gt; <span class="variable">map</span> <span class="operator">=</span> FileUpload.getFromValues(request);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>普通字段：字符流读出，<code>map.put(name, 输入的值)</code></li>
+<li>文件字段：时间戳+随机数重命名保存到 <code>img</code>，<code>map.put(name, 新文件名)</code>；未选文件则存 <code>&quot;没有上传文件&quot;</code></li>
+<li>工具类特点：静态方法、可复用、专门解决某类问题</li>
+</ul>
+<hr>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ol>
+<li><strong>分层别乱调</strong>：Controller 不写 SQL，Dao 不做业务判断，JSP 不写复杂逻辑</li>
+<li><strong>String 结果标识</strong>：<code>login()</code> 用 <code>&quot;user&quot;/&quot;admin&quot;/&quot;error&quot;</code> 传结果，简单但字符串易写错，后面可改为常量或枚举</li>
+<li><strong>SQL 注入</strong>：<code>UserDao</code> 里字符串拼接 SQL 有注入风险，正式项目用 <code>preparedQuery</code></li>
+<li><strong>HashMap → User</strong>：手动 set&#x2F;构造赋值；字段多时会啰嗦，后面可接触 BeanUtils 等工具</li>
+<li><strong>错误提示</strong>：靠 URL 参数 <code>?error=500</code> + JSTL <code>&lt;c:if&gt;</code>，没有 JSTL 会报错，记得导 jar 或配 taglib</li>
+<li><strong>表单编码</strong>：登录表单没写 <code>enctype</code>，默认 <code>application/x-www-form-urlencoded</code> 即可；只有文件上传才要 <code>multipart/form-data</code></li>
+</ol>
+<hr>
+<h2 id="和前面知识的串联"><a href="#和前面知识的串联" class="headerlink" title="和前面知识的串联"></a>和前面知识的串联</h2><table>
+<thead>
+<tr>
+<th>知识点</th>
+<th>在本 Demo 的用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Servlet</td>
+<td><code>Login</code> 作为 Controller，<code>@WebServlet(&quot;/Login&quot;)</code></td>
+</tr>
+<tr>
+<td>JSP + 九大对象</td>
+<td><code>request.getParameter</code> 取参，页面展示</td>
+</tr>
+<tr>
+<td>JDBC &#x2F; DbUtils</td>
+<td>Dao 查 user 表</td>
+</tr>
+<tr>
+<td>IO 流</td>
+<td><code>FileUpload</code> 读写上传文件</td>
+</tr>
+<tr>
+<td>文件上传</td>
+<td>commons-fileupload 封装进工具类</td>
+</tr>
+<tr>
+<td>集合</td>
+<td><code>ArrayList&lt;HashMap&gt;</code> 装查询结果，<code>HashMap</code> 装表单值</td>
+</tr>
+<tr>
+<td>面向对象</td>
+<td>实体类封装数据，分层各司其职</td>
+</tr>
+</tbody></table>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/10/19/java-web%E5%BC%80%E5%8F%91-MVC%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/">http://example.com/2026/10/19/java-web%E5%BC%80%E5%8F%91-MVC%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/web%E5%BC%80%E5%8F%91/"># web开发</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/10/20/hello-world/">Hello World</a>
+            
+            
+            <a class="next" rel="next" href="/2026/10/15/java-web%E5%BC%80%E5%8F%91-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">文件上传</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

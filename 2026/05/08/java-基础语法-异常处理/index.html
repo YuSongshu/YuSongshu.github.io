@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>异常处理 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">异常处理</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">May 8, 2026&nbsp;&nbsp;19:46:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/java/">java</a>
+                            
+                                <a href="/categories/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">基础语法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="14异常处理"><a href="#14异常处理" class="headerlink" title="14异常处理"></a>14异常处理</h1><h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p>try  catch  finally   throw   throws</p>
+<p>try 尝试运行的  catch 捕获异常  finally 最终执行的</p>
+<p>throw 抛出到控制台  throws 抛出给其他的方法调用者</p>
+<h2 id="java处理异常流程"><a href="#java处理异常流程" class="headerlink" title="java处理异常流程"></a>java处理异常流程</h2><p>程序如果出错   &#x3D;&gt; 被一个类抓到  （Exception  （异常处理类的父类）） &#x3D;&gt;  找到它的子类   叫XXXException    &#x3D;&gt;每个子类负责处理一种异常<br>最终我们才能在控制台看见程序给我们提供的异常信息  根据异常信息才能对程序进行调试</p>
+<p>java 标准异常处理流程也叫自动流程</p>
+<p>自动流程一个缺点 （一旦java连接数据库，数据库出现的问题java就无法预知更无法处理）<br>java就要把异常处理这个工作交给开发者<br>开发者需要使用 try catch代码块自己捕获异常 自己处理异常</p>
+<h2 id="处理异常java提供了两种方案"><a href="#处理异常java提供了两种方案" class="headerlink" title="处理异常java提供了两种方案"></a>处理异常java提供了两种方案</h2><h3 id="1-自己捕获自己处理"><a href="#1-自己捕获自己处理" class="headerlink" title="1.自己捕获自己处理"></a>1.自己捕获自己处理</h3><p>try 尝试运行的  catch 捕获异常  finally 必须执行的</p>
+<p>如果try中的代码出错了 能被catch捕获 代码进入到catch</p>
+<p>如果try中的代码不出错  不会进入catch</p>
+<h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p>1.准确找到 错误的信息的处理类  如果找不到 牺牲性能找Exception<br>2.处理（有三种方法）<br>        1.自己打印错误信息 不推荐 优点是信息是汉字  缺点是没有错误的行数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(&quot;空指针&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>​		2.让java打印错误信息（推荐）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e.printStackTrace(); </span><br></pre></td></tr></table></figure>
+
+<p>​		3.使用throw往控制台抛出错误信息  不推荐因为提示错误的行数不准确（2.抛出,不处理）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">throw new RuntimeException(&quot;空指针!&quot;);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>可以1.2.一起用麻烦些</p>
+<h3 id="2-抛出-不处理"><a href="#2-抛出-不处理" class="headerlink" title="2.抛出,不处理"></a>2.抛出,不处理</h3><p>try 尝试运行的  thorw 抛出到控制台  thorws 抛出给其他的方法调用者</p>
+<p>自己不处理，往外甩，程序照样崩溃，立刻终止当前方法，程序直接停止运行</p>
+<p>同上理</p>
+<p>一般不用，很不负责任，尤其是main方法中</p>
+<p>可以只抛不处理的情景：</p>
+<p>​	1.底层工具方法、通用方法</p>
+<p>​	2.自己没权限、不知道怎么处理异常</p>
+<p>​	3.受检异常不得不抛</p>
+<p>​	4.项目有全局统一异常处理</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>java处理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String str = null;</span><br><span class="line">int size = str.length();			</span><br><span class="line">System.out.println(size);</span><br><span class="line">//报错</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.NullPointerException</span><br><span class="line">	at 草稿.cg001.main(cg001.java:6)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Exception in thread “main”  ：报错的代码块</p>
+<p>java.lang.NullPointerException  ：报错的名称				（空指针异常  超级常见）</p>
+<p>at 草稿.cg001.main(cg001.java:6)   ：报错的行数位置</p>
+<p>自己捕获自己处理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">	String str = null;</span><br><span class="line">	try&#123;</span><br><span class="line">     	int size = str.length();			</span><br><span class="line">     	System.out.println(size);</span><br><span class="line">  	&#125;catch (NullPointerException e)&#123;</span><br><span class="line">      	System.out.println(&quot;出现异常：字符串不能为 null！&quot;);</span><br><span class="line">    	e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">出现异常：字符串不能为 null！</span><br><span class="line">java.lang.NullPointerException</span><br><span class="line">	at 草稿.cg001.main(cg001.java:7)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>抛出,不处理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws NullPointerException &#123;</span><br><span class="line">    String str = null;</span><br><span class="line">    str.length(); // 出异常</span><br><span class="line">    System.out.println(&quot;后面代码不执行&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str = null;</span><br><span class="line">    if(str == null)&#123;</span><br><span class="line">        throw new NullPointerException(&quot;字符串为空&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>联系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        String str = null;</span><br><span class="line">        if(str == null)&#123;</span><br><span class="line">            throw new NullPointerException(&quot;字符串为空&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; catch (NullPointerException e) &#123;</span><br><span class="line">        // 捕获并处理异常，程序不终止</span><br><span class="line">        System.out.println(&quot;捕获到异常：&quot; + e.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(&quot;程序继续执行后面代码&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>位置</th>
+<th>作用</th>
+<th>会不会终止程序</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>throw</strong></td>
+<td>方法里面</td>
+<td>手动<strong>主动扔出</strong>一个异常</td>
+<td>没人捕获就立刻终止</td>
+</tr>
+<tr>
+<td><strong>throws</strong></td>
+<td>方法声明上</td>
+<td>只是<strong>告诉别人</strong>我这里可能会出异常，<strong>不处理</strong></td>
+<td>不处理，异常往外抛，程序照样崩</td>
+</tr>
+<tr>
+<td><strong>try-catch</strong></td>
+<td>方法里面</td>
+<td><strong>接住异常、处理异常</strong></td>
+<td>接住了就<strong>不终止</strong>，继续运行</td>
+</tr>
+</tbody></table>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/05/08/java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">http://example.com/2026/05/08/java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"># 基础语法</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/05/08/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">类型转换</a>
+            
+            
+            <a class="next" rel="next" href="/2026/05/08/java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-SQL%E6%B3%A8%E5%85%A5%E5%AE%89%E5%85%A8/">SQL注入安全</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

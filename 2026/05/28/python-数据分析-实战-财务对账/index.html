@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>财务对账 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">财务对账</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">May 28, 2026&nbsp;&nbsp;20:50:11</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
+                            
+                                <a href="/categories/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%AE%9E%E6%88%98/">实战</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="17-财务对账"><a href="#17-财务对账" class="headerlink" title="17_财务对账"></a>17_财务对账</h1><h2 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import re                       # 正则</span><br><span class="line">from datetime import datetime   # 时间模块</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><h3 id="导入入账明细表-公司内部账本"><a href="#导入入账明细表-公司内部账本" class="headerlink" title="导入入账明细表   公司内部账本"></a>导入入账明细表   公司内部账本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_items = pd.read_excel(r&#x27;D:\博客\python\数据分析\实战\辅助图片等\17\3月份数据_公司财务.xlsx&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="导入银行流水-银行给我们的账本"><a href="#导入银行流水-银行给我们的账本" class="headerlink" title="导入银行流水   银行给我们的账本"></a>导入银行流水   银行给我们的账本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yl = pd.read_excel(r&#x27;D:\博客\python\数据分析\实战\辅助图片等\17\3月份数据_银行流水.xlsx&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="删除空值行"><a href="#删除空值行" class="headerlink" title="删除空值行"></a>删除空值行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">all_items = all_items.dropna(how=&#x27;all&#x27;)</span><br><span class="line">yl = yl.dropna(how=&#x27;all&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>how：默认是 how&#x3D;’any’：</p>
+<p>df.dropna()： 只要有一个空值就整行删掉</p>
+<p>而df.dropna(how&#x3D;’all’) ：必须整行全空才删</p>
+<h3 id="只对-Source-Bank-的行，添加-Date-列的值"><a href="#只对-Source-Bank-的行，添加-Date-列的值" class="headerlink" title="只对 Source &#x3D; Bank 的行，添加 Date 列的值"></a>只对 Source &#x3D; Bank 的行，添加 Date 列的值</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_items.loc[all_items[&#x27;Source&#x27;]==&#x27;Bank&#x27;,&#x27;Date&#x27;] = all_items.loc[all_items[&#x27;Source&#x27;]==&quot;Bank&quot;,&quot;Transaction Date&quot;].apply(lambda x:str(x)[0:4]) + all_items.loc[all_items[&#x27;Source&#x27;]==&quot;Bank&quot;,&quot;External Reference&quot;].apply(lambda x:str(x)[15:19])                            </span><br></pre></td></tr></table></figure>
+
+<p><strong>[0:4]取前不取后</strong></p>
+<p><strong>lambda 参数: 表达式</strong> &#x3D; Python 里的 “匿名小函数”，一句话就能定义，不用写 def、不用起名、自动 return。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 普通函数（def）</span><br><span class="line">def square(x):</span><br><span class="line">    return x ** 2</span><br><span class="line"># 等价 lambda</span><br><span class="line">square = lambda x: x ** 2</span><br><span class="line"># 调用一样</span><br><span class="line">print(square(5))  # 25</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="把日期转成字符串"><a href="#把日期转成字符串" class="headerlink" title="把日期转成字符串"></a>把日期转成字符串</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_items.loc[all_items[&#x27;Source&#x27;] == &#x27;Book&#x27;, &#x27;Date&#x27;] = all_items.loc[all_items[&#x27;Source&#x27;] == &#x27;Book&#x27;, &#x27;Transaction Date&#x27;].apply(lambda x:x.strftime(&quot;%Y%m%d&quot;))</span><br></pre></td></tr></table></figure>
+
+<p><strong>strftime (“% Y% m% d”)</strong> 日期格式化函数，把日期转成字符串：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2025-08-22</span><br><span class="line">%Y → 年（4 位）：2025</span><br><span class="line">%m → 月（2 位）：08</span><br><span class="line">%d → 日（2 位）：22</span><br><span class="line">组合 → 20250822</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="列名改为中文"><a href="#列名改为中文" class="headerlink" title="列名改为中文"></a>列名改为中文</h3><p>从 all_items 中只筛选出 Source 等于 Book 的行，并把这部分数据的两列改名为中文，结果保存到新变量 all_items_book 里。</p>
+<p><strong>.rename(columns&#x3D;{旧名:新名})</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_items_book = all_items.loc[all_items[&#x27;Source&#x27;]==&#x27;Book&#x27;].rename(columns=&#123;&quot;Date&quot;:&quot;交易日期&quot;,&quot;Local Amount&quot;:&quot;交易金额&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="对yl表和all-items表进行查询"><a href="#对yl表和all-items表进行查询" class="headerlink" title="对yl表和all_items表进行查询"></a>对yl表和all_items表进行查询</h3><p>把 yl_bank 的数据，按交易日期 + 清算金额两个字段，左匹配拼接到 all_items_bank 上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_items_bank_yl = pd.merge(all_items_bank,yl_bank,on=[&#x27;交易日期&#x27;,&quot;清算金额&quot;],how=&quot;left&quot;)   #  how=&quot;left&quot;  等同于  &quot;左连接&quot;       可以理解为 ：mysql中的 left join</span><br></pre></td></tr></table></figure>
+
+<p>其他常见 how：</p>
+<p>how&#x3D;’inner’：只保留两边都匹配上的（交集）。</p>
+<p>how&#x3D;’outer’：两边都保留全部，缺的补 NaN。</p>
+<h3 id="按行上下合并"><a href="#按行上下合并" class="headerlink" title="按行上下合并"></a>按行上下合并</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">all_items_book_bank = pd.concat([all_items_book_yl,all_items_bank_yl])        </span><br><span class="line">#  pd.merge()    pd.concat()     pd.merge()=mysql:左右链接 left join、right join、inner join.....      pd.concat():union、union all（不去重，直接全拼）               </span><br></pre></td></tr></table></figure>
+
+<p>pd.concat([df1, df2, …])拼接多个表			默认不去重，直接全拼</p>
+<p>等价 SQL：<code>UNION ALL</code>（不去重，直接全拼）</p>
+<p>UNION（去重）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 拼接 + 重置索引 + 去重</span><br><span class="line">all_items_book_bank = pd.concat([all_items_book_yl, all_items_bank_yl], ignore_index=True)</span><br><span class="line">all_items_book_bank = all_items_book_bank.drop_duplicates()</span><br></pre></td></tr></table></figure>
+
+<p>ignore_index&#x3D;True			（拼接后，重新给行编序号）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">表1：0、1、2</span><br><span class="line">表2：0、1</span><br><span class="line">拼接后：0、1、2、3、4  ✅ 正常！</span><br></pre></td></tr></table></figure>
+
+<p>默认是 ignore_index&#x3D;False</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">表1：0、1、2</span><br><span class="line">表2：0、1</span><br><span class="line">拼接后：0、1、2、0、1  ❌ 乱！</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="删除完全重复的行"><a href="#删除完全重复的行" class="headerlink" title="删除完全重复的行"></a>删除完全重复的行</h3><p>作用：从 all_items_book_bank 中删除完全重复的行，返回去重后的新 DataFrame，赋值给 df_unique。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df_unique = all_items_book_bank.drop_duplicates(</span><br><span class="line">    subset=None,        # 按哪些列去重，默认所有列,subset=[&#x27;日期&#x27;,&#x27;金额&#x27;]</span><br><span class="line">    keep=&#x27;first&#x27;,       # 保留策略：&#x27;first&#x27;/&#x27;last&#x27;/False</span><br><span class="line">    inplace=False,       # 是否直接改原表（不推荐）</span><br><span class="line">    ignore_index=False   # 是否重置索引（0,1,2...）</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>keep&#x3D;’first’（默认）：留第一条</p>
+<p>keep&#x3D;’last’：留最后一条</p>
+<p>keep&#x3D;False：所有重复行全删掉</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_unique = all_items_book_bank.drop_duplicates()</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/05/28/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E5%AE%9E%E6%88%98-%E8%B4%A2%E5%8A%A1%E5%AF%B9%E8%B4%A6/">http://example.com/2026/05/28/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E5%AE%9E%E6%88%98-%E8%B4%A2%E5%8A%A1%E5%AF%B9%E8%B4%A6/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%AE%9E%E6%88%98/"># 实战</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/05/28/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E5%AE%9E%E6%88%98-%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9/">旅游景点</a>
+            
+            
+            <a class="next" rel="next" href="/2026/05/27/java-web%E5%BC%80%E5%8F%91-%E5%AE%9E%E6%88%98-01%E6%A0%A1%E5%9B%AD%E7%A4%BE%E5%9B%A2%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E4%BB%A3%E7%A0%81%E5%A4%87%E4%BB%BD/">代码备份</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

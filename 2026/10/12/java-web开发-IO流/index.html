@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>IO流 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">IO流</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 12, 2026&nbsp;&nbsp;21:22:16</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/java/">java</a>
+                            
+                                <a href="/categories/java/web%E5%BC%80%E5%8F%91/">web开发</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="28-IO流"><a href="#28-IO流" class="headerlink" title="28_IO流"></a>28_IO流</h1><p><img src="/img/notes/java-web%E5%BC%80%E5%8F%91-IO%E6%B5%81/IO%E6%B5%81%E7%AE%80%E4%BB%8B.png" alt="IO流简介"></p>
+<p>Java语言中工具类，传递文件，JavaWeb涉及到文件上传，IO流 完成操作 </p>
+<h2 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h2><p>程序中如何存储数据，变量，数组，对象（类），集合保存数据，保存位置：计算机中，内存（运行的程序在计算机的内存）</p>
+<p>内存：快，但是数据 清除，持久化数据，数据库 ，数据保存文件中 ，</p>
+<p>java程序中，操作本地文件，代码 创建 删除 代码 程序中数据的写入 读取 </p>
+<p>数据库能欧存储文件，但是不建议存，查询，（优化查询性能）</p>
+<p>数据库 列： blob 存储二进制数据 </p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li>Input ：输入，读数据，（读取）</li>
+<li>Output：输出，写数据，（推送）</li>
+</ul>
+<p><img src="/img/notes/java-web%E5%BC%80%E5%8F%91-IO%E6%B5%81/IO%E6%B5%81%E4%BD%93%E7%B3%BB.png" alt="IO流体系"></p>
+<p>四大流：</p>
+<ul>
+<li>字节输入流：把磁盘（网络）中的数据，按照一个一个字节的单位读取到程序中 </li>
+<li>字节输出流：把程序中的数据，按照一个一个字节的单位推送到 磁盘或网络中</li>
+<li>字符输入流：把磁盘（网络）中的数据，按照一个一个字符的单位读取到程序中 </li>
+<li>字符输出流：把程序中的数据，按照一个一个字符的单位推送到 磁盘或网络中</li>
+</ul>
+<p><img src="/img/notes/java-web%E5%BC%80%E5%8F%91-IO%E6%B5%81/%E5%88%86%E7%B1%BB.png" alt="分类"></p>
+<p><img src="/img/notes/java-web%E5%BC%80%E5%8F%91-IO%E6%B5%81/%E6%A1%88%E4%BE%8B%E7%BB%93%E6%9E%84.png" alt="案例结构"></p>
+<h2 id="File"><a href="#File" class="headerlink" title="File"></a>File</h2><p>java程序中代表本地文件</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(地址);</span><br></pre></td></tr></table></figure>
+
+<p>注：地址包括 相对路径 和 绝对路径</p>
+<p>程序不要与 File 重名</p>
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File file = new File(&quot;09\\src\\redme.txt&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>File对象不能 读取 写入 文件中的数据 </p>
+<p>只能创建 文件 删除文件</p>
+<p>redme.txt 是提前准备好的，new对象不会创建他</p>
+<p>如果对象不存在，不会报错，也不会创建任何东西</p>
+<h4 id="文件长度"><a href="#文件长度" class="headerlink" title="文件长度"></a>文件长度</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对象名.length()</span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">File file = new File(&quot;09\\src\\redme.txt&quot;);</span><br><span class="line">System.out.println(&quot;文件长度：&quot; + file.length());</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对象名.createNewFile();</span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.createNewFile();</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="文件是否存在"><a href="#文件是否存在" class="headerlink" title="文件是否存在"></a>文件是否存在</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对象名.exists()</span><br></pre></td></tr></table></figure>
+
+<p>注：没有才返回 true</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">File file = new File(&quot;09\\src\\redme.txt&quot;);</span><br><span class="line">System.out.println(file.exists());</span><br><span class="line">if (!file.exists())&#123;</span><br><span class="line">	file.createNewFile();</span><br><span class="line">	System.out.println(&quot;创建成功&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">对象名.mkdir()				# 只能创建一级文件夹，如果没有父级文件夹就会报错</span><br><span class="line">对象名.mkdirs()			# 能创建多级文件夹</span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">File file = new File(&quot;09\\src\\one\\two&quot;);		# 开始没有one</span><br><span class="line"># System.out.println(file.mkdir());  	# 返回 false ，创建失败</span><br><span class="line">System.out.println(file.mkdirs());</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h2><h3 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h3><p>对应源码：<code>FileInput.java</code>、<code>Fileoutput.java</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.InputStream;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="输入流"><a href="#输入流" class="headerlink" title="输入流"></a>输入流</h4><p>声明:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">InputStream 对象名 = new FileInputStream(&quot;地址&quot;);</span><br><span class="line">File file对象 = new File(&quot;地址&quot;);</span><br><span class="line">InputStream 对象名 = new FileInputStream(file对象);</span><br></pre></td></tr></table></figure>
+
+<p>绝对、相对地址都可以</p>
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">InputStream in  = new FileInputStream(&quot;09\\src\\redme.txt&quot;);</span><br><span class="line"></span><br><span class="line">File f = new File(&quot;09\\src\\redme.txt&quot;);</span><br><span class="line">InputStream in = new FileInputStream(f);</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="方法一：一次读一个字节"><a href="#方法一：一次读一个字节" class="headerlink" title="方法一：一次读一个字节"></a>方法一：一次读一个字节</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int i = stream.read();          // 返回 int（0~255），读完返回 -1</span><br><span class="line">// i存的是ASCII 码</span><br><span class="line">System.out.println((char) i);   // 所以需强转 char 才能看到字符</span><br></pre></td></tr></table></figure>
+
+<h5 id="方法二：一次读入字节数组（推荐）"><a href="#方法二：一次读入字节数组（推荐）" class="headerlink" title="方法二：一次读入字节数组（推荐）"></a>方法二：一次读入字节数组（推荐）</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">byte[] bytes = new byte[3];     // 一次性读取 3个字节，如果只要两个字节则最后会有一个乱码</span><br><span class="line">int i4 = stream.read(bytes);    // 实际读到的字节数放入返回值</span><br><span class="line">System.out.println(new String(bytes));</span><br></pre></td></tr></table></figure>
+
+<h5 id="方法三：循环读取全部内容（生产写法）"><a href="#方法三：循环读取全部内容（生产写法）" class="headerlink" title="方法三：循环读取全部内容（生产写法）"></a>方法三：循环读取全部内容（生产写法）</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int size;                          // 记录本次实际读了多少字节</span><br><span class="line">byte[] bytes1 = new byte[1024];    // 一次最多读 1024 字节</span><br><span class="line"></span><br><span class="line">// read 返回 -1 表示文件读取完毕，作为循环结束条件</span><br><span class="line"></span><br><span class="line">while ((size = stream.read(bytes1)) != -1) &#123;</span><br><span class="line">    System.out.println(size);</span><br><span class="line">    // 从索引 0 开始，只转 size 个字节，避免末尾残留脏数据</span><br><span class="line">    System.out.println(new String(bytes1, 0, size));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>注：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>读取单位</th>
+<th>返回值含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>read()</code></td>
+<td>1 个字节</td>
+<td>字节值 (0~255) &#x2F;-1</td>
+</tr>
+<tr>
+<td><code>read(byte[] b)</code></td>
+<td>字节数组缓冲区</td>
+<td>本次读到的字节个数 &#x2F;-1</td>
+</tr>
+<tr>
+<td><code>read(b,off,len)</code></td>
+<td>字节数组，指定区间</td>
+<td>本次读到的字节个数 &#x2F;-1</td>
+</tr>
+</tbody></table>
+<p>返回-1代表读完了</p>
+<p>redme.txt：<code>12 a</code>   </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">InputStream stream = new FileInputStream(&quot;09\\src\\redme.txt&quot;);</span><br><span class="line">int i = stream.read();</span><br><span class="line">System.out.println(i);</span><br><span class="line">System.out.println((char) i);</span><br><span class="line">int i2 = stream.read();</span><br><span class="line">System.out.println(i2);</span><br><span class="line">System.out.println((char) i2);</span><br><span class="line">int i3 = stream.read();</span><br><span class="line">System.out.println(i3);</span><br><span class="line">System.out.println((char) i3);</span><br><span class="line">int i4 = stream.read();</span><br><span class="line">System.out.println(i4);</span><br><span class="line">System.out.println((char) i4);</span><br><span class="line">int i5 = stream.read();</span><br><span class="line">System.out.println(i5);</span><br><span class="line">System.out.println((char) i5);</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">49</span><br><span class="line">1</span><br><span class="line">50</span><br><span class="line">2</span><br><span class="line">32</span><br><span class="line"> </span><br><span class="line">97</span><br><span class="line">a</span><br><span class="line">-1</span><br><span class="line">￿</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>十进制</th>
+<th>字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td><code>\n</code></td>
+<td>换行 LF</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>\r</code></td>
+<td>回车 CR</td>
+</tr>
+<tr>
+<td>32</td>
+<td><code> </code></td>
+<td>空格 Space</td>
+</tr>
+<tr>
+<td>48</td>
+<td><code>0</code></td>
+<td>数字 0</td>
+</tr>
+<tr>
+<td>65</td>
+<td><code>A</code></td>
+<td>大写 A</td>
+</tr>
+<tr>
+<td>97</td>
+<td><code>a</code></td>
+<td>小写 a</td>
+</tr>
+</tbody></table>
+<h4 id="输出流"><a href="#输出流" class="headerlink" title="输出流"></a>输出流</h4><p>声明:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 第二个参数 true = 追加模式；false 或省略(默认) = 覆盖模式</span><br><span class="line">InputStream 对象名 = new FileOutputStream(&quot;地址&quot;,true);</span><br><span class="line"></span><br><span class="line">File file对象 = new File(&quot;地址&quot;);</span><br><span class="line">OutputStream stream = new FileOutputStream(file对象, true);</span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">File f = new File(&quot;09\\src\\redme.txt&quot;);</span><br><span class="line">OutputStream stream = new FileOutputStream(f, true);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">File f = new File(&quot;09\\src\\redme.txt&quot;);</span><br><span class="line">OutputStream stream = new FileOutputStream(f, true);</span><br><span class="line"></span><br><span class="line">stream.write(97);                    // 写入单个字节，97 = 字符 &#x27;a&#x27;</span><br><span class="line">stream.write(&quot;\r&quot;.getBytes());       // 写入回车换行</span><br><span class="line">stream.write(&quot;你好你爱护哦&quot;.getBytes()); // 字符串先转字节数组</span><br><span class="line"></span><br><span class="line">stream.flush();   // 刷新，强制推送缓冲区数据</span><br><span class="line">stream.close();   // 关闭资源（关闭前通常要 flush）</span><br></pre></td></tr></table></figure>
+
+<p>注：操作纯文本字符文件时，不建议用字节流——中文可能被截断成半个字符，建议用字符流。</p>
+<h5 id="write-方法"><a href="#write-方法" class="headerlink" title="write()方法"></a>write()方法</h5><p>它和 <code>read()</code> 的返回值是配套的：<code>read()</code> 读出 <code>0~255</code> 的 int（文件末尾 <code>-1</code>），<code>write(int b)</code> 写入 <code>0~255</code> 的低 8 位。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">out.write(97);        // 写入字节 97，对应 ASCII 字符 &#x27;a&#x27;</span><br><span class="line">out.write(0x61);      // 同上，十六进制 97</span><br><span class="line">out.write(&#x27;a&#x27;);       // 同上，char 会自动转 int</span><br><span class="line"></span><br><span class="line">out.write(300);       // 300 = 0b1_0010_1100，低8位 0010_1100 = 44</span><br><span class="line">                      // 写入的是 44（字符 &#x27;,&#x27;），不是 300</span><br><span class="line">out.write(-1);        // -1 的低8位是 0xFF = 255，写入字节 0xFF</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>写入内容</th>
+<th>典型用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>write(int b)</td>
+<td><strong>1 字节</strong></td>
+<td>单字节写入、写标记位</td>
+</tr>
+<tr>
+<td>write(byte[] b)</td>
+<td>整个数组</td>
+<td>已知数据是完整缓冲</td>
+</tr>
+<tr>
+<td>write(byte[] b, int off, int len)</td>
+<td>数组一部分,从数组下标<code>off</code> 写 <code>len</code> 字节</td>
+<td><strong>文件复制（推荐）</strong></td>
+</tr>
+</tbody></table>
+<p>注：</p>
+<p>len 溢出会报错</p>
+<h5 id="flush-方法"><a href="#flush-方法" class="headerlink" title="flush()方法"></a>flush()方法</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream.flush();   // 刷新，强制推送缓冲区数据</span><br></pre></td></tr></table></figure>
+
+<h5 id="close-方法"><a href="#close-方法" class="headerlink" title="close()方法"></a>close()方法</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream.close();   // 关闭资源（关闭前通常要 flush）</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FileReader</span><br><span class="line">FileWriter</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="输入流-1"><a href="#输入流-1" class="headerlink" title="输入流"></a>输入流</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import java.io.FileReader;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.Reader;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Reader fileReader = new FileReader(&quot;09\\src\\redme.txt&quot;);</span><br><span class="line"></span><br><span class="line">// 先读一个字符（返回 int，强转 char 才可见）</span><br><span class="line">int i = fileReader.read();</span><br><span class="line">System.out.println((char) i);</span><br><span class="line"></span><br><span class="line">// 循环读取剩余内容</span><br><span class="line">char[] chars = new char[1024];</span><br><span class="line">int size;</span><br><span class="line">while ((size = fileReader.read(chars)) != -1) &#123;</span><br><span class="line">    System.out.println(new String(chars, 0, size));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h4 id="输出流-1"><a href="#输出流-1" class="headerlink" title="输出流"></a>输出流</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import java.io.FileWriter;</span><br><span class="line">import java.io.BufferedWriter;</span><br><span class="line">import java.io.Writer;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Writer writer = new FileWriter(&quot;09\\src\\redme.txt&quot;);</span><br><span class="line">writer.write(&quot;你好你好你好&quot;);</span><br><span class="line">writer.flush();</span><br><span class="line">writer.close();</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><h3 id="缓存流与转换流"><a href="#缓存流与转换流" class="headerlink" title="缓存流与转换流"></a>缓存流与转换流</h3><table>
+<thead>
+<tr>
+<th>类</th>
+<th>包装谁</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>BufferedInputStream</code></td>
+<td><code>InputStream</code></td>
+<td>输入</td>
+</tr>
+<tr>
+<td><code>BufferedOutputStream</code></td>
+<td><code>OutputStream</code></td>
+<td>输出</td>
+</tr>
+<tr>
+<td><code>BufferedReader</code></td>
+<td><code>Reader</code></td>
+<td>输入</td>
+</tr>
+<tr>
+<td><code>BufferedWriter</code></td>
+<td><code>Writer</code></td>
+<td>输出</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>缓冲流</th>
+<th>转换流</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>核心作用</td>
+<td><strong>提速</strong>（减少 I&#x2F;O 次数）</td>
+<td><strong>桥接 + 指定编码</strong></td>
+</tr>
+<tr>
+<td>解决的痛点</td>
+<td>读写太慢</td>
+<td>字节↔字符、中文乱码</td>
+</tr>
+<tr>
+<td>能否指定编码</td>
+<td>不能（继承底层）</td>
+<td><strong>能</strong>（构造器传 Charset）</td>
+</tr>
+<tr>
+<td>典型搭配</td>
+<td><code>BufferedReader</code> + <code>FileReader</code></td>
+<td><code>InputStreamReader</code> + <code>FileInputStream</code></td>
+</tr>
+</tbody></table>
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Reader r = new InputStreamReader(new FileInputStream(&quot;data.txt&quot;), StandardCharsets.UTF_8);</span><br><span class="line">BufferedReader br = new BufferedReader(r);   // 转换 + 缓冲 两层包装</span><br><span class="line"></span><br><span class="line">String line;</span><br><span class="line">while ((line = br.readLine()) != null) &#123;</span><br><span class="line">    System.out.println(line);</span><br><span class="line">&#125;</span><br><span class="line">br.close();</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/10/12/java-web%E5%BC%80%E5%8F%91-IO%E6%B5%81/">http://example.com/2026/10/12/java-web%E5%BC%80%E5%8F%91-IO%E6%B5%81/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/web%E5%BC%80%E5%8F%91/"># web开发</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/10/15/java-web%E5%BC%80%E5%8F%91-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">文件上传</a>
+            
+            
+            <a class="next" rel="next" href="/2026/09/20/java-web%E5%BC%80%E5%8F%91-Servlet/">Servlet</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

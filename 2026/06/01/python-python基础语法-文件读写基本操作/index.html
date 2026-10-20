@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>文件读写基本操作 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">文件读写基本操作</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">June 1, 2026&nbsp;&nbsp;16:26:37</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">python基础语法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="25-文件读写基本操作"><a href="#25-文件读写基本操作" class="headerlink" title="25_文件读写基本操作"></a>25_文件读写基本操作</h1><h2 id="文件分类"><a href="#文件分类" class="headerlink" title="文件分类"></a>文件分类</h2><p>1.文本文件：py&#x2F;txt&#x2F;json</p>
+<p>2.二进制文件：png&#x2F;jpg&#x2F;mp3&#x2F;exe</p>
+<h2 id="文件基本操作"><a href="#文件基本操作" class="headerlink" title="文件基本操作"></a>文件基本操作</h2><h3 id="1-打开文件-open"><a href="#1-打开文件-open" class="headerlink" title="1.打开文件 open()"></a>1.打开文件 open()</h3><p>语法： f(文件对象) &#x3D; open(“文件位置”)</p>
+<h4 id="文件位置"><a href="#文件位置" class="headerlink" title="文件位置"></a>文件位置</h4><p>相对路径：有参照的路径，以当前文件位置为参照，要打开的文件位置在哪</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = open(&#x27;test1.txt&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>绝对路径：从计算机硬盘开始，一直到需要打开的文件位置</p>
+<p>使用绝对路径时，为了避免\和后面的数字以及字母混杂在一起，需要使用r(原生字符)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = open(r&#x27;D:\博客\python\python基础语法\附件资料\25\test1.txt&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>但也可以在\前加一个\，取消掉\的转义作用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f = open(r&#x27;D:\博客\python\python基础语法\附件资料\25\test1.txt&#x27;)</span><br><span class="line">print(f)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;_io.TextIOWrapper name=&#x27;D:\\博客\\python\\python基础语法\\附件资料\\25\\test1.txt&#x27; mode=&#x27;r&#x27; encoding=&#x27;cp936&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>name&#x3D;”文件路径”</p>
+<p>mode&#x3D;”访问模式”，默认情况下以只读模式’r’打开文件</p>
+<p>encoding&#x3D;”编码格式”，默认情况下，以cp936编码格式打开文件</p>
+<p>距离远用绝对路径</p>
+<p>距离近用相对路径</p>
+<p>加入参数，改变默认参数</p>
+<p>open(name&#x3D;”文件路径”, mode&#x3D;”访问模式”, encoding&#x3D;”编码格式”)</p>
+<h4 id="访问模式"><a href="#访问模式" class="headerlink" title="访问模式"></a>访问模式</h4><p>r&#x2F;w&#x2F;a&#x2F;+</p>
+<p>r:只读模式，打开文件后只能读取文件中的内容</p>
+<p>w:只写模式，打开文件后只能往文件中写入内容(数据的覆盖)（本质：以w 模式打开会清空文件）</p>
+<p>a:追加模式，在文件末尾追加新的内容</p>
+<p>+:可读可写，既可以读取也可以写入(结合r&#x2F;w&#x2F;a使用)</p>
+<p>注：</p>
+<p>文本文件：r&#x2F;w&#x2F;a&#x2F;+</p>
+<p>二进制文件：rb&#x2F;wb&#x2F;ab&#x2F;+</p>
+<p>w模式下若无文件则创建文件</p>
+<h4 id="编码格式"><a href="#编码格式" class="headerlink" title="编码格式"></a>编码格式</h4><p>GB2312&#x2F;GBK：中文字符编码</p>
+<p>UTF-8：可变长度的编码，最常用</p>
+<h3 id="2-对文件读写操作-read-write"><a href="#2-对文件读写操作-read-write" class="headerlink" title="2.对文件读写操作 read()&#x2F;write()"></a>2.对文件读写操作 read()&#x2F;write()</h3><h4 id="读"><a href="#读" class="headerlink" title="读"></a>读</h4><h5 id="read-n"><a href="#read-n" class="headerlink" title="read(n)"></a>read(n)</h5><p>读取文件</p>
+<p>n:表示读取的字符个数</p>
+<p>seek(n)：重置文件指针到第n位置</p>
+<p>n：大于等于0</p>
+<p>常用seek(0)重置文件指针到开头位置</p>
+<p>注：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f = open(r&#x27;D:\博客\python\python基础语法\附件资料\25\test1.txt&#x27;)</span><br><span class="line">print(f.read(4))</span><br><span class="line">print(f.read(5))   # 读取文件中前5个字符</span><br><span class="line">print(f.read(5))   # 上一次读取的位置，继续往后读取5个字符，读取不是重复内容</span><br><span class="line">f.seek(0)</span><br><span class="line">print(f.read(4))   # 文件指针回到文件的开头位置，重新读取文件内容</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hell</span><br><span class="line">o wor</span><br><span class="line">ld</span><br><span class="line">11</span><br><span class="line">hell</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h5 id="readline"><a href="#readline" class="headerlink" title="readline()"></a>readline()</h5><p>读取文件的一行内容</p>
+<p>若加入数字参数则与read(n)相似但遇到换行就立刻停</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f = open(r&#x27;D:\博客\python\python基础语法\附件资料\25\test1.txt&#x27;)</span><br><span class="line">print(f.readline(17))</span><br><span class="line">f.seek(0)</span><br><span class="line">print(f.readline(16))</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hello world</span><br><span class="line"></span><br><span class="line">hello world</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="readlines"><a href="#readlines" class="headerlink" title="readlines()"></a>readlines()</h5><p>与 readline()类似但输出的是数组</p>
+<p>默认情况下或readlines(0)，读取文件中全部的行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f = open(r&#x27;D:\博客\python\python基础语法\附件资料\25\test1.txt&#x27;)</span><br><span class="line">print(f.readlines())</span><br><span class="line">f.seek(0)</span><br><span class="line">print(f.readlines(0))</span><br><span class="line">f.seek(0)</span><br><span class="line">print(f.readlines(12))</span><br><span class="line">f.seek(0)</span><br><span class="line">print(f.readlines(13))</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;hello world\n&#x27;, &#x27;111\n&#x27;, &#x27;222\n&#x27;, &#x27;333&#x27;]</span><br><span class="line">[&#x27;hello world\n&#x27;, &#x27;111\n&#x27;, &#x27;222\n&#x27;, &#x27;333&#x27;]</span><br><span class="line">[&#x27;hello world\n&#x27;, &#x27;111\n&#x27;]</span><br><span class="line">[&#x27;hello world\n&#x27;, &#x27;111\n&#x27;]</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="写"><a href="#写" class="headerlink" title="写"></a>写</h4><h5 id="with-上下文管理器"><a href="#with-上下文管理器" class="headerlink" title="with 上下文管理器"></a>with 上下文管理器</h5><p>进入 with 代码块：自动执行 打开 操作，退出 with 代码块：无论是否报错，都自动执行 关闭 操作</p>
+<p>作用：</p>
+<p>1.自动关闭文件 （不用写 <code>f.close()</code>）</p>
+<p>2.即使报错，也能安全关闭（不会泄露资源）</p>
+<p>3.代码更简洁、更安全</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">f = open(&quot;test.txt&quot;, &quot;r&quot;, encoding=&quot;utf-8&quot;)</span><br><span class="line">data = f.read()</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line">#等价于</span><br><span class="line">with open(&quot;test.txt&quot;, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:</span><br><span class="line">    data = f.read()</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="w模式"><a href="#w模式" class="headerlink" title="w模式"></a>w模式</h5><p>进行数据的写入，新数据覆盖旧数据</p>
+<h5 id="a模式"><a href="#a模式" class="headerlink" title="a模式"></a>a模式</h5><p>进行数据的追加，新数据追加到旧数据之后</p>
+<h5 id="模式"><a href="#模式" class="headerlink" title="+模式"></a>+模式</h5><p>w+：进行数据的写入和读取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f.write(&#x27;hello world&#x27;)  # 数据写入之后，文件指针的位置在内容的最后</span><br><span class="line">f.seek(0)</span><br><span class="line">print(f.read())  # 从写入位置，继续往后读，读的是空行</span><br></pre></td></tr></table></figure>
+
+<p>r+：进行数据的读取和写入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = open(&#x27;test.txt&#x27;, &#x27;r+&#x27;, encoding=&#x27;utf-8&#x27;)</span><br><span class="line">print(f.read())  	# 先读取内容</span><br><span class="line">f.write(&#x27;hello&#x27;)  	# 数据读取之后，文件指针的位置在内容的最后，再进行数据的写入，类似于追加的效果</span><br></pre></td></tr></table></figure>
+
+
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">with open(r&#x27;D:\博客\python\python基础语法\附件资料\25\test1.txt&#x27;, &#x27;r&#x27;) as f:</span><br><span class="line">    a = f.read()  # str</span><br><span class="line">    print(a)</span><br><span class="line"></span><br><span class="line">with open(r&#x27;D:\博客\python\python基础语法\附件资料\25\test.txt&#x27;, &#x27;w&#x27;,encoding=&#x27;utf-8&#x27;) as f:</span><br><span class="line">    f.write(a)</span><br><span class="line">    f.write(&#x27;\n我爱python&#x27;)</span><br><span class="line">f = open(r&#x27;D:\博客\python\python基础语法\附件资料\25\test.txt&#x27;, &#x27;r&#x27;, encoding=&#x27;utf-8&#x27;)</span><br><span class="line"></span><br><span class="line">print(f.read())</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hello world</span><br><span class="line">111</span><br><span class="line">222</span><br><span class="line">333</span><br><span class="line">hello world</span><br><span class="line">111</span><br><span class="line">222</span><br><span class="line">333</span><br><span class="line">我爱python</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h3 id="3-关闭文件-close"><a href="#3-关闭文件-close" class="headerlink" title="3.关闭文件 close()"></a>3.关闭文件 close()</h3><p>你打开文件后，系统会给它分配资源，用完必须关，否则：</p>
+<p>1.文件一直被占用，删不掉、改不了</p>
+<p>2.占用系统资源</p>
+<p>3.数据可能没真正写入文件（丢失）</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/06/01/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">http://example.com/2026/06/01/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"># python基础语法</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/06/01/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-os/">os</a>
+            
+            
+            <a class="next" rel="next" href="/2026/05/31/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/">面向对象思想</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

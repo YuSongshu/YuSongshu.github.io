@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>字典 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">字典</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">May 5, 2026&nbsp;&nbsp;15:25:58</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">python基础语法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="13-字典"><a href="#13-字典" class="headerlink" title="13_字典"></a>13_字典</h1><p>字典是一种可变数据  &lt;class ‘dict’&gt;</p>
+<p>格式：dict&#x3D;{key1:value1, key2:value2}</p>
+<h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><p>键值对存储</p>
+<p>key的唯一性，不能重复，否则会进行数据的覆盖</p>
+<p>key的数据类型必须是不可变</p>
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;&#x27;name&#x27;: &#x27;张三&#x27;, &#x27;age&#x27;: 18, &#x27;sex&#x27;: &#x27;男&#x27;&#125;</span><br><span class="line">dct = &#123;&#x27;name&#x27;: &#x27;张三&#x27;, &#x27;age&#x27;: 18, &#x27;age&#x27;: &#x27;男&#x27;&#125;  #key重复时，后面的键值对，覆盖前面的键值对</span><br><span class="line">dct = &#123;&#x27;name&#x27;: &#x27;张三&#x27;, &#x27;age&#x27;: 18, [&#x27;sex&#x27;]: &#x27;男&#x27;&#125;  # TypeError: unhashable type: &#x27;list&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="定义空字典"><a href="#定义空字典" class="headerlink" title="定义空字典"></a>定义空字典</h2><p>1.直接定义一个空的花括号，表示为一个空字典</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.利用函数创建空字典</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dic2 = dict()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>注：</p>
+<p>为零为空的数据：整数零、浮点数零、复数零、空字符串、空列表、空元组、空字典、空集合、None</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>通过字典存储学生信息，通过学生姓名，输出学生的所有个人信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line">&#x27;张三&#x27;: [18, &#x27;男&#x27;, 177.5],</span><br><span class="line">&#x27;李四&#x27;: [22, &#x27;女&#x27;, 180.5],</span><br><span class="line">&#x27;王五&#x27;: [18, &#x27;男&#x27;, 170.5]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="字典的增删改查"><a href="#字典的增删改查" class="headerlink" title="字典的增删改查"></a>字典的增删改查</h2><h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><p>字典的元素查找，是根据字典的key，不能根据索引值查找</p>
+<h4 id="1-字典-get-key"><a href="#1-字典-get-key" class="headerlink" title="1.字典.get(key)"></a>1.字典.get(key)</h4><p>作用：通过key查找字典的value，查找的key不存在，返回None</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line">&#x27;张三&#x27;: [18, &#x27;男&#x27;, 177.5],</span><br><span class="line">&#x27;李四&#x27;: [22, &#x27;女&#x27;, 180.5],</span><br><span class="line">&#x27;王五&#x27;: [18, &#x27;男&#x27;, 170.5]</span><br><span class="line">&#125;</span><br><span class="line">print(dct.get(&#x27;张三&#x27;))</span><br><span class="line">print(dct.get(&#x27;李华&#x27;))  # None</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[18, &#x27;男&#x27;, 177.5]</span><br><span class="line">None</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-字典-key"><a href="#2-字典-key" class="headerlink" title="2.字典[key]"></a>2.字典[key]</h4><p>语法格式：字典[key] &#x3D; value</p>
+<p>作用：查找的key不存在，提示key不存在，代码报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line">&#x27;张三&#x27;: [18, &#x27;男&#x27;, 177.5],</span><br><span class="line">&#x27;李四&#x27;: [22, &#x27;女&#x27;, 180.5],</span><br><span class="line">&#x27;王五&#x27;: [18, &#x27;男&#x27;, 170.5]</span><br><span class="line">&#125;</span><br><span class="line">print(dct[&#x27;张三&#x27;])</span><br><span class="line">print(dct[&#x27;张三&#x27;][0])  # 18</span><br><span class="line"># print(dct[&#x27;李华&#x27;])  # KeyError: &#x27;李华&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[18, &#x27;男&#x27;, 177.5]</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="改"><a href="#改" class="headerlink" title="改"></a>改</h3><h4 id="1-字典-key-新数据"><a href="#1-字典-key-新数据" class="headerlink" title="1.字典[key] &#x3D; 新数据"></a>1.字典[key] &#x3D; 新数据</h4><p>作用：通过key改字典中的值，用新数据覆盖旧数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line">&#x27;张三&#x27;: [18, &#x27;男&#x27;, 177.5],</span><br><span class="line">&#x27;李四&#x27;: [22, &#x27;女&#x27;, 180.5],</span><br><span class="line">&#x27;王五&#x27;: [18, &#x27;男&#x27;, 170.5]</span><br><span class="line">&#125;</span><br><span class="line">dct[&#x27;王五&#x27;] = [18, &#x27;男&#x27;, 172.5]</span><br><span class="line">dct[&#x27;李四&#x27;][-1] = 172.7</span><br><span class="line">print(dct)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;张三&#x27;: [18, &#x27;男&#x27;, 177.5], &#x27;李四&#x27;: [22, &#x27;女&#x27;, 172.7], &#x27;王五&#x27;: [18, &#x27;男&#x27;, 172.5]&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><h4 id="1-del-字典-key"><a href="#1-del-字典-key" class="headerlink" title="1.del 字典[key]"></a>1.del 字典[key]</h4><p>注：</p>
+<p>如果删除的key不存在，报错KeyError<br>如果删除整个字典，变量的引用也被删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line"> &#x27;张三&#x27;: [18, &#x27;男&#x27;, 177.5],</span><br><span class="line"> &#x27;李四&#x27;: [22, &#x27;女&#x27;, 180.5],</span><br><span class="line"> &#x27;王五&#x27;: [18, &#x27;男&#x27;, 170.5]</span><br><span class="line">&#125;</span><br><span class="line">del dct[&#x27;王五&#x27;]</span><br><span class="line"># del dct  # 删除的是变量名，变量名被删除后，变量名不存在，输出会报错</span><br><span class="line">print(dct)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;张三&#x27;: [18, &#x27;男&#x27;, 177.5], &#x27;李四&#x27;: [22, &#x27;女&#x27;, 180.5]&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="2-字典-pop-key"><a href="#2-字典-pop-key" class="headerlink" title="2.字典.pop(key)"></a>2.字典.pop(key)</h4><p>注：指定key删除字典中的键值对，如果删除的key不存在则报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line"> &#x27;张三&#x27;: [18, &#x27;男&#x27;, 177.5],</span><br><span class="line"> &#x27;李四&#x27;: [22, &#x27;女&#x27;, 180.5],</span><br><span class="line"> &#x27;王五&#x27;: [18, &#x27;男&#x27;, 170.5]</span><br><span class="line">&#125;</span><br><span class="line">dct.pop(&#x27;王五&#x27;)</span><br><span class="line"># dct.pop(&#x27;王五&#x27;)  # 重复删除，删除的key不存在，KeyError: &#x27;王五&#x27;</span><br><span class="line">print(dct)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-字典-clear"><a href="#3-字典-clear" class="headerlink" title="3.字典.clear()"></a>3.字典.clear()</h4><p>作用：清除所有的键值对</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line"> &#x27;张三&#x27;: [18, &#x27;男&#x27;, 177.5],</span><br><span class="line"> &#x27;李四&#x27;: [22, &#x27;女&#x27;, 180.5],</span><br><span class="line"> &#x27;王五&#x27;: [18, &#x27;男&#x27;, 170.5]</span><br><span class="line">&#125;</span><br><span class="line">dct.clear()</span><br><span class="line">print(dct)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><h4 id="1-字典-新key-数据"><a href="#1-字典-新key-数据" class="headerlink" title="1.字典[新key] &#x3D; 数据"></a>1.字典[新key] &#x3D; 数据</h4><p>作用：在字典中添加新的键值对</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line"> &#x27;张三&#x27;: [18, &#x27;男&#x27;, 177.5],</span><br><span class="line"> &#x27;李四&#x27;: [22, &#x27;女&#x27;, 180.5],</span><br><span class="line"> &#x27;王五&#x27;: [18, &#x27;男&#x27;, 170.5]</span><br><span class="line">&#125;</span><br><span class="line">dct[&#x27;李华&#x27;] = [33, &#x27;女&#x27;, 170.5]  # 一次添加一个新的键值对</span><br><span class="line">print(dct)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;张三&#x27;: [18, &#x27;男&#x27;, 177.5], &#x27;李四&#x27;: [22, &#x27;女&#x27;, 180.5], &#x27;王五&#x27;: [18, &#x27;男&#x27;, 170.5], &#x27;李华&#x27;: [33, &#x27;女&#x27;, 170.5]&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-字典-update-可迭代对象"><a href="#2-字典-update-可迭代对象" class="headerlink" title="2.字典.update(可迭代对象)"></a>2.字典.update(可迭代对象)</h4><p>对于可迭代对象，必须包含二级元素，单个元素的长度是2，可以进行元素的拆分–key和value<br>可迭代对象：列表、元组、字典、集合<br>注：字符串不支持</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line"> &#x27;张三&#x27;: [18, &#x27;男&#x27;, 177.5],</span><br><span class="line"> &#x27;李四&#x27;: [22, &#x27;女&#x27;, 180.5],</span><br><span class="line"> &#x27;王五&#x27;: [18, &#x27;男&#x27;, 170.5]</span><br><span class="line">&#125;</span><br><span class="line">lst = [[&quot;李华&quot;, [33, &#x27;女&#x27;, 170.5]], [&quot;小明&quot;, [26, &#x27;男&#x27;, 188]]]</span><br><span class="line">lst = [[&#x27;a&#x27;, 1], [&#x27;b&#x27;, 2], [&#x27;c&#x27;, 3]]</span><br><span class="line">tu = ((&#x27;a&#x27;, 1), (&#x27;b&#x27;, 2), (&#x27;c&#x27;, 3))</span><br><span class="line"></span><br><span class="line">dct2 = &#123;&#x27;a&#x27;: 1, &#x27;b&#x27;: 2, &#x27;c&#x27;: 3&#125;</span><br><span class="line">dct.update(tu)</span><br><span class="line">print(dct)</span><br></pre></td></tr></table></figure>
+
+<p> 直接修改原字典，不会返回新字典</p>
+<p>其也可以用于更新（改）数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;&quot;name&quot;: &quot;小明&quot;, &quot;age&quot;: 20&#125;</span><br><span class="line">dct.update(age=18)</span><br><span class="line">print(dct)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h2><h3 id="字典的for循环取值"><a href="#字典的for循环取值" class="headerlink" title="字典的for循环取值"></a>字典的for循环取值</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line"> 12: &#x27;a&#x27;,</span><br><span class="line"> 13: &#x27;b&#x27;,</span><br><span class="line"> 15.66: &#x27;c&#x27;,</span><br><span class="line"> &#x27;d&#x27;: &#x27;d&#x27;,</span><br><span class="line"> 199.5: &#x27;e&#x27;,</span><br><span class="line">&#125;</span><br><span class="line">new_dct = &#123;&#125;</span><br><span class="line">for i in dct:</span><br><span class="line">    if isinstance(i, int):</span><br><span class="line">        new_dct[i] = dct[i]</span><br><span class="line"></span><br><span class="line">print(new_dct)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;12: &#x27;a&#x27;, 13: &#x27;b&#x27;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="字典-keys"><a href="#字典-keys" class="headerlink" title="字典.keys()"></a>字典.keys()</h3><p>作用：取出字典中所有的key</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line">    12: &#x27;a&#x27;,</span><br><span class="line">    13: &#x27;b&#x27;,</span><br><span class="line">    15.66: &#x27;c&#x27;,</span><br><span class="line">    &#x27;d&#x27;: &#x27;d&#x27;,</span><br><span class="line">    199.5: &#x27;e&#x27;,</span><br><span class="line">&#125;</span><br><span class="line">k = dct.keys()</span><br><span class="line"></span><br><span class="line">print(k, type(k))  # &lt;class &#x27;dict_keys&#x27;&gt;  既不是元组，也不是列表，是字典中的一种特殊数据类型，可迭代对象</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dict_keys([12, 13, 15.66, &#x27;d&#x27;, 199.5]) &lt;class &#x27;dict_keys&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="字典-values"><a href="#字典-values" class="headerlink" title="字典.values()"></a>字典.values()</h3><p>作用：取出字典中所有的value</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line">    12: &#x27;a&#x27;,</span><br><span class="line">    13: &#x27;b&#x27;,</span><br><span class="line">    15.66: &#x27;c&#x27;,</span><br><span class="line">    &#x27;d&#x27;: &#x27;d&#x27;,</span><br><span class="line">    199.5: &#x27;e&#x27;,</span><br><span class="line">&#125;</span><br><span class="line">v = dct.values()</span><br><span class="line">print(v, type(v))  </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dict_values([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;]) &lt;class &#x27;dict_values&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="字典-items"><a href="#字典-items" class="headerlink" title="字典.items()"></a>字典.items()</h3><p>作用：取出字典中所有的键值对</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line">    12: &#x27;a&#x27;,</span><br><span class="line">    13: &#x27;b&#x27;,</span><br><span class="line">    15.66: &#x27;c&#x27;,</span><br><span class="line">    &#x27;d&#x27;: &#x27;d&#x27;,</span><br><span class="line">    199.5: &#x27;e&#x27;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">res = dct.items()</span><br><span class="line">print(res, type(res))</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dict_items([(12, &#x27;a&#x27;), (13, &#x27;b&#x27;), (15.66, &#x27;c&#x27;), (&#x27;d&#x27;, &#x27;d&#x27;), (199.5, &#x27;e&#x27;)]) &lt;class &#x27;dict_items&#x27;&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>dict_items([(12, ‘a’), (13, ‘b’), (15.66, ‘c’), (‘d’, ‘d’), (199.5, ‘e’)])<br>每个元组元素的长度，为2–&gt;key:value</p>
+<p>意义</p>
+<p>元组可以解包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line">    12: &#x27;a&#x27;,</span><br><span class="line">    13: &#x27;b&#x27;,</span><br><span class="line">    15.66: &#x27;c&#x27;,</span><br><span class="line">    &#x27;d&#x27;: &#x27;d&#x27;,</span><br><span class="line">    199.5: &#x27;e&#x27;,</span><br><span class="line">&#125;</span><br><span class="line">for i in dct.items():  # 临时变量i中存放的是元组--&gt;元组长度是2</span><br><span class="line">    print(f&#x27;&#123;i&#125;&#x27;)</span><br><span class="line"># (12, &#x27;a&#x27;)--&gt; 解包--&gt; k:12, v:&#x27;a&#x27;</span><br><span class="line"># (13, &#x27;b&#x27;)--&gt; 解包--&gt; k:13, v:&#x27;b&#x27;</span><br><span class="line">for k, v in dct.items():</span><br><span class="line">    print(f&#x27;&#123;k&#125;:&#123;v&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(12, &#x27;a&#x27;)</span><br><span class="line">(13, &#x27;b&#x27;)</span><br><span class="line">(15.66, &#x27;c&#x27;)</span><br><span class="line">(&#x27;d&#x27;, &#x27;d&#x27;)</span><br><span class="line">(199.5, &#x27;e&#x27;)</span><br><span class="line">12:a</span><br><span class="line">13:b</span><br><span class="line">15.66:c</span><br><span class="line">d:d</span><br><span class="line">199.5:e</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="len-字典"><a href="#len-字典" class="headerlink" title="len(字典)"></a>len(字典)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line">    12: &#x27;a&#x27;,</span><br><span class="line">    13: &#x27;b&#x27;,</span><br><span class="line">    15.66: &#x27;c&#x27;,</span><br><span class="line">    &#x27;d&#x27;: &#x27;d&#x27;,</span><br><span class="line">    199.5: &#x27;e&#x27;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(len(dct))		=&gt; 5</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="成员运算符-in-not-in"><a href="#成员运算符-in-not-in" class="headerlink" title="成员运算符  in&#x2F;not in"></a>成员运算符  in&#x2F;not in</h3><p>作用：判断key有没有在字典中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dct = &#123;</span><br><span class="line">    12: &#x27;a&#x27;,</span><br><span class="line">    13: &#x27;b&#x27;,</span><br><span class="line">    15.66: &#x27;c&#x27;,</span><br><span class="line">    &#x27;d&#x27;: &#x27;d&#x27;,</span><br><span class="line">    199.5: &#x27;e&#x27;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(&#x27;d&#x27; in dct)</span><br><span class="line">print(&#x27;d&#x27; not in dct)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">True</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/05/05/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E5%85%B8/">http://example.com/2026/05/05/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E5%85%B8/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"># python基础语法</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/05/05/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E9%9B%86%E5%90%88/">集合</a>
+            
+            
+            <a class="next" rel="next" href="/2026/05/05/python-python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%88%97%E8%A1%A8%E2%80%94%E2%80%94/">列表——</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

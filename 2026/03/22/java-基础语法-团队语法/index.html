@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>团队语法 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">团队语法</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 22, 2026&nbsp;&nbsp;13:29:04</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/java/">java</a>
+                            
+                                <a href="/categories/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">基础语法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="团队语法"><a href="#团队语法" class="headerlink" title="团队语法"></a>团队语法</h1><p>1.抽象类     用到继承的知识</p>
+<p>2.接口</p>
+<p>抽象类和接口  一模一样  都是解耦的</p>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>抽象类 用abstract修饰的类  这种类 特点  不能new对象</p>
+<p>抽象方法 用abstract修饰的方法 这种方法只有声明部分没有实现部分</p>
+<p>​				1.把方法的声明和实现分开</p>
+<p>​						声明部分  public abstract void add();</p>
+<p>​						实现  去掉abstract 需要写出方法的方法体  {}</p>
+<p>一个类中有抽象方法那么这个类必须是抽象类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">One</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="type">void</span> <span class="title function_">add</span><span class="params">()</span>;   <span class="type">int</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>抽象类用自己的子类来实现自己的抽象方法</p>
+<p>抽象类本身 不能 new</p>
+<p>想 new，必须 先写一个子类 继承它，再 new 子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Two</span> <span class="keyword">extends</span> <span class="title class_">One</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">void</span> <span class="title function_">add</span><span class="params">()</span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如何调用抽象类中的方法呢?</p>
+<p>我们需要使用上转型对象来调用抽象类中的抽象方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">void</span> <span class="title function_">main</span><span class="params">(String [] args)</span>&#123;</span><br><span class="line">        <span class="type">One</span> <span class="variable">one</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Two</span>();</span><br><span class="line">        <span class="comment">//one上转型对象</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>上转型对象：把<strong>子类对象</strong>赋值给<strong>父类</strong>引用，这个父类引用指向的子类对象，就是<strong>上转型对象</strong>。</p>
+<p>注：</p>
+<p> 上转型对象 3 个必记规则</p>
+<ol>
+<li><strong>只能调用父类中定义的方法</strong></li>
+<li><strong>实际运行执行子类重写的方法</strong>（多态）</li>
+<li><strong>不能调用子类独有的方法</strong></li>
+</ol>
+<p>3的原因：</p>
+<p><strong>编译阶段</strong>，编译器只看<strong>左边的类型（AbstractOne）</strong></p>
+<p>父类里<strong>没有</strong>这个子类独有的方法</p>
+<p>编译器直接报错：<strong>找不到方法</strong></p>
+<p>哪怕运行时是子类对象，<strong>编译不通过，一切白搭</strong>。</p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>接口  由关键字 interface修饰的一个代码书写单元 &#x3D;&#x3D; 等价与类</p>
+<p>​			1.接口不能new对象    </p>
+<p>​			2.接口中必须全部是抽象方法</p>
+<p>​			3.接口中所有的抽象方法会默认添加 两个关键字  public   abstract</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">One</span>&#123;</span><br><span class="line">    </span><br><span class="line">    	<span class="type">void</span> <span class="title function_">add1</span><span class="params">()</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接口用实现类来实现自己的抽象方法  two 抽象类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Two</span> <span class="keyword">implements</span> <span class="title class_">One</span>,其他接口&#123;</span><br><span class="line">    	<span class="keyword">public</span> <span class="type">void</span> <span class="title function_">add1</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接口中的方法如何调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">void</span> <span class="title function_">main</span><span class="params">(String [] args)</span>&#123;</span><br><span class="line">        <span class="comment">//接口回调</span></span><br><span class="line">        <span class="type">One</span> <span class="variable">one</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Two</span>();</span><br><span class="line">        </span><br><span class="line">        one.</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1.接口弥补了单向继承的缺点     一个实现类可以实现多个接口</p>
+<p>2.接口和接口之间允许互相继承</p>
+<h2 id="特殊对象（背"><a href="#特殊对象（背" class="headerlink" title="特殊对象（背)"></a>特殊对象（背)</h2><p>1.%90对象都是正常     类类型    名   &#x3D;    new   构造方法（）       类类型名字和构造方法名字 相同</p>
+<p>名：你给对象起的名字</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">A</span>        <span class="variable">a</span>     <span class="operator">=</span>    <span class="keyword">new</span> 	<span class="title class_">A</span>();</span><br></pre></td></tr></table></figure>
+
+<p>2.%5对象   上转型对象    父类声明子类实例化		父亲类型   名   &#x3D;    new   儿子构造方法()   给抽象类服务的</p>
+<p>3.%5对象    接口回调		接口声明由实现类来实例化    接口类型   名   &#x3D;   new  实现类构造方法()  给接口用的</p>
+<h2 id="关键字-背"><a href="#关键字-背" class="headerlink" title="关键字(背)"></a>关键字(背)</h2><p>abstract   抽象       修饰类和方法    修饰的类叫抽象类   修饰的方法叫抽象方法</p>
+<p>interface  接口</p>
+<p>implements 实现  用于让一个类去实现一个或多个接口</p>
+<p>抽象类和接口   有啥区别</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
+<li>抽象类 &#x3D; 半成品类，只能单继承</li>
+<li>接口 &#x3D; 能力契约，可以多实现</li>
+<li>is a（是什么）用抽象类，can do（能做什么）用接口</li>
+<li>抽象类可以有普通方法但接口必须全都是抽象方法 (接口：Java 8 以后也能写普通方法（default &#x2F;static）)</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>抽象类：<strong>模板、单继承、有属性有方法</strong></li>
+<li>接口：<strong>规范、多实现、纯能力定义</strong></li>
+<li>日常开发：<strong>接口用得更多</strong>（解耦、灵活、符合最佳实践）</li>
+</ul>
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><h3 id="Override"><a href="#Override" class="headerlink" title="@Override"></a>@Override</h3><p>实现接口时，在方法上写 @Override，是用来【校验】你写的方法，是不是真的正确重写了接口里的方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface Run &#123;</span><br><span class="line">    void run();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Dog implements Run &#123;</span><br><span class="line"></span><br><span class="line">    //这个注解：校验下面的方法，确实是重写接口方法</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        System.out.println(&quot;小狗跑&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void runs() &#123;  				// 多写了个 s</span><br><span class="line">	System.out.println(&quot;小狗跑&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果不写 @Override，编译器<strong>不会报错</strong>，会一直找不到 bug</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/03/22/java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%9B%A2%E9%98%9F%E8%AF%AD%E6%B3%95/">http://example.com/2026/03/22/java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%9B%A2%E9%98%9F%E8%AF%AD%E6%B3%95/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"># 基础语法</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/03/24/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-Numpy-NumPy_%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">NumPy 数据类型</a>
+            
+            
+            <a class="next" rel="next" href="/2026/03/22/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas-Matplotlib_%E7%BD%91%E6%A0%BC%E7%BA%BF%E5%9B%BE%E4%B8%8E%E6%9F%B1%E5%BD%A2%E5%9B%BE/">Matplotlib 网格线图与柱形图</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

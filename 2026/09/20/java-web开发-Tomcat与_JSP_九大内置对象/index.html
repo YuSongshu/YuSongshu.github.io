@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>Tomcat与 JSP 九大内置对象 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Tomcat与 JSP 九大内置对象</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 20, 2026&nbsp;&nbsp;12:21:59</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/java/">java</a>
+                            
+                                <a href="/categories/java/web%E5%BC%80%E5%8F%91/">web开发</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Tomcat与-JSP-九大内置对象"><a href="#Tomcat与-JSP-九大内置对象" class="headerlink" title="Tomcat与 JSP 九大内置对象"></a>Tomcat与 JSP 九大内置对象</h1><p>Tomcat + JSP 九大内置对象</p>
+<p>服务器的作用：</p>
+<ul>
+<li>Tomcat 是一个「Java Web 应用服务器软件」。（框架）</li>
+<li>「运行容器 + 请求管家」—— 你的代码最终就是跑在 Tomcat 里面的。<ul>
+<li>登录需求 –&gt; 网页上输入账号 密码 登录按钮 – 发起一个请求 —&gt; 项目中 专门写 登录方法的java类 完成操作</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><strong>接请求</strong>：监听端口（默认 8080），把浏览器发来的 HTTP 网络请求，解析成 Java 代码能读懂的请求对象。</li>
+<li><strong>跑代码</strong>：加载并运行你写的 JavaWeb 代码，把请求交给对应的 Java 方法去处理。</li>
+<li><strong>返结果</strong>：把 Java 代码处理完的结果，再包装成 HTTP 响应，发回给用户浏览器。</li>
+<li><strong>管并发</strong>：同时来几十个、上百个用户请求，Tomcat 会自动分配线程、调度排队，保证程序不崩溃。</li>
+</ol>
+<p>tomcat输出打印控制台乱码？</p>
+<p>点击Edit Configurations… 编辑配置</p>
+<p>VM处添加: <code>-Dfile.encoding=UTF-8</code>  </p>
+<p>(VM options 是给 JVM（Java 虚拟机） 的启动参数，用来控制内存、GC、系统属性等，不是程序 main 的入参。)</p>
+<p>每次学的东西，为了业务痛点</p>
+<table>
+<thead>
+<tr>
+<th>内置对象</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>request</td>
+<td>请求对象，代表客户端 HTTP 请求，包含了客户端浏览器的请求信息。请求范围有效</td>
+</tr>
+<tr>
+<td>responses</td>
+<td>响应对象，代表服务端 HTTP 响应，用于向客户发送响应信息。响应范围有效</td>
+</tr>
+<tr>
+<td>out</td>
+<td>输出对象，用于向客户端法发送输出内容，可以通过 out 对象向浏览器输出 HTML 代码</td>
+</tr>
+<tr>
+<td>page</td>
+<td>页面对象，代表了当前 JSP 本身，可以通过 page 对象来访问当前 JSP 页面的脚本和定义方法</td>
+</tr>
+<tr>
+<td>pageContext</td>
+<td>页面上下文对象，在 JSP 页面中主要作用是管理页面属性，实现页面内不同部分的数据共享</td>
+</tr>
+<tr>
+<td>config</td>
+<td>配置对象，当前 JSp 页面的配置信息，可以获取当前页面的配置参数</td>
+</tr>
+<tr>
+<td>exception</td>
+<td>异常对象，对象主要用于处理页面中的异常情况。声明当前页面是一个处理异常的页面。</td>
+</tr>
+<tr>
+<td>session</td>
+<td>会话对象，代表服务器端和客户端创建的会话，用于多个请求之间共享数据</td>
+</tr>
+<tr>
+<td>application</td>
+<td>应用对象，代表整个 web 程序，用于在整个应用范围内共享数据</td>
+</tr>
+</tbody></table>
+<p>记得：</p>
+<ul>
+<li>request：请求对象<ul>
+<li>设置接受参数的编码格式</li>
+<li>接收传递参数</li>
+<li>传递数据：使用java代码传递，任何类型的数据</li>
+<li>跳转页面：一起使用的，方式 post</li>
+</ul>
+</li>
+<li>responses：响应对象<ul>
+<li>设置响应参数编码格式 （现在用不到）</li>
+<li>传递数据：简单的 数值  字符串 </li>
+<li>跳转页面，跳转方式 get</li>
+</ul>
+</li>
+<li>session：会话对象<ul>
+<li>共享数据，默认时间30分钟，当前浏览器有效 </li>
+<li>存入，共享</li>
+</ul>
+</li>
+</ul>
+<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>tomcat 引包</p>
+<p>单击项目 + F4  &#x3D;&gt; Dependencies,添加tomcat</p>
+<h3 id="登录需求"><a href="#登录需求" class="headerlink" title="登录需求"></a>登录需求</h3><p>form表单，HTML标签</p>
+<h4 id="提交数据"><a href="#提交数据" class="headerlink" title="提交数据"></a>提交数据</h4><p>form表单：提交数据，包裹输入框，提交属性按钮</p>
+<p>可以通过它将数据传到别的jsp文件里</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;login_service.jsp&quot; &gt;</span><br><span class="line">  &lt;p&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; placeholder=&quot;账号&quot; name=&quot;acc&quot;&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">  &lt;p&gt;</span><br><span class="line">    &lt;input type=&quot;password&quot; placeholder=&quot;密码&quot; name=&quot;pass&quot;&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">  &lt;p&gt;</span><br><span class="line">    &lt;button&gt;登录&lt;/button&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<p>每一个输入框中必须有一个name属性，提交数据，接收数据，10个数据，10个name</p>
+<p>action: 提交数据地址 与 href一样，不过href不能拼，只能写死</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;login_service.jsp?acc=admin&amp;pass=123456&quot;&gt;去传递数据&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>method：跳转方式，有 get post</p>
+<p>​		区别：get 会把数据拼在url上         post 数据不会显示在外面 </p>
+<p>传递数据的方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;for_value.jsp&quot;&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; placeholder=&quot;账号&quot; name=&quot;acc&quot; &gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">        &lt;%--单选--%&gt;</span><br><span class="line">        &lt;input type=&quot;radio&quot; name=&quot;sex&quot; checked value=&quot;男&quot;&gt;男</span><br><span class="line">        &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;女&quot;&gt;女</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;p&gt;</span><br><span class="line">    	&lt;%--多选--%&gt;</span><br><span class="line">        &lt;input type=&quot;checkbox&quot; value=&quot;周一&quot; name=&quot;week&quot;&gt;周一</span><br><span class="line">        &lt;input type=&quot;checkbox&quot; value=&quot;周二&quot; name=&quot;week&quot;&gt;周二</span><br><span class="line">        &lt;input type=&quot;checkbox&quot; value=&quot;周三&quot; name=&quot;week&quot;&gt;周三</span><br><span class="line">        &lt;input type=&quot;checkbox&quot; value=&quot;周四&quot; name=&quot;week&quot;&gt;周四</span><br><span class="line">        &lt;input type=&quot;checkbox&quot; value=&quot;周五&quot; name=&quot;week&quot;&gt;周五</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">        &lt;%--下拉--%&gt;</span><br><span class="line">        &lt;select name=&quot;add&quot;&gt;</span><br><span class="line">            &lt;option&gt;长春&lt;/option&gt;</span><br><span class="line">            &lt;option&gt;吉林&lt;/option&gt;</span><br><span class="line">            &lt;option&gt;北京&lt;/option&gt;</span><br><span class="line">        &lt;/select&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line"></span><br><span class="line">    &lt;p&gt;</span><br><span class="line">        &lt;textarea name=&quot;info&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">        &lt;button&gt;提交&lt;/button&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;登录&quot;&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h4 id="接收数据"><a href="#接收数据" class="headerlink" title="接收数据"></a>接收数据</h4><p><code>request.getParameter();</code>: 【接收表单传递数据】</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String acc = request.getParameter(&quot;acc&quot;);</span><br><span class="line">String pass = request.getParameter(&quot;pass&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>模拟校验</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">String acc = request.getParameter(&quot;acc&quot;);</span><br><span class="line">String pass = request.getParameter(&quot;pass&quot;);</span><br><span class="line">String acc1 = &quot;admin&quot;;</span><br><span class="line">String pass1 = &quot;123456&quot;;</span><br><span class="line">if (acc.equals(acc1) &amp;&amp; pass.equals(pass1))&#123;</span><br><span class="line"></span><br><span class="line">request.setAttribute(&quot;acc&quot;,map);  // --------  request传递数据</span><br><span class="line">request.getRequestDispatcher(&quot;success.jsp&quot;).forward(request,response);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">//登录失败 </span><br><span class="line">//重定向  get方式</span><br><span class="line">response.sendRedirect(&quot;index.jsp?acc=&quot;+acc+&quot;&amp;pass=&quot;+pass);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><p><img src="/img/notes/java-web%E5%BC%80%E5%8F%91-Tomcat%E4%B8%8E_JSP_%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/input%E7%9A%84type%E5%8F%96%E5%80%BC%E5%88%86%E7%B1%BB.png" alt="input的type取值分类"></p>
+<h2 id="response"><a href="#response" class="headerlink" title="response"></a>response</h2><p>response不能用复杂数据（map…）</p>
+<p>只能拼简单的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String acc = &quot;admin&quot;;</span><br><span class="line">String pass = &quot;123456&quot;;</span><br><span class="line">response.sendRedirect(&quot;index.jsp?acc=&quot;+acc+&quot;&amp;pass=&quot;+pass);</span><br></pre></td></tr></table></figure>
+
+<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>session是干什么的？</p>
+<p>session 是服务器帮”某个特定浏览器”保存的一份数据，跟请求多少次无关</p>
+<p>HTTP 有个天生的缺陷：<strong>它没有记忆</strong>。每个请求都是独立的，服务器处理完就忘。</p>
+<p>这带来一个麻烦：用户登录成功了，下一个页面服务器怎么知道”你就是刚才登录的那个人”？</p>
+<p>工作流程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">① 浏览器第一次访问</span><br><span class="line">   服务器一看：这人有 session 吗？没有 → 创建一个，编号 JSESSIONID=ABC123</span><br><span class="line">   ↓</span><br><span class="line">② 服务器在响应里告诉浏览器：给你个编号 ABC123，收好</span><br><span class="line">   浏览器存下这个 Cookie</span><br><span class="line">   ↓</span><br><span class="line">③ 浏览器第 2 次、第 3 次访问</span><br><span class="line">   自动带上 Cookie: JSESSIONID=ABC123</span><br><span class="line">   ↓</span><br><span class="line">④ 服务器一看编号 ABC123 → 哦是老熟人，把他那份数据拿出来</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/notes/java-web%E5%BC%80%E5%8F%91-Tomcat%E4%B8%8E_JSP_%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/HttpSession%E5%B8%B8%E7%94%A8API%E5%85%A8%E6%99%AF%E5%88%86%E7%BB%84.png" alt="HttpSession常用API全景分组"></p>
+<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><p>Servlet 就是 JavaWeb 中用来接收、处理 HTTP 请求的 Java 类</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/09/20/java-web%E5%BC%80%E5%8F%91-Tomcat%E4%B8%8E_JSP_%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/">http://example.com/2026/09/20/java-web%E5%BC%80%E5%8F%91-Tomcat%E4%B8%8E_JSP_%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/web%E5%BC%80%E5%8F%91/"># web开发</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/09/20/java-web%E5%BC%80%E5%8F%91-Servlet/">Servlet</a>
+            
+            
+            <a class="next" rel="next" href="/2026/09/13/java-web%E5%BC%80%E5%8F%91-web%E6%9C%8D%E5%8A%A1/">web服务</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

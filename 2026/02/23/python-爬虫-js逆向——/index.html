@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>js逆向—— | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">js逆向——</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 23, 2026&nbsp;&nbsp;21:47:56</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E7%88%AC%E8%99%AB/">爬虫</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="初识js逆向"><a href="#初识js逆向" class="headerlink" title="初识js逆向"></a>初识js逆向</h1><p>在程序中，为了保护数据，通常会加密运输。加密操作通常是js代码实现，js逆向则是从加密的已知参数逆向找到它的位置</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>安装 node.js</p>
+<p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时环境，提供了执行和解释<br>JavaScript 代码的功能。</p>
+<h1 id="JS基础语法"><a href="#JS基础语法" class="headerlink" title="JS基础语法"></a>JS基础语法</h1><p>JavaScript是一种广泛使用的编程语言，常用于网页和网站的开发。<br>JavaScript的语法包括变量、数据类型、运算符、条件语句、循环语句、函数等基<br>本概念</p>
+<p>基础语法参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xtazm/articles/19096812">https://www.cnblogs.com/xtazm/articles/19096812</a></p>
+<h1 id="执行js代码"><a href="#执行js代码" class="headerlink" title="执行js代码"></a>执行js代码</h1><p>Python 如果要执行JS代码，可以安装 PyExecJS。<br>安装：pip install PyExecJS<br>使用：</p>
+<ol>
+<li>编译 js 文件<br>execjs.compile()：编译 JavaScript 代码调用 js 中的方法<br>参数：需要编译的 JavaScript 代码字符串<br>返回值：JavaScript 运行的上下文</li>
+<li>context.call()：执行 JavaScript 代码中的函数，并返回其执行结果<br> 参数：<br> • js 函数名称<br> • js 函数参数…<br> 返回值：函数运行的结果</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> execjs</span><br><span class="line"><span class="comment"># 1. 编写 JS 代码</span></span><br><span class="line">js_code = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">function add(a, b) &#123;</span></span><br><span class="line"><span class="string">    return a + b;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">function md5Sign(data, salt) &#123;</span></span><br><span class="line"><span class="string">    const crypto = require(&#x27;crypto&#x27;);</span></span><br><span class="line"><span class="string">    return crypto.createHash(&#x27;md5&#x27;).update(data + salt).digest(&#x27;hex&#x27;);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 编译 JS → 得到 Context（上下文）</span></span><br><span class="line">ctx = execjs.<span class="built_in">compile</span>(js_code)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 调用 JS 函数</span></span><br><span class="line">res1 = ctx.call(<span class="string">&quot;add&quot;</span>, <span class="number">10</span>, <span class="number">20</span>)          <span class="comment"># 30</span></span><br><span class="line">res2 = ctx.call(<span class="string">&quot;md5Sign&quot;</span>, <span class="string">&quot;hello&quot;</span>, <span class="string">&quot;123&quot;</span>)  <span class="comment"># MD5 结果</span></span><br><span class="line"><span class="built_in">print</span>(res1, res2)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>拓展（从文件读取 JS 代码）</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> execjs</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从文件读取 JS 代码</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;sign.js&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    js_code = f.read()</span><br><span class="line"></span><br><span class="line">ctx = execjs.<span class="built_in">compile</span>(js_code)</span><br><span class="line"></span><br><span class="line">ts = <span class="built_in">str</span>(<span class="built_in">int</span>(time.time()))</span><br><span class="line">data = <span class="string">&#x27;&#123;&quot;id&quot;: 1001, &quot;name&quot;: &quot;test&quot;&#125;&#x27;</span></span><br><span class="line">sign = ctx.call(<span class="string">&quot;getSign&quot;</span>, ts, data)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;timestamp:&quot;</span>, ts)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;sign:&quot;</span>, sign)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="异步请求"><a href="#异步请求" class="headerlink" title="异步请求"></a>异步请求</h1><p>AJAX（Asynchronous JavaScript and XML）是一种在不重新加载整个网页的情况下，能够更新部分网页的技术。虽然名称中包含 XML，但现代的 AJAX 实现通常使用 JSON 或其他数据格式代替 XML。</p>
+<h2 id="原生-ajax"><a href="#原生-ajax" class="headerlink" title="原生 ajax"></a>原生 ajax</h2><p>开始 ajax 请求的第一步创建一个 XMLHttpRequest 对象，这个对象是浏览器提供的 API，用于与服务器进行异步通信。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getData</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 1、创建一个请求对象</span></span><br><span class="line">    xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">    <span class="comment">// 2、通过open方法设置请求的url和请求的参数</span></span><br><span class="line">    xhr.<span class="title function_">open</span>(<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;http://...&#x27;</span>, <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">// 3、设置ajax请求发送之后的回调函数</span></span><br><span class="line">    xhr.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;响应状态码:&#x27;</span>, xhr.<span class="property">status</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;响应体内容&#x27;</span>, xhr.<span class="property">responseText</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 4、请求头的设置</span></span><br><span class="line">    xhr.<span class="title function_">setRequestHeader</span>(<span class="string">&#x27;token&#x27;</span>, <span class="string">&#x27;12345678&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 5、发送请求</span></span><br><span class="line">    xhr.<span class="title function_">send</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>open()：设置请求类型（GET、POST等）、URL和是否异步执行；</p>
+<p>setRequestHeader()：设置请求头；</p>
+<p>send()：发送请求，该函数的参数是请求的参数。</p>
+<h2 id="jQuery-ajax"><a href="#jQuery-ajax" class="headerlink" title="jQuery ajax"></a>jQuery ajax</h2><p>‌jQuery AJAX‌ 是 jQuery 库提供的一组用于执行异步 HTTP 请求的方法，它封装了浏览器原生的 XMLHttpRequest 对象，简化了客户端与服务器之间的数据交互操作。</p>
+<p>使用 jQuery ajax 时，需要先获取 jQuery 库，可以直接导入在线的 jQuery：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getData</span>(<span class="params"></span>) &#123;</span><br><span class="line">    $.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">        <span class="attr">url</span>: <span class="string">&quot;http://...&quot;</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;get&quot;</span>,</span><br><span class="line">        <span class="attr">headers</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;token&#x27;</span>: <span class="string">&#x27;12345678&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">response, textStatus, jqXHR</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;响应状态码:&#x27;</span>, jqXHR.<span class="property">status</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;响应状态:&#x27;</span>, textStatus);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;响应体:&#x27;</span>, response);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>url：表示目标请求的 url。</p>
+<p>type：表示发送请求的方式；</p>
+<p>headers：表示设置的请求头；</p>
+<p>success：表示请求成功后回调的方法。</p>
+<p><strong>注：</strong></p>
+<p>回调：<br>​    回来调用<br>​    对于发送请求来说：<br>​        去：发送请求<br>​        来【回来】：接收响应<br>​            接收到响应数据之后要调用的函数。<br>​            回调函数：回来的时候，调用的函数。<br>​            干嘛？<br>​                回来的函数处理响应的数据【解密、页面渲染】。<br>jQuery 是一个前端的库，这个文件一般不会随便修改里面内容。</p>
+<h2 id="Fetch-API"><a href="#Fetch-API" class="headerlink" title="Fetch API"></a>Fetch API</h2><p>Fetch API 提供了一种更简单、更强大的方式来进行 HTTP 请求，相比传统的 XMLHttpRequest 更加现代化和易于使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">getData</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> url = <span class="string">&#x27;http://...&#x27;</span></span><br><span class="line">    <span class="keyword">let</span> config = &#123;</span><br><span class="line">        <span class="attr">method</span>: <span class="string">&quot;GET&quot;</span>,</span><br><span class="line">        <span class="attr">headers</span>: &#123;</span><br><span class="line">            <span class="string">&quot;token&quot;</span>: <span class="string">&quot;12345678&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="variable language_">window</span>.<span class="title function_">fetch</span>(url, config)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;请求成功:&#x27;</span>, response)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;请求发送出现错误了:&#x27;</span>, error)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="浏览器开发者工具："><a href="#浏览器开发者工具：" class="headerlink" title="浏览器开发者工具："></a>浏览器开发者工具：</h1><p>学习前面的目的，是为了能看懂 js 代码。<br>浏览器开发者工具：<br>​    看网页的 js 代码。<br>​    debugger &#x3D;》调试。<br>​        非常 非常 非常 重要。</p>
+<p>打开控制台的方式：<br>​    第一种：点击右下角的向上箭头<br>​    第二种：<br>​        1. 点击开发者工具右上角的 …<br>​        2. 在弹出的界面点击“搜索”<br>​        3. 在下面弹出的框框中点击 “控制台”</p>
+<p>一定不要点暂停情况下的最左侧按钮【||】。<br>三角形的：<br>​    后面没有继续断。<br>转弯箭头：<br>​    单行执行<br>​    不进入函数<br>向下的箭头：<br>​    进入函数里面【如果有函数调用】<br>向上的箭头：<br>​    当前代码后面的部分不看了。</p>
+<p>注意事项：<br>​    所有断下来的地方一定是程序执行到的地方。</p>
+<h2 id="调用堆栈"><a href="#调用堆栈" class="headerlink" title="调用堆栈"></a>调用堆栈</h2><p>特点：先进后出，后进先出</p>
+<p>作用：管理函数上下文，分析调试指南针</p>
+<h2 id="XHR提取断点"><a href="#XHR提取断点" class="headerlink" title="XHR提取断点"></a>XHR提取断点</h2><h3 id="核心用途"><a href="#核心用途" class="headerlink" title="核心用途"></a>核心用途</h3><ol>
+<li><p>抓动态加载、翻页、提交表单等<strong>隐藏接口</strong>（请求路径或请求路径的部分）</p>
+</li>
+<li><p>调试请求参数、请求头、响应数据异常</p>
+</li>
+<li><p>定位哪行代码发起了请求（看调用栈）</p>
+</li>
+<li><p>拦截并修改请求 &#x2F; 响应（配合调试器）</p>
+</li>
+</ol>
+<p>注：</p>
+<p><strong>发起程序</strong>也可以实现类似效果</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/02/23/python-%E7%88%AC%E8%99%AB-js%E9%80%86%E5%90%91%E2%80%94%E2%80%94/">http://example.com/2026/02/23/python-%E7%88%AC%E8%99%AB-js%E9%80%86%E5%90%91%E2%80%94%E2%80%94/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%88%AC%E8%99%AB/"># 爬虫</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/02/24/python-%E7%88%AC%E8%99%AB-%E9%80%86%E5%90%91%E6%8A%80%E5%B7%A7/">逆向技巧</a>
+            
+            
+            <a class="next" rel="next" href="/2026/02/23/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-Numpy-Numpy%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%88%E6%B1%87%E6%80%BB%EF%BC%89/">Numpy基础语法（汇总）</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

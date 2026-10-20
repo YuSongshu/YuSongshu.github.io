@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>文件上传 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">文件上传</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 15, 2026&nbsp;&nbsp;21:42:21</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/java/">java</a>
+                            
+                                <a href="/categories/java/web%E5%BC%80%E5%8F%91/">web开发</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="29-文件上传"><a href="#29-文件上传" class="headerlink" title="29_文件上传"></a>29_文件上传</h1><p>文件上传：用户本地电脑上的文件，通过网络发送到远程服务器并保存。</p>
+<p>前端常见需求：注册时选择上传头像、上传附件等。</p>
+<h2 id="文件上传原理"><a href="#文件上传原理" class="headerlink" title="文件上传原理"></a>文件上传原理</h2><p>依赖于表单、输入框，选择本地文件，提交，浏览器文件和数据一起发送，服务器，解码，提取表单文本，文件数据拿到保存到服务器上</p>
+<p><strong>两种实现方式：</strong></p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>form 表单上传</td>
+<td>同步提交，页面跳转</td>
+</tr>
+<tr>
+<td>AJAX 异步上传</td>
+<td>无刷新上传（后面学习）</td>
+</tr>
+</tbody></table>
+<p>数据库与服务器文件系统的区别：小文件、频繁查询的数据适合放数据库；实际上传的文件一般保存在服务器磁盘，数据库只存路径。</p>
+<h3 id="注"><a href="#注" class="headerlink" title="注"></a>注</h3><p>form提交数据的话：要求：表单提交方式必须为 post</p>
+<p>原因：文件是二进制大体积数据，只能放在 HTTP 请求体（body）里；而 GET 没有可用的请求体，他是拼接在 url 路径之中而url 路径是有限制的</p>
+<p>要添加参数：enctype&#x3D;”multipart&#x2F;form-data”</p>
+<table>
+<thead>
+<tr>
+<th>enctype</th>
+<th>打包方式</th>
+<th>用在哪</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>application/x-www-form-urlencoded</code>（默认）</td>
+<td><code>名=值&amp;名=值</code>，特殊字符转义（空格→<code>+</code>，中文→<code>%XX</code>）</td>
+<td>普通登录、搜索表单</td>
+</tr>
+<tr>
+<td><code>multipart/form-data</code></td>
+<td>按分段格式：每项一段，带边界分隔符</td>
+<td><strong>文件上传</strong></td>
+</tr>
+<tr>
+<td><code>text/plain</code></td>
+<td>纯文本，几乎不用</td>
+<td>调试</td>
+</tr>
+</tbody></table>
+<h2 id="Commons-类库"><a href="#Commons-类库" class="headerlink" title="Commons 类库"></a>Commons 类库</h2><p>jar 包：别人写好的 Java 类，导入项目即可使用。</p>
+<p>核心两个 jar 包：</p>
+<ul>
+<li><code>commons-fileupload</code>（文件上传）</li>
+<li><code>commons-io</code>（文件读写工具）</li>
+</ul>
+<h3 id="四个核心类"><a href="#四个核心类" class="headerlink" title="四个核心类"></a>四个核心类</h3><table>
+<thead>
+<tr>
+<th>类</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DiskFileItemFactory 磁盘文件项工厂</td>
+<td>表单提交后，临时缓存数据</td>
+</tr>
+<tr>
+<td>ServletFileUpload 服务文件应用上传</td>
+<td>读取工厂缓存，解析上传数据</td>
+</tr>
+<tr>
+<td>FileItemIterator 文件迭代器</td>
+<td>服务文件应用上传得到文件迭代器的类，遍历数据的</td>
+</tr>
+<tr>
+<td>FileItemStream 文件项流</td>
+<td>每一项数据对应的流</td>
+</tr>
+</tbody></table>
+<p>引包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.commons.fileupload.FileItemIterator;</span><br><span class="line">import org.apache.commons.fileupload.FileItemStream;</span><br><span class="line">import org.apache.commons.fileupload.FileUploadException;</span><br><span class="line">import org.apache.commons.fileupload.disk.DiskFileItemFactory;</span><br><span class="line">import org.apache.commons.fileupload.servlet.ServletFileUpload;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;$Title$&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;form action=&quot;MyFile&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;input type=&quot;file&quot; name=&quot;new_file&quot;&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;button&gt;提交&lt;/button&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">  &lt;img src=&quot;img/&lt;%=request.getParameter(&quot;fileName&quot;)%&gt;&quot; alt=&quot;&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &lt;form action=&quot;MyFile2&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;input type=&quot;file&quot; name=&quot;new_file&quot;&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;button&gt;提交&lt;/button&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="基本文件上传"><a href="#基本文件上传" class="headerlink" title="基本文件上传"></a>基本文件上传</h3><p>只处理一个文件字段，保存到 Tomcat 运行目录的 <code>img</code> 下，完成后重定向回页面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet(name = &quot;MyFile&quot;, value = &quot;/MyFile&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyFile</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line">            <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. 磁盘文件项工厂：临时接收表单提交数据</span></span><br><span class="line">        <span class="type">DiskFileItemFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DiskFileItemFactory</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 服务文件应用上传：通过 factory 解析缓存的数据</span></span><br><span class="line">        <span class="type">ServletFileUpload</span> <span class="variable">upload</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServletFileUpload</span>(factory);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 3. 文件迭代器：取出解析后的数据</span></span><br><span class="line">            <span class="type">FileItemIterator</span> <span class="variable">iterator</span> <span class="operator">=</span> upload.getItemIterator(request);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 4. 文件项流：迭代器取出一条数据</span></span><br><span class="line">            <span class="type">FileItemStream</span> <span class="variable">stream</span> <span class="operator">=</span> iterator.next();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 5. 打开文件项流 → 输入流，读取数据</span></span><br><span class="line">            <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> stream.openStream();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Tomcat 运行路径（部署目录下的 img）</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">path</span> <span class="operator">=</span> request.getSession().getServletContext().getRealPath(<span class="string">&quot;img&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">fieldName</span> <span class="operator">=</span> stream.getFieldName(); <span class="comment">// 表单 name 属性，如 new_file</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> stream.getName();       <span class="comment">// 提交的文件名，如 4k.png</span></span><br><span class="line"></span><br><span class="line">            <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(path + <span class="string">&quot;\\&quot;</span> + fileName);</span><br><span class="line">            <span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(file);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 字节数组缓存每次读到的数据</span></span><br><span class="line">            <span class="type">byte</span>[] <span class="variable">bytes</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="type">int</span> size;</span><br><span class="line">            <span class="keyword">while</span> ((size = inputStream.read(bytes)) != -<span class="number">1</span>) &#123;</span><br><span class="line">                outputStream.write(bytes, <span class="number">0</span>, size);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            outputStream.close();</span><br><span class="line">            inputStream.close();</span><br><span class="line"></span><br><span class="line">            response.sendRedirect(<span class="string">&quot;index.jsp?fileName=&quot;</span> + fileName);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileUploadException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line">            <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>流程小结：</p>
+<ol>
+<li>工厂 → 上传解析器 → 迭代器 → 文件项流</li>
+<li><code>openStream()</code> 得到输入流，读上传数据</li>
+<li><code>getRealPath(&quot;img&quot;)</code> 得到服务器保存目录</li>
+<li>输出流写文件（循环 + 字节数组）</li>
+<li>关闭流，重定向并带回文件名</li>
+</ol>
+<p>注</p>
+<p>String path &#x3D; request.getSession().getServletContext().getRealPath(“img”);</p>
+<p>拆开看是四步</p>
+<table>
+<thead>
+<tr>
+<th align="left">步骤</th>
+<th align="left">方法</th>
+<th align="left">拿到什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left"><code>request</code></td>
+<td align="left">当前请求对象</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left"><code>.getSession()</code></td>
+<td align="left">当前用户的 <code>HttpSession</code></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left"><code>.getServletContext()</code></td>
+<td align="left">整个 Web 应用的 <code>ServletContext</code>（应用上下文）</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left"><code>.getRealPath(&quot;img&quot;)</code></td>
+<td align="left">把虚拟路径 <code>&quot;img&quot;</code> 转成<strong>服务器磁盘上的真实绝对路径</strong></td>
+</tr>
+</tbody></table>
+<p>img是提前创建好的，<code>getRealPath(&quot;img&quot;)</code> 只做路径翻译</p>
+<h3 id="表单字段-文件混合"><a href="#表单字段-文件混合" class="headerlink" title="表单字段 + 文件混合"></a>表单字段 + 文件混合</h3><p>一次提交可能包含普通字段和文件。用 <code>isFormField()</code> 区分：</p>
+<ul>
+<li>普通字段：字节流转字符流，再套缓冲流读取</li>
+<li>文件数据：保存到 <code>img</code>，文件名加上时间戳 + 随机数防止重名</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet(name = &quot;MyFile2&quot;, value = &quot;/MyFile2&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyFile2</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line">            <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">DiskFileItemFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DiskFileItemFactory</span>();</span><br><span class="line">        <span class="type">ServletFileUpload</span> <span class="variable">upload</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServletFileUpload</span>(factory);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">FileItemIterator</span> <span class="variable">iterator</span> <span class="operator">=</span> upload.getItemIterator(request);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (iterator.hasNext()) &#123; <span class="comment">// 有多条数据就继续遍历</span></span><br><span class="line">                <span class="type">FileItemStream</span> <span class="variable">stream</span> <span class="operator">=</span> iterator.next();</span><br><span class="line">                <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> stream.getFieldName();</span><br><span class="line">                <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> stream.getName();</span><br><span class="line"></span><br><span class="line">                <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> stream.openStream();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (stream.isFormField()) &#123;</span><br><span class="line">                    <span class="comment">// 普通数据：字节流 → 字符流（指定 utf-8）</span></span><br><span class="line">                    <span class="type">InputStreamReader</span> <span class="variable">reader</span> <span class="operator">=</span></span><br><span class="line">                            <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(inputStream, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">                    <span class="comment">// 缓冲流，提高读取效率</span></span><br><span class="line">                    <span class="type">BufferedReader</span> <span class="variable">bufferedReader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(reader);</span><br><span class="line">                    <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> bufferedReader.readLine();</span><br><span class="line">                    System.out.println(data);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 文件数据</span></span><br><span class="line">                    <span class="type">String</span> <span class="variable">path</span> <span class="operator">=</span> request.getSession()</span><br><span class="line">                            .getServletContext().getRealPath(<span class="string">&quot;img&quot;</span>);</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// 时间戳 + 随机数，避免文件重名</span></span><br><span class="line">                    <span class="type">LocalDateTime</span> <span class="variable">localDateTime</span> <span class="operator">=</span> LocalDateTime.now();</span><br><span class="line">                    <span class="type">DateTimeFormatter</span> <span class="variable">formatter</span> <span class="operator">=</span></span><br><span class="line">                            DateTimeFormatter.ofPattern(<span class="string">&quot;yyyyMMddHHmmss&quot;</span>);</span><br><span class="line">                    <span class="type">String</span> <span class="variable">timestamp</span> <span class="operator">=</span> formatter.format(localDateTime);</span><br><span class="line">                    <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">                    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> random.nextInt(<span class="number">1000</span>);</span><br><span class="line">                    value = <span class="string">&quot;测试文件_&quot;</span> + timestamp + <span class="string">&quot;_&quot;</span> + i + value;</span><br><span class="line"></span><br><span class="line">                    <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(path + <span class="string">&quot;\\&quot;</span> + value);</span><br><span class="line">                    <span class="type">int</span> size;</span><br><span class="line">                    <span class="type">byte</span>[] <span class="variable">bytes</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">                    <span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(file);</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">while</span> ((size = inputStream.read(bytes)) != -<span class="number">1</span>) &#123;</span><br><span class="line">                        outputStream.write(bytes, <span class="number">0</span>, size);</span><br><span class="line">                    &#125;</span><br><span class="line">                    outputStream.close();</span><br><span class="line">                &#125;</span><br><span class="line">                inputStream.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileUploadException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line">            <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="关键-API"><a href="#关键-API" class="headerlink" title="关键 API"></a>关键 API</h3><table>
+<thead>
+<tr>
+<th>API</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>iterator.hasNext()</code> &#x2F; <code>next()</code></td>
+<td>遍历每一项上传数据</td>
+</tr>
+<tr>
+<td><code>stream.getFieldName()</code></td>
+<td>表单的 name 属性</td>
+</tr>
+<tr>
+<td><code>stream.getName()</code></td>
+<td>上传的原始文件名</td>
+</tr>
+<tr>
+<td><code>stream.isFormField()</code></td>
+<td>true 普通字段 &#x2F; false 文件</td>
+</tr>
+<tr>
+<td><code>stream.openStream()</code></td>
+<td>打开该项的输入流</td>
+</tr>
+<tr>
+<td><code>getRealPath(&quot;img&quot;)</code></td>
+<td>服务器部署目录下 img 的绝对路径</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ol>
+<li><strong>表单编码</strong>：普通字段读取时要指定 <code>utf-8</code>，否则中文乱码。</li>
+<li><strong>资源关闭</strong>：输入流、输出流用完都要 <code>close()</code>（练习代码直接关闭；正式项目用 try-with-resources）。</li>
+<li><strong>文件重名</strong>：同一文件名会覆盖，用「前缀 + 时间戳 + 随机数 + 原文件名」处理。</li>
+<li><strong>保存路径</strong>：<code>getRealPath</code> 得到的是 Tomcat 部署目录，发布到服务器后路径会变；正式项目常配置固定上传目录。</li>
+<li><strong>依赖</strong>：项目需导入 <code>commons-fileupload</code>、<code>commons-io</code>（见 <code>web/WEB-INF/lib</code> 或模块依赖）。</li>
+<li><strong>请求方式</strong>：表单上传通常 POST；Servlet 里 <code>doPost</code> 转调 <code>doGet</code> 即可。</li>
+</ol>
+<h3 id="运行时jar包找不到"><a href="#运行时jar包找不到" class="headerlink" title="运行时jar包找不到"></a>运行时jar包找不到</h3><p>解决方案</p>
+<p><code>Ctrl+Alt+Shift+S</code>打开 Project Settings</p>
+<p>左侧选择 <strong>Artifacts</strong></p>
+<p>界面分为左右两栏</p>
+<ul>
+<li><strong>左侧（Output Layout）</strong>：打包输出结构（就是最终 war 里面的目录结构）</li>
+<li><strong>右侧（Available Elements）</strong>：项目可用资源、依赖包</li>
+</ul>
+<p>把外部 jar 添加进 WEB-INF&#x2F;lib（重点！）</p>
+<p>展开右侧 <code>Available Elements</code> → 找到你的外部库</p>
+<p>选中 jar，<strong>右键 → Put into WEB-INF&#x2F;lib</strong>  操作之后，左侧 Output Layout 的 <code>WEB-INF/lib</code> 下面就会出现这 3 个 jar。(双击jar包也行)</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/10/15/java-web%E5%BC%80%E5%8F%91-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">http://example.com/2026/10/15/java-web%E5%BC%80%E5%8F%91-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/web%E5%BC%80%E5%8F%91/"># web开发</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/10/19/java-web%E5%BC%80%E5%8F%91-MVC%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/">MVC开发模式</a>
+            
+            
+            <a class="next" rel="next" href="/2026/10/12/java-web%E5%BC%80%E5%8F%91-IO%E6%B5%81/">IO流</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

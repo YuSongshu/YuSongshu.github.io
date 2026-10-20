@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>逆向案例 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">逆向案例</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 24, 2026&nbsp;&nbsp;21:52:04</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E7%88%AC%E8%99%AB/">爬虫</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="逆向案例"><a href="#逆向案例" class="headerlink" title="逆向案例"></a>逆向案例</h1><h2 id="深交所"><a href="#深交所" class="headerlink" title="深交所"></a>深交所</h2><p>网址：<a target="_blank" rel="noopener" href="https://owssso.szse.cn/sso/login;jsessionid=A2D0B28065A173D92CB8CC0DFC5D45D5?service=https://www.szse.cn/application/passCenter/pass/&locale=zh">深交所投资者服务通行证</a> </p>
+<p>接口：<a target="_blank" rel="noopener" href="https://owssso.szse.cn/sso/login;jsessionid=A2D0B28065A173D92CB8CC0DFC5D45D5?service=https://www.szse.cn/application/passCenter/pass/&locale=zh">https://owssso.szse.cn/sso/login;jsessionid=A2D0B28065A173D92CB8CC0DFC5D45D5?service=https://www.szse.cn/application/passCenter/pass/&amp;locale=zh</a></p>
+<p>需求：password &#x3D;》MTIzNDU2</p>
+<p>最终要实现的目的：让我们输入的 “123456” 能变成 “MTIzNDU2”。</p>
+<p>明文 &#x3D;》明文</p>
+<h3 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h3><ol>
+<li><p>定位：</p>
+<p>搜索【全局搜索】关键字：【password】</p>
+<ul>
+<li>排除</li>
+<li>排除不了的打断点，执行</li>
+<li>分析执行到的地方的数据</li>
+<li>跟着代码调试，直到找到加密的位置</li>
+</ul>
+</li>
+<li><p>实现</p>
+<p>扣代码【必须】：</p>
+<ul>
+<li><p>将找到的代码复制到本地，先补全参数，再补全函数【根据执行提示报错补全代码】</p>
+</li>
+<li><p>函数：</p>
+<p>1）将函数<code>名称</code>粘贴到控制台打印，点击打印出来的内容；</p>
+<p>2）将鼠标放到函数名称位置，在弹出的框框中点击蓝色字体；</p>
+<p>3）向下的箭头进入函数；</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="网易云评论"><a href="#网易云评论" class="headerlink" title="网易云评论"></a>网易云评论</h2><p>网址：<a target="_blank" rel="noopener" href="https://music.163.com/#/song?id=204072">爱的交响 - 张伦硕 - 单曲 - 网易云音乐</a> </p>
+<p>需求：获取歌曲的评论</p>
+<p>接口：<a target="_blank" rel="noopener" href="https://music.163.com/weapi/comment/resource/comments/get?csrf_token=264449941cdd556f54939af1d085a1f2">https://music.163.com/weapi/comment/resource/comments/get?csrf_token=264449941cdd556f54939af1d085a1f2</a></p>
+<h3 id="定位请求"><a href="#定位请求" class="headerlink" title="定位请求"></a>定位请求</h3><p>搜索歌曲关键字定位：<a target="_blank" rel="noopener" href="https://music.163.com/weapi/comment/resource/comments/get?csrf_token=264449941cdd556f54939af1d085a1f2">https://music.163.com/weapi/comment/resource/comments/get?csrf_token=264449941cdd556f54939af1d085a1f2</a></p>
+<p>分析翻页规律：</p>
+<ul>
+<li><p>第二页：</p>
+<p><img src="/img/notes/python-%E7%88%AC%E8%99%AB-%E9%80%86%E5%90%91%E6%A1%88%E4%BE%8B/image-20251219203015315.png" alt="image-20251219203015315"></p>
+</li>
+<li><p>第三页：</p>
+<p><img src="/img/notes/python-%E7%88%AC%E8%99%AB-%E9%80%86%E5%90%91%E6%A1%88%E4%BE%8B/image-20251219203027185.png" alt="image-20251219203027185"></p>
+</li>
+<li><p>第四页：</p>
+<p><img src="/img/notes/python-%E7%88%AC%E8%99%AB-%E9%80%86%E5%90%91%E6%A1%88%E4%BE%8B/image-20251219203038573.png" alt="image-20251219203038573"></p>
+</li>
+</ul>
+<p>没法分析规律【加密了 &#x3D;》如何加密的】。</p>
+<p>猜测加密之前的明文里面应该有包含与页数相关的内容。</p>
+<h3 id="逆向-1"><a href="#逆向-1" class="headerlink" title="逆向"></a>逆向</h3><h4 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h4><ol>
+<li><p>确定逆向数据</p>
+<p><img src="/img/notes/python-%E7%88%AC%E8%99%AB-%E9%80%86%E5%90%91%E6%A1%88%E4%BE%8B/image-20251219203436942.png" alt="image-20251219203436942"></p>
+<p>上面的参数中：</p>
+<ul>
+<li><p>csrf_token 是固定死的【多次请求都不会发生变化】</p>
+</li>
+<li><p>如果一个参数可以随意设置，都可以得到结果【不需要逆向】</p>
+<p>控制变量法，每次测试后只能修改一个，其他的保持不变。</p>
+</li>
+</ul>
+<p>确定 <code>params</code> 和 <code>encSecKey</code>。</p>
+</li>
+<li><p>定位参数位置</p>
+<p>全局搜索：</p>
+<ul>
+<li><p>搜索的时候尽量搜不常见的关键字</p>
+</li>
+<li><p>缩小范围</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">encSecKey</span>: </span><br><span class="line">encSecKey= </span><br></pre></td></tr></table></figure>
+
+<p>密文是值，要赋值给变量【属性，参数】，这个参数才能得到这个值。</p>
+</li>
+</ul>
+<p>搜不到结果怎么办？【后面定位里面讲】</p>
+</li>
+<li><p>搜索到的所有可疑的地方打断点，继续执行程序</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bVC0x = <span class="variable language_">window</span>.<span class="title function_">asrsea</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(i1x), <span class="title function_">bss6m</span>([<span class="string">&quot;流泪&quot;</span>, <span class="string">&quot;强&quot;</span>]), <span class="title function_">bss6m</span>(<span class="title class_">Af6Z</span>.<span class="property">md</span>), <span class="title function_">bss6m</span>([<span class="string">&quot;爱心&quot;</span>, <span class="string">&quot;女孩&quot;</span>, <span class="string">&quot;惊恐&quot;</span>, <span class="string">&quot;大笑&quot;</span>]));</span><br><span class="line">e1x.<span class="property">data</span> = j1x.<span class="title function_">cr2x</span>(&#123;</span><br><span class="line">    <span class="attr">params</span>: bVC0x.<span class="property">encText</span>,</span><br><span class="line">    <span class="attr">encSecKey</span>: bVC0x.<span class="property">encSecKey</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>通过测试，发现就是这一个地方，删除其他断点。</p>
+<p>发现这一个地方再点击下一页的时候，会被断三次？</p>
+<p>断点这个地方被调用了多次【函数的多次调用，多次请求】 &#x3D;》确定哪一次是翻页那一次的。</p>
+<p>​	查找调试中有没有与需要发送请求那个相关的信息【参数密文、参数明文、url、关键字】。</p>
+<p>注意事项：当前网站有缓存，点击过的页面，需要刷新之后再点击才会进入翻页断点部分。</p>
+</li>
+</ol>
+<h4 id="扣代码"><a href="#扣代码" class="headerlink" title="扣代码"></a>扣代码</h4><p>参数：</p>
+<p>尽量将代码简化，能固定的固定，不能固定的去找。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bVC0x = <span class="variable language_">window</span>.<span class="title function_">asrsea</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(i1x), <span class="title function_">bss6m</span>([<span class="string">&quot;流泪&quot;</span>, <span class="string">&quot;强&quot;</span>]), <span class="title function_">bss6m</span>(<span class="title class_">Af6Z</span>.<span class="property">md</span>), <span class="title function_">bss6m</span>([<span class="string">&quot;爱心&quot;</span>, <span class="string">&quot;女孩&quot;</span>, <span class="string">&quot;惊恐&quot;</span>, <span class="string">&quot;大笑&quot;</span>]));</span><br><span class="line">e1x.<span class="property">data</span> = j1x.<span class="title function_">cr2x</span>(&#123;</span><br><span class="line">    <span class="attr">params</span>: bVC0x.<span class="property">encText</span>,</span><br><span class="line">    <span class="attr">encSecKey</span>: bVC0x.<span class="property">encSecKey</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>修改：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i1x = &#123;</span><br><span class="line">    <span class="string">&quot;rid&quot;</span>: <span class="string">&quot;R_SO_4_204072&quot;</span>,</span><br><span class="line">    <span class="string">&quot;threadId&quot;</span>: <span class="string">&quot;R_SO_4_204072&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pageNo&quot;</span>: <span class="string">&quot;3&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pageSize&quot;</span>: <span class="string">&quot;20&quot;</span>,</span><br><span class="line">    <span class="string">&quot;cursor&quot;</span>: <span class="string">&quot;1566375102350&quot;</span>,</span><br><span class="line">    <span class="string">&quot;offset&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;orderType&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;csrf_token&quot;</span>: <span class="string">&quot;264449941cdd556f54939af1d085a1f2&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bVC0x = <span class="variable language_">window</span>.<span class="title function_">asrsea</span>(</span><br><span class="line">    <span class="comment">// i1x =&gt; 翻页信息</span></span><br><span class="line">    <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(i1x)</span><br><span class="line">    <span class="comment">// 函数（固定的数组） =》</span></span><br><span class="line">    <span class="comment">// , bss6m([&quot;流泪&quot;, &quot;强&quot;])</span></span><br><span class="line">    , <span class="string">&#x27;010001&#x27;</span></span><br><span class="line">    <span class="comment">// , bss6m(Af6Z.md)</span></span><br><span class="line">    , <span class="string">&#x27;00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7b725152b3ab17a876aea8a5aa76d2e417629ec4ee341f56135fccf695280104e0312ecbda92557c93870114af6c9d05c4f7f0c3685b7a46bee255932575cce10b424d813cfe4875d3e82047b97ddef52741d546b8e289dc6935b3ece0462db0a22b8e7&#x27;</span></span><br><span class="line">    <span class="comment">// , bss6m([&quot;爱心&quot;, &quot;女孩&quot;, &quot;惊恐&quot;, &quot;大笑&quot;])</span></span><br><span class="line">    , <span class="string">&#x27;0CoJUm6Qyw8W8jud&#x27;</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">get_params</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">params</span>: bVC0x.<span class="property">encText</span>,</span><br><span class="line">        <span class="attr">encSecKey</span>: bVC0x.<span class="property">encSecKey</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">get_params</span>());</span><br></pre></td></tr></table></figure>
+
+<p>函数：</p>
+<ul>
+<li><p>找 window.asrsea 函数</p>
+</li>
+<li><p>d 函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">d</span>(<span class="params">d, e, f, g</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> h = &#123;&#125;</span><br><span class="line">      , i = <span class="title function_">a</span>(<span class="number">16</span>);</span><br><span class="line">    <span class="keyword">return</span> h.<span class="property">encText</span> = <span class="title function_">b</span>(d, g),</span><br><span class="line">    h.<span class="property">encText</span> = <span class="title function_">b</span>(h.<span class="property">encText</span>, i),</span><br><span class="line">    h.<span class="property">encSecKey</span> = <span class="title function_">c</span>(i, e, f),</span><br><span class="line">    h</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将代码格式修改</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bVC0x = <span class="title function_">d</span>(</span><br><span class="line">    <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(i1x)</span><br><span class="line">    , <span class="string">&#x27;010001&#x27;</span></span><br><span class="line">    , <span class="string">&#x27;00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7b725152b3ab17a876aea8a5aa76d2e417629ec4ee341f56135fccf695280104e0312ecbda92557c93870114af6c9d05c4f7f0c3685b7a46bee255932575cce10b424d813cfe4875d3e82047b97ddef52741d546b8e289dc6935b3ece0462db0a22b8e7&#x27;</span></span><br><span class="line">    , <span class="string">&#x27;0CoJUm6Qyw8W8jud&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>执行程序之后，根据提示缺啥补啥：</p>
+<ol>
+<li><p>ReferenceError: a is not defined</p>
+<p>找到 a 所在的位置，发现是一个函数，根据找函数的方式去找。</p>
+<p>找到的代码尽量按照位置存放。如果不知道，尽量放到调用的上面。</p>
+</li>
+<li><p>ReferenceError: CryptoJS is not defined</p>
+<p>看代码发现是以个对象。</p>
+<p>变量的定义方式：</p>
+<ul>
+<li>var</li>
+<li>，</li>
+</ul>
+</li>
+<li><p>TypeError: Cannot read properties of undefined (reading ‘encrypt’)</p>
+<p>谁没有定义？</p>
+<p>在错误位置打断点，在控制台打印分析谁没定义。</p>
+<p>CryptoJS.AES 没定义。</p>
+</li>
+<li><p>ReferenceError: setMaxDigits is not defined</p>
+<p>往后，是大批量的函数扣取：</p>
+<p>前面是从 CryptoJS 后开始：</p>
+<p><img src="/img/notes/python-%E7%88%AC%E8%99%AB-%E9%80%86%E5%90%91%E6%A1%88%E4%BE%8B/image-20251219215200177.png" alt="image-20251219215200177"></p>
+</li>
+<li><p>ReferenceError: bitsPerDigit is not defined</p>
+<p>变量</p>
+</li>
+<li><p>TypeError: Cannot read properties of undefined (reading ‘0’)</p>
+</li>
+</ol>
+<p>注意事项：</p>
+<ul>
+<li><p>将函数在控制台打印：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ƒ <span class="title function_">stringify</span>(<span class="params"></span>) &#123; [native code] &#125;</span><br></pre></td></tr></table></figure>
+
+<p>代表是本地【内置】函数，不需要扣。</p>
+</li>
+<li><p>找参数、函数，一定是要将程序执行到对应的位置之后再查看。</p>
+</li>
+<li><p>并不是逆向得到了密文就表示成功【将密文给 python 去发送请求，并且能正确得到结果才是成功。】</p>
+</li>
+</ul>
+<p>快速定位到代码行数：</p>
+<ul>
+<li>ctrl+g：输入函数，回车</li>
+</ul>
+<h3 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h3><p>cursor值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;rid&quot;: &quot;R_SO_4_204072&quot;,</span><br><span class="line">   &quot;threadId&quot;: &quot;R_SO_4_204072&quot;,</span><br><span class="line">   &quot;pageNo&quot;: &quot;4&quot;,</span><br><span class="line">   &quot;pageSize&quot;: &quot;20&quot;,</span><br><span class="line">   &quot;cursor&quot;: &quot;1531897295401&quot;,</span><br><span class="line">   &quot;offset&quot;: &quot;0&quot;,</span><br><span class="line">   &quot;orderType&quot;: &quot;1&quot;,</span><br><span class="line">   &quot;csrf_token&quot;: &quot;264449941cdd556f54939af1d085a1f2&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>它会随翻页而变化，可知它能在 <strong>网络</strong> 的 <strong>响应</strong> 中找到</p>
+<h2 id="艺恩"><a href="#艺恩" class="headerlink" title="艺恩"></a>艺恩</h2><h3 id="需求-响应文本解密定位"><a href="#需求-响应文本解密定位" class="headerlink" title="需求:响应文本解密定位"></a>需求:响应文本解密定位</h3><p>网址：<a target="_blank" rel="noopener" href="https://www.endata.com.cn/Video/index.html">艺恩-数据智能服务商_视频播映指数</a></p>
+<p>接口：<a target="_blank" rel="noopener" href="https://www.endata.com.cn/API/GetData.ashx">https://www.endata.com.cn/API/GetData.ashx</a></p>
+<p>1.根据 <strong>网络</strong> 定位请求</p>
+<p>2.在 <strong>发起程序</strong> 中找到调用堆栈</p>
+<p>3.根据堆栈特性找到发送请求的函数（即最上方的）</p>
+<p>4.分析找到密文，进而找到解密函数</p>
+<h2 id="极志愿【异步】"><a href="#极志愿【异步】" class="headerlink" title="极志愿【异步】"></a>极志愿【异步】</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>网址：<a target="_blank" rel="noopener" href="https://www.jizhy.com/42/search?searchVal=%E5%AD%A6%E9%99%A2">学院-院校库专业库-极志愿</a></p>
+<p>接口：<a target="_blank" rel="noopener" href="https://www.jizhy.com/searchcenter/search">https://www.jizhy.com/searchcenter/search</a></p>
+<p>需求：参数逆向定位【sign】</p>
+<h3 id="promise-then"><a href="#promise-then" class="headerlink" title="promise.then"></a>promise.then</h3><p>官网：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise - JavaScript | MDN</a> </p>
+<p>异步。</p>
+<ul>
+<li><p><strong>Promise.reject()</strong> 静态方法返回一个已拒绝（rejected）的 <code>Promise</code> 对象，拒绝原因为给定的参数。</p>
+</li>
+<li><p><strong>Promise.resolve()</strong> 静态方法以给定值“解决（resolve）”一个 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a>。如果该值本身就是一个 Promise，那么该 Promise 将被返回；如果该值是一个 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise#thenable">thenable</a> 对象，<code>Promise.resolve()</code> 将调用其 <code>then()</code> 方法及其两个回调函数；否则，返回的 Promise 将会以该值兑现。</p>
+<p>该函数将嵌套的类 Promise 对象（例如，一个将被兑现为另一个 Promise 对象的 Promise 对象）展平，转化为单个 Promise 对象，其兑现值为一个非 thenable 值。</p>
+</li>
+<li><p>then：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> 实例的 <strong><code>then()</code></strong> 方法最多接受两个参数：用于 <code>Promise</code> 兑现和拒绝情况的回调函数。它立即返回一个等效的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> 对象，允许你链接到其他 Promise 方法，从而实现<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises#%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8">链式调用</a>。</p>
+<p>then 的第一个参数是成功回调函数，第二个是失败回调函数。</p>
+</li>
+</ul>
+<p>注：</p>
+<p>所以要注意then</p>
+<h3 id="定位-1"><a href="#定位-1" class="headerlink" title="定位"></a>定位</h3><ol>
+<li><p>确定加密位置【明文密文】</p>
+<ul>
+<li><p>上：上面的最下面那个都是密文，所以是在更下面实现的加密</p>
+</li>
+<li><p>下：打断点，然后一个个栈查看</p>
+</li>
+<li><p>中：在下的最上面个栈打断点，执行过去</p>
+<p>n &#x3D; n.then(e.shift(), e.shift());</p>
+</li>
+</ul>
+</li>
+<li><p>n &#x3D; n.then(e.shift(), e.shift());</p>
+<p>n.then 需要两个参数【回调函数】</p>
+<p>e.shift() 是从数组里面弹出一个元素。</p>
+<p>在控制台打印数组，对所有的函数打断点，继续执行。</p>
+</li>
+<li><p>可疑 1 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">onRequest</span>: <span class="keyword">function</span>(<span class="params">t</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>((<span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">t</span>(e) || e</span><br><span class="line">    &#125;</span><br><span class="line">                                  ))</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>这里的 t(e) 有可能是加密？？？</p>
+</li>
+<li><p>进入 t 函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">e.<span class="title function_">onRequest</span>((<span class="keyword">function</span>(<span class="params">t</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> e = t.<span class="property">method</span>;</span><br><span class="line">    <span class="string">&quot;get&quot;</span> === e ? t.<span class="property">params</span> = <span class="title class_">Qt</span>(t.<span class="property">params</span>) : <span class="string">&quot;post&quot;</span> === e &amp;&amp; (t.<span class="property">data</span> = <span class="title class_">Qt</span>(t.<span class="property">data</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Qt(t.params) 部分执行之后就能得到加密的密文，确定加密位置。</p>
+</li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2026/02/24/python-%E7%88%AC%E8%99%AB-%E9%80%86%E5%90%91%E6%A1%88%E4%BE%8B/">http://example.com/2026/02/24/python-%E7%88%AC%E8%99%AB-%E9%80%86%E5%90%91%E6%A1%88%E4%BE%8B/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%88%AC%E8%99%AB/"># 爬虫</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/02/24/python-%E7%88%AC%E8%99%AB-webpack_%E2%80%94%E2%80%94/">webpack ——</a>
+            
+            
+            <a class="next" rel="next" href="/2026/02/24/python-%E7%88%AC%E8%99%AB-%E8%AE%BF%E9%97%AE%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99%E7%9A%84%E6%B5%81%E7%A8%8B/">访问一个网站的流程</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
