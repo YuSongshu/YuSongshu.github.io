@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>链家分析及可视化 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">链家分析及可视化</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">May 28, 2026&nbsp;&nbsp;21:43:27</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
+                            
+                                <a href="/categories/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%AE%9E%E6%88%98/">实战</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="18-链家分析及可视化"><a href="#18-链家分析及可视化" class="headerlink" title="18_链家分析及可视化"></a>18_链家分析及可视化</h1><p>1 确立目标  2 获取数据  3 梳理数据  4 数据清洗  5 数据可视化  6 数据分析 7 数据报告 8 数据运营 9 数据复盘</p>
+<h2 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">from pyecharts.charts import *</span><br><span class="line">from pyecharts import options as opts</span><br><span class="line">from pyecharts.commons.utils import JsCode</span><br><span class="line">from jieba import posseg as psg</span><br><span class="line">import collections</span><br><span class="line"></span><br><span class="line">from pyecharts.globals import CurrentConfig, NotebookType</span><br><span class="line">CurrentConfig.NOTEBOOK_TYPE = NotebookType.JUPYTER_NOTEBOOK</span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<p>import collections：python 内置的数据结构工具库里面有个超级好用的 <strong>Counter</strong> 计数器，能把列表里每个单词出现多少次全部统计出来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">word_list = [&quot;我&quot;, &quot;你&quot;, &quot;我&quot;, &quot;他&quot;, &quot;我&quot;, &quot;你&quot;, &quot;我&quot;, &quot;苹果&quot;, &quot;香蕉&quot;]</span><br><span class="line">data_pair = collections.Counter(word_list).most_common(3)</span><br><span class="line">print(data_pair)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[(&#x27;我&#x27;, 4), (&#x27;你&#x27;, 2), (&#x27;他&#x27;, 1)]</span><br></pre></td></tr></table></figure>
+
+<p>collections.Counter 常用方法 </p>
+<p><strong>most_common(n)</strong> ：取前 N 个高频元素</p>
+<p><strong>elements()</strong> ：把计数展开成原始列表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line">cnt = Counter([&#x27;a&#x27;,&#x27;a&#x27;,&#x27;b&#x27;])</span><br><span class="line">print(list(cnt.elements()))</span><br><span class="line"># 输出: [&#x27;a&#x27;, &#x27;a&#x27;, &#x27;b&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p> <strong>total()</strong> ：所有计数总和</p>
+<p><strong>subtract()</strong> ：批量减去计数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cnt1 = Counter(a=3, b=2)</span><br><span class="line">cnt2 = Counter(a=1, b=1)</span><br><span class="line">cnt1.subtract(cnt2)</span><br><span class="line"># cnt1 变成 Counter(&#123;&#x27;a&#x27;:2, &#x27;b&#x27;:1&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>**update()**：批量增加计数（同上理）</p>
+<p><code>Counter</code>还 支持<strong>加减并交</strong>运算</p>
+<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><h3 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv(r&#x27;D:\博客\python\数据分析\实战\辅助图片等\18\shenzhen.csv&#x27;,encoding=&#x27;gbk&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="去除异常值"><a href="#去除异常值" class="headerlink" title="去除异常值"></a>去除异常值</h3><p>去掉一条面积10000+平米的房源记录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = data[data[&#x27;hourseSize&#x27;] &lt; 10000]   # 去除异常值  50~200   </span><br><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h2><p>1.房源面积-总价散点图</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">from pyecharts.globals import ThemeType</span><br><span class="line">scatter = (Scatter(init_opts=opts.InitOpts(theme=ThemeType.DARK))</span><br><span class="line">           .add_xaxis(data[&#x27;hourseSize&#x27;].to_list())</span><br><span class="line">           .add_yaxis(&quot;房价&quot;, data[&#x27;total_price&#x27;].to_list())</span><br><span class="line">           .set_series_opts(label_opts=opts.LabelOpts(is_show=False),</span><br><span class="line">                           markpoint_opts=opts.MarkPointOpts(data=[opts.MarkPointItem(type_=&quot;max&quot;, name=&quot;最大值&quot;),]))</span><br><span class="line">           .set_global_opts(</span><br><span class="line">               legend_opts=opts.LegendOpts(is_show=True),</span><br><span class="line">               title_opts=opts.TitleOpts(title=&quot;深圳二手房 总价-面积 散点图&quot;),</span><br><span class="line">               xaxis_opts=opts.AxisOpts(</span><br><span class="line">                   name=&#x27;面积&#x27;,</span><br><span class="line">                   # 设置坐标轴为数值类型</span><br><span class="line">                   type_=&quot;value&quot;, </span><br><span class="line">                   # 不显示分割线</span><br><span class="line">                   splitline_opts=opts.SplitLineOpts(is_show=True)),</span><br><span class="line">               yaxis_opts=opts.AxisOpts(</span><br><span class="line">                   name=&#x27;总价&#x27;,</span><br><span class="line">                   name_location=&#x27;middle&#x27;,</span><br><span class="line">                   # 设置坐标轴为数值类型</span><br><span class="line">                   type_=&quot;value&quot;,</span><br><span class="line">                   # 默认为False表示起始为0</span><br><span class="line">                   is_scale=True,</span><br><span class="line">                   splitline_opts=opts.SplitLineOpts(is_show=False),),</span><br><span class="line">               visualmap_opts=opts.VisualMapOpts(is_show=True, type_=&#x27;color&#x27;, min_=100, max_=1000)</span><br><span class="line">    ))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">scatter.render_notebook() </span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E5%AE%9E%E6%88%98-%E9%93%BE%E5%AE%B6%E5%88%86%E6%9E%90%E5%8F%8A%E5%8F%AF%E8%A7%86%E5%8C%96/01.png" alt="01"></p>
+<p>2.均价最贵的10个小区（售房源至少3套才统计）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">temp=data.groupby([&#x27;community&#x27;])[&#x27;unit_price&#x27;].agg([&#x27;mean&#x27;,&#x27;count&#x27;,&#x27;min&#x27;,&#x27;max&#x27;]).reset_index()</span><br><span class="line"></span><br><span class="line">bar = (Bar(init_opts=opts.InitOpts(theme=&#x27;dark&#x27;))</span><br><span class="line">       .add_xaxis(temp[temp[&quot;count&quot;]&gt;=3].sort_values(&#x27;mean&#x27;,ascending=True)[&#x27;community&#x27;].values[0:10].tolist())</span><br><span class="line">       .add_yaxis(&#x27;二手房均价&#x27;, temp[temp[&quot;count&quot;]&gt;=3].sort_values(&#x27;mean&#x27;,ascending=True)[&#x27;mean&#x27;].values[0:10].astype(int).tolist())</span><br><span class="line">       .set_series_opts(label_opts=opts.LabelOpts(is_show=True, </span><br><span class="line">                                                       position=&#x27;insideRight&#x27;,</span><br><span class="line">                                                       font_style=&#x27;italic&#x27;),</span><br><span class="line">                            itemstyle_opts=opts.ItemStyleOpts(</span><br><span class="line">                                color=JsCode(&quot;&quot;&quot;new echarts.graphic.LinearGradient(1, 0, 0, 0, </span><br><span class="line">                                             [&#123;</span><br><span class="line">                                                 offset: 0,</span><br><span class="line">                                                 color: &#x27;rgb(0,206,209)&#x27;</span><br><span class="line">                                             &#125;, &#123;</span><br><span class="line">                                                 offset: 1,</span><br><span class="line">                                                 color: &#x27;rgb(218,165,32)&#x27;</span><br><span class="line">                                             &#125;])&quot;&quot;&quot;))</span><br><span class="line">                            )</span><br><span class="line">       .set_global_opts(</span><br><span class="line">           title_opts=opts.TitleOpts(title=&quot;深圳二手房均价TOP 10小区&quot;),</span><br><span class="line">           legend_opts=opts.LegendOpts(is_show=False),</span><br><span class="line">           tooltip_opts=opts.TooltipOpts(formatter=&#x27;&#123;b&#125;:&#123;c&#125;万元&#x27;),</span><br><span class="line">           xaxis_opts=opts.AxisOpts(min_=14),</span><br><span class="line">       )</span><br><span class="line">       .reversal_axis()</span><br><span class="line">      )</span><br><span class="line"></span><br><span class="line">bar.render_notebook()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E5%AE%9E%E6%88%98-%E9%93%BE%E5%AE%B6%E5%88%86%E6%9E%90%E5%8F%8A%E5%8F%AF%E8%A7%86%E5%8C%96/02.png" alt="02"></p>
+<p>3.标题文本词云图</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">word_list = []</span><br><span class="line">stop_words = [&quot;花园&quot;,&quot;业主&quot;]</span><br><span class="line">string =  str(&#x27;&#x27;.join([i for i in data[&#x27;title&#x27;] if isinstance(i, str)]))   # isinstance 验证是否是字符串</span><br><span class="line"></span><br><span class="line">words = psg.cut(string)</span><br><span class="line">for x in words:</span><br><span class="line">    </span><br><span class="line">    if len(x.word)==1:                     # x.word实际中文词和英文词</span><br><span class="line">        pass</span><br><span class="line">    elif x.flag in (&#x27;m&#x27;, &#x27;x&#x27;):             # m 数词:1 2 3 一 二 三等             x 虚词：! ? # @ 等</span><br><span class="line">        pass</span><br><span class="line">    elif x.word in stop_words:</span><br><span class="line">        pass</span><br><span class="line">    else:</span><br><span class="line">        word_list.append(x.word)</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">data_pair = collections.Counter(word_list).most_common(100)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">wc = (WordCloud()</span><br><span class="line">      .add(&quot;&quot;, data_pair, word_size_range=[20, 100], shape=&#x27;triangle&#x27;)</span><br><span class="line">      .set_global_opts(title_opts=opts.TitleOpts(title=&quot;房源描述词云图&quot;))</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">wc.render_notebook()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E5%AE%9E%E6%88%98-%E9%93%BE%E5%AE%B6%E5%88%86%E6%9E%90%E5%8F%8A%E5%8F%AF%E8%A7%86%E5%8C%96/03.png" alt="03"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://yusongshu.github.io/2026/05/28/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%AE%9E%E6%88%98/%E9%93%BE%E5%AE%B6%E5%88%86%E6%9E%90%E5%8F%8A%E5%8F%AF%E8%A7%86%E5%8C%96/">https://yusongshu.github.io/2026/05/28/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%AE%9E%E6%88%98/%E9%93%BE%E5%AE%B6%E5%88%86%E6%9E%90%E5%8F%8A%E5%8F%AF%E8%A7%86%E5%8C%96/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%AE%9E%E6%88%98/"># 实战</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/05/30/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E5%B0%81%E8%A3%85/">封装</a>
+            
+            
+            <a class="next" rel="next" href="/2026/05/28/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%AE%9E%E6%88%98/%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9/">旅游景点</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

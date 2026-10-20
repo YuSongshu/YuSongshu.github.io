@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>if判断 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">if判断</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 16, 2026&nbsp;&nbsp;0:58:29</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">python基础语法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="08-if判断——"><a href="#08-if判断——" class="headerlink" title="08_if判断——"></a>08_if判断——</h1><h2 id="1-单独的if语句"><a href="#1-单独的if语句" class="headerlink" title="1. 单独的if语句"></a>1. 单独的if语句</h2><h3 id="1-1-含义"><a href="#1-1-含义" class="headerlink" title="1.1 含义"></a>1.1 含义</h3><p>if 语句是Python中实现条件判断的关键工具。</p>
+<h3 id="1-2-语法格式"><a href="#1-2-语法格式" class="headerlink" title="1.2 语法格式"></a>1.2 语法格式</h3><p>if 条件表达式:</p>
+<p>条件成立时执行的代码块</p>
+<p>应用：检查温度是否高于20度，满足条件则输出穿衣建议。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">temperature = <span class="number">15</span>		<span class="comment">#定义变量保存温度</span></span><br><span class="line"><span class="keyword">if</span> temperature &gt; <span class="number">20</span>:</span><br><span class="line"><span class="comment"># 如果条件为真(即温度大于20度)，则执行这个代码块，否则不执行</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;天气较热，请穿凉爽的衣服~&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;哈哈哈&quot;</span>)    <span class="comment"># 没有缩进  和if语句无关</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-作用"><a href="#1-3-作用" class="headerlink" title="1.3 作用"></a>1.3 作用</h3><p>if语句允许程序在满足特定条件时执行特定的代码块，如果条件不满足(即条件表达式的结果为False)，则程序会跳过该代码块，继续执行if语句之后的代码。</p>
+<h3 id="1-4-注意点"><a href="#1-4-注意点" class="headerlink" title="1.4 注意点"></a>1.4 注意点</h3><p>缩进：四个空格&#x2F;Tab补全；<br>缩进后的代码，缩进位置要一致；<br>判断条件执行之后，自动转换成布尔值</p>
+<h2 id="2-if-else结构-（二选一）"><a href="#2-if-else结构-（二选一）" class="headerlink" title="2.if-else结构 （二选一）"></a>2.if-else结构 （二选一）</h2><ol>
+<li>语法格式<br>if 条件表达式:<br>​    条件成立时执行的代码块<br>else:<br>​    条件不成立时执行的代码块</li>
+</ol>
+<p>应用:检查一个人的年龄并根据其是否成年来输出相应的消息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">16</span></span><br><span class="line"><span class="keyword">if</span> age &gt;= <span class="number">18</span>:				<span class="comment">#检查年龄是否大于或等于18岁</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;你已经成年了.&quot;</span>)	<span class="comment">#如果条件为True(即年龄大于或等于18岁),则执行这个代码块</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;你还未成年呢.&quot;</span>)	<span class="comment">#如果条件为False(即年龄小于18岁),则执行这个代码块</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="3-三元表达式"><a href="#3-三元表达式" class="headerlink" title="3. 三元表达式"></a>3. 三元表达式</h2><h3 id="3-1-作用"><a href="#3-1-作用" class="headerlink" title="3.1 作用"></a>3.1 作用</h3><p>通过允许在一行代码中完成条件判断和值的选择,显著的减少了需要编写的代码量,这种简洁性使得代码更加紧凑,减少了冗余,并且提高了可读性.当处理简单的条件逻辑时,使用三元表达式可以使代码更加清晰明了.</p>
+<h3 id="3-2-格式"><a href="#3-2-格式" class="headerlink" title="3.2 格式"></a>3.2 格式</h3><p>为真结果 if 条件 else 为假结果</p>
+<p>应用:检查一个人的年龄并根据其是否成年来输出相应的消息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">16</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;你已经成年了.&quot;</span>) <span class="keyword">if</span> age &gt;= <span class="number">18</span> <span class="keyword">else</span> <span class="built_in">print</span>(<span class="string">&quot;你还未成年呢.&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;你已经成年了.&quot;</span> <span class="keyword">if</span> age &gt;= <span class="number">18</span> <span class="keyword">else</span> <span class="string">&quot;你还未成年呢.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>注意:当条件逻辑复杂\需要执行多个语句\嵌套的三元表达式时,更推荐使用if-else或其他结构.</p>
+<h2 id="4-if-elif-多选一"><a href="#4-if-elif-多选一" class="headerlink" title="4. if-elif    (多选一)"></a>4. if-elif    (多选一)</h2><h3 id="4-1-格式"><a href="#4-1-格式" class="headerlink" title="4.1 格式"></a>4.1 格式</h3><p>if 条件表达式1:<br>​    条件1成立时执行的代码块<br>elif 条件表达式2:<br>​    条件2成立时执行的代码块<br>elif 条件表达式3:<br>​    条件3成立时执行的代码块<br>…  		# elif没有数量限制,可以根据需要添加多个elif语句来检查多个条件<br>else:	#else可以不用，但若上述条件中都未通过则什么都不会输出<br>​    所有条件都不成立时执行的代码块</p>
+<p>应用:检查天气情况,并根据结果输出相应的穿衣建议</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># # 定义变量保存天气情况</span></span><br><span class="line">weather = <span class="built_in">input</span>(<span class="string">&quot;请输入天气:&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> weather == <span class="string">&quot;晴天&quot;</span>:</span><br><span class="line"><span class="comment"># 如果天气为&quot;晴天&quot;,则执行这个代码块</span></span><br><span class="line">   	<span class="built_in">print</span>(<span class="string">&quot;今天阳光明媚,建议穿短袖和短裤.&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> weather == <span class="string">&quot;多云天&quot;</span>:</span><br><span class="line"><span class="comment"># 如果天气为&quot;多云天&quot;,则执行这个代码块</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;今天多云,建议穿轻便的外套和长裤.&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> weather == <span class="string">&quot;雨天&quot;</span>:</span><br><span class="line"><span class="comment"># 如果天气为&quot;雨天&quot;,则执行这个代码块</span></span><br><span class="line">   	<span class="built_in">print</span>(<span class="string">&quot;今天下雨,请记得带伞,并穿上防水的外套和鞋子.&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line"><span class="comment"># 如果天气不是上述中的任何一种,则执行代码块</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;今天的天气情况不在预设范围之内,请根据实际情况选择合适的衣物.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-2-注意"><a href="#4-2-注意" class="headerlink" title="4.2 注意"></a>4.2 注意</h3><ol>
+<li><p>if-elif-else结构按顺序在多个条件中逐一检查，一旦某个条件满足(即为True)，则立即执行该条件下对应的代码块，并跳过所有后续的 elif 和 else 及其对应的代码块。</p>
+</li>
+<li><p>如果所有的条件都不满足,则直接执行else下的代码块.</p>
+</li>
+<li><p>if多分支，if一定是第一个分支,后续其它分支为elif</p>
+</li>
+<li><p>else不是必须的，若有则必须放在最后</p>
+</li>
+<li><p>如果多分支中，同时满足多个判断条件，执行第一个判断的结果，不会继续向后执行</p>
+</li>
+</ol>
+<h2 id="5-if嵌套"><a href="#5-if嵌套" class="headerlink" title="5. if嵌套"></a>5. if嵌套</h2><h3 id="5-1-含义"><a href="#5-1-含义" class="headerlink" title="5.1 含义"></a>5.1 含义</h3><p>指在一个if语句的代码块内部再包含另一个或多个if语句.</p>
+<h3 id="5-2-应用场景"><a href="#5-2-应用场景" class="headerlink" title="5.2 应用场景"></a>5.2 应用场景</h3><p>在之前条件满足的前提下,再增加额外的判断.</p>
+<p>应用: 首先判断用户是否有票,没票就打道回府,有票就判断安检是否通过,通过则可以上车回家,否则就抓走隔离.<br>是否有票:</p>
+<p>有票<br>​	安检:</p>
+<p>​		体温正常:上车回家</p>
+<p>​		体温异常:抓走隔离</p>
+<p>没票:打道回府</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义布尔型变量保存是否有票:True表示有票,False表示没票</span></span><br><span class="line">has_ticket = <span class="literal">True</span></span><br><span class="line">temperature = <span class="number">38.5</span>			<span class="comment"># 定义变量保存体温</span></span><br><span class="line"><span class="keyword">if</span> has_ticket:				<span class="comment"># 检查是否有票</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;有票&quot;&quot;&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;有票,可以安检~&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="number">36.3</span> &lt;= temperature &lt;= <span class="number">37.2</span>:		<span class="comment"># 判断安检是否通过(体温是否正常)</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;体温正常&quot;&quot;&quot;</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;体温正常,可以上车回家了~&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="string">&quot;&quot;&quot;体温异常&quot;&quot;&quot;</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;体温异常,抓走隔离~&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;没票,打道回府~&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="6-pass占位符"><a href="#6-pass占位符" class="headerlink" title="6. pass占位符"></a>6. pass占位符</h2><p>作用：暂时替代代码块，避免出现语法问题报错<br>使用场景：暂时没有想好代码块怎么实现，可以利用pass先搭建框架</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">16</span></span><br><span class="line"><span class="keyword">if</span> age &gt;= <span class="number">18</span>:				<span class="comment">#检查年龄是否大于或等于18岁</span></span><br><span class="line">	<span class="keyword">pass</span>					<span class="comment">#只有未成年才输出，成年什么都不会输出</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;你还未成年呢.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://yusongshu.github.io/2026/02/16/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/if%E5%88%A4%E6%96%AD/">https://yusongshu.github.io/2026/02/16/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/if%E5%88%A4%E6%96%AD/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"># python基础语法</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/02/16/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E5%BE%AA%E7%8E%AF/">循环</a>
+            
+            
+            <a class="next" rel="next" href="/2026/02/15/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E8%BF%90%E7%AE%97%E7%AC%A6/">运算符</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

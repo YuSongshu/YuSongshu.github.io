@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>初识python | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">初识python</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 14, 2026&nbsp;&nbsp;19:58:01</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">python基础语法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="1-编程语言类型的了解"><a href="#1-编程语言类型的了解" class="headerlink" title="1.编程语言类型的了解"></a>1.编程语言类型的了解</h1><p>编译器–&gt;编译型语言</p>
+<p>C是编译型语言–&gt;一次编译之后，多次使用</p>
+<p>解释器–&gt;解释性语言</p>
+<p>python解释器–&gt;运行编写好的python代码–&gt;python.exe</p>
+<p>python动态解释型语言–&gt;每一次运行，都要重新解释</p>
+<p>源代码：写好的python代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;hello world&#x27;</span>)  </span><br></pre></td></tr></table></figure>
+
+
+
+<p>高级语言–&gt;【编译器】–&gt;二进制数据  –&gt; 编译型语言</p>
+<p>高级语言–&gt;【python解释器】–&gt;二进制数据  –&gt; 解释性语言</p>
+<p>编译型语言&amp;解释性语言</p>
+<ol>
+<li><p>编译型语言：提前把数据处理好，多次运行，速度更快</p>
+</li>
+<li><p>解释型语言：运行时处理数据，速度慢，跨平台性更好</p>
+</li>
+</ol>
+<p>编程语言，在不同的操作系统中，编译方式是不同的</p>
+<h1 id="2-编写第一个python代码"><a href="#2-编写第一个python代码" class="headerlink" title="2.编写第一个python代码"></a>2.编写第一个python代码</h1><h2 id="2-1-编写代码"><a href="#2-1-编写代码" class="headerlink" title="2.1 编写代码"></a>2.1 编写代码</h2><p>​	(1)新建python文件：鼠标右键文件夹的位置–&gt;new–&gt;python file –&gt;输入文件名–&gt;回车确认</p>
+<p>​	(2)编写代码：确保代码没有红色波浪线的错误提示</p>
+<p>​	(3)代码的运行：鼠标右键，代码空白区域–&gt;Run–&gt;点击运行</p>
+<p>​	(4)查看代码运行的结果：在下方的控制台</p>
+<p>​			内容打印时，数字不加引号，字符串加引号</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">100</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;hello world&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="3-代码注释"><a href="#3-代码注释" class="headerlink" title="3.代码注释"></a>3.代码注释</h1><h2 id="3-1-单行注释"><a href="#3-1-单行注释" class="headerlink" title="3.1 单行注释"></a>3.1 单行注释</h2><p>​	使用# 注释一行内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#注释一行内容</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-2-多行注释"><a href="#3-2-多行注释" class="headerlink" title="3.2 多行注释"></a>3.2 多行注释</h2><p>三对引号(单引号、双引号)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">多行注释的内容</span></span><br><span class="line"><span class="string">注释的第二行</span></span><br><span class="line"><span class="string">注释的第三行</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">多行注释的内容</span></span><br><span class="line"><span class="string">注释的第一行</span></span><br><span class="line"><span class="string">注释的第二行</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="4-报错提示"><a href="#4-报错提示" class="headerlink" title="4.报错提示"></a>4.报错提示</h1><h2 id="4-1-编写代码时的错误提示"><a href="#4-1-编写代码时的错误提示" class="headerlink" title="4.1 编写代码时的错误提示"></a>4.1 编写代码时的错误提示</h2><p>红色波浪线：语法错误，运行时代码一定会报错</p>
+<p>白色波浪线：规范使用不规范，运行代码不报错</p>
+<p>绿色的波浪线：对拼写的单词进行检查，说明单词拼写可能错了</p>
+<p>黄色高亮：警告信息，代码可能存在问题，提醒你对这个可能存在问题的代码进行优化</p>
+<h2 id="4-2-代码运行完给出的错误提示"><a href="#4-2-代码运行完给出的错误提示" class="headerlink" title="4.2 代码运行完给出的错误提示"></a>4.2 代码运行完给出的错误提示</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(python)    <span class="comment">#会有红色标线</span></span><br></pre></td></tr></table></figure>
+
+<p>给出报错点所在的行数，错误的类型，错误提示信息</p>
+<h2 id="4-3-python代码的规范性要求：PEP8"><a href="#4-3-python代码的规范性要求：PEP8" class="headerlink" title="4.3 python代码的规范性要求：PEP8"></a>4.3 python代码的规范性要求：PEP8</h2><p>​	单行注释后推荐加一个空格</p>
+<p>​	使用print()函数时，数据和数据之间的逗号后，推荐加一个空格</p>
+<p>​	print(‘hello wrold’) 	# 英文拼写错误</p>
+<p>​	print(‘pingyin’)  	# 将中文拼写检测成单词</p>
+<h1 id="5-快捷键的使用"><a href="#5-快捷键的使用" class="headerlink" title="5.快捷键的使用"></a>5.快捷键的使用</h1><p>​	ctrl + c: 复制的快捷键</p>
+<p>​	ctrl + v: 粘贴的快捷键</p>
+<p>​	ctrl + d：快速复制上一行的内容</p>
+<p>​	ctrl + &#x2F;: 对多行内容进行快速注释</p>
+<p>​	ctrl + alt + L: 自动规范化代码格式</p>
+<p>​	ctrl + z: 撤销上一步的操作</p>
+<p>​	ctrl + y: 恢复撤销</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://yusongshu.github.io/2026/02/14/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E5%88%9D%E8%AF%86python/">https://yusongshu.github.io/2026/02/14/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E5%88%9D%E8%AF%86python/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"># python基础语法</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/02/14/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0/">输出函数</a>
+            
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

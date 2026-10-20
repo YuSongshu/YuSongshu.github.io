@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>反爬虫检测 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">反爬虫检测</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 2, 2026&nbsp;&nbsp;0:01:59</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E7%88%AC%E8%99%AB/">爬虫</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="18反爬虫检测"><a href="#18反爬虫检测" class="headerlink" title="18反爬虫检测"></a>18反爬虫检测</h1><p>Playwright虽然不用逆向，但还是要翻爬</p>
+<p>测试网站：<a target="_blank" rel="noopener" href="https://bot.sannysoft.com/">https://bot.sannysoft.com/</a></p>
+<h2 id="navigator-webdriver"><a href="#navigator-webdriver" class="headerlink" title="navigator.webdriver"></a>navigator.webdriver</h2><p>navigator.webdriver：关键参数，如果是自动化打开浏览器其值是Ture</p>
+<p>有些网站会检测其值实现反爬</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>添加初始化脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">js = &quot;Object.defineProperties(navigator, &#123;webdriver:&#123;get:()=&gt;false&#125;&#125;);&quot;</span><br><span class="line">page.add_init_script(js)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>大佬的js反爬文件</p>
+<p>D:\tool\playwright进阶\素材\stealth.min.js</p>
+<p>使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;stealth.min.js&quot;, &#x27;r&#x27;, encoding=&quot;utf-8&quot;) as f:</span><br><span class="line">    page.add_init_script(f.read())</span><br><span class="line"></span><br><span class="line">page.goto(&#x27;https://bot.sannysoft.com/&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="启动本地浏览器"><a href="#启动本地浏览器" class="headerlink" title="启动本地浏览器"></a>启动本地浏览器</h2><p>为什么要启动本地浏览器</p>
+<p>无痕窗口：没有浏览痕迹</p>
+<p>我们用脚本相当于无痕窗口，对于要登录的网站的数据采集，每次都要重新登录，所以我们启动本地浏览器就有浏览痕迹</p>
+<p>注：</p>
+<p>启动本地浏览器不要用你自己安装的浏览器【概率可行】，用 playwright 安装的</p>
+<h3 id="启动方式"><a href="#启动方式" class="headerlink" title="启动方式"></a>启动方式</h3><h4 id="playwright-打开"><a href="#playwright-打开" class="headerlink" title="playwright 打开"></a>playwright 打开</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">browser = pw.chromium.launch_persistent_context(</span><br><span class="line">        # 用户数据路径文件</span><br><span class="line">	user_data_dir=r&#x27;用户数据路径文件&#x27;,</span><br><span class="line">        # 浏览器的路径</span><br><span class="line">	executable_path=r&quot;浏览器的路径&quot;,</span><br><span class="line">        # 显示浏览器的界面</span><br><span class="line">	headless=False</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>用户数据路径文件：C:\Users\AppData\Local\ms-playwright\chromium-1200\chrome-win64\data_001’（可以新建）</p>
+<p>​	用户数据不建议改</p>
+<p>谷歌浏览器的路径：C:\Users\AppData\Local\ms-playwright\chromium-1228\chrome-win64\chrome.exe</p>
+<h4 id="subprocess-打开"><a href="#subprocess-打开" class="headerlink" title="subprocess 打开"></a>subprocess 打开</h4><p>subprocess是什么？</p>
+<p>​	subprocess 是 Python内置模块，用来创建操作系统子进程，执行外部 exe、cmd、shell 命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmd = f&#x27;python --version&#x27;</span><br><span class="line">subprocess.Popen(cmd)</span><br></pre></td></tr></table></figure>
+
+<p>原理：通过subprocess执行命令打开浏览器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import subprocess</span><br><span class="line">import time</span><br><span class="line">from playwright.sync_api import sync_playwright</span><br><span class="line"></span><br><span class="line"># 准备浏览器</span><br><span class="line">path = r&#x27;浏览器的路径&#x27;</span><br><span class="line">params = &quot;--remote-debugging-port=7899&quot;   #远程调试端口，连接浏览器，用于操控浏览器</span><br><span class="line">cmd = f&#x27;&quot;&#123;path&#125;&quot; &#123;params&#125;&#x27;</span><br><span class="line">subprocess.Popen(cmd)</span><br><span class="line"></span><br><span class="line"># 连接浏览器</span><br><span class="line">browser = pw.chromium.connect_over_cdp(&#x27;http://127.0.0.1:7899&#x27;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import subprocess</span><br><span class="line">import time</span><br><span class="line">from playwright.sync_api import sync_playwright</span><br><span class="line"></span><br><span class="line">path = r&#x27;C:\Users\AppData\Local\ms-playwright\chromium-1228\chrome-win64\chrome.exe&#x27;</span><br><span class="line">params = &quot;--remote-debugging-port=7899&quot;</span><br><span class="line">cmd = f&#x27;&quot;&#123;path&#125;&quot; &#123;params&#125;&#x27;</span><br><span class="line">subprocess.Popen(cmd)</span><br><span class="line"></span><br><span class="line">time.sleep(2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">with sync_playwright() as pw:</span><br><span class="line">    browser = pw.chromium.connect_over_cdp(&quot;http://127.0.0.1:7899&quot;)</span><br><span class="line">    context = browser.new_context()</span><br><span class="line">    page = context.new_page()</span><br><span class="line"></span><br><span class="line">    page.goto(&#x27;https://www.baidu.com/&#x27;)</span><br><span class="line"></span><br><span class="line">    page.wait_for_timeout(100000)</span><br><span class="line">    time.sleep(3)</span><br></pre></td></tr></table></figure>
+
+<p>准备浏览器时会打开一个任务管理器（程序），<code>goto</code>时也会打开一个任务管理器，所以会有两个任务管理器</p>
+<p>解决方案</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># context = browser.new_context()</span><br><span class="line"># 获取第一个上下文管理器</span><br><span class="line">context = browser.contexts[0]</span><br><span class="line"></span><br><span class="line"># 网页同理</span><br><span class="line">#page = context.new_page()</span><br><span class="line">page = context.pages[0]</span><br><span class="line"></span><br><span class="line">page.goto(&#x27;https://www.baidu.com/&#x27;)</span><br><span class="line">page.wait_for_timeout(100000)</span><br><span class="line">time.sleep(3)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>注：默认 Chrome 用户配置文件夹，故不用user_data_dir&#x3D;r’ 用户数据路径文件 ‘</p>
+<h2 id="动态id"><a href="#动态id" class="headerlink" title="动态id"></a>动态id</h2><p>以网易云评论为例</p>
+<p>评论的xpath为<code>//*[@id=&quot;2382397001785570199031&quot;]/div[2]/div[1]/div/text()</code>经过刷新，id 会变</p>
+<p>所以要以标签定位<code>//*[@class=&quot;cmmts j-flag&quot;]/div</code></p>
+<p>标签特点：翻页、刷新之都不变</p>
+<p>或以a标签定位（点击的）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//a[text()=&quot;下一页&quot;]</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://yusongshu.github.io/2026/08/02/python/%E7%88%AC%E8%99%AB/%E5%8F%8D%E7%88%AC%E8%99%AB%E6%A3%80%E6%B5%8B/">https://yusongshu.github.io/2026/08/02/python/%E7%88%AC%E8%99%AB/%E5%8F%8D%E7%88%AC%E8%99%AB%E6%A3%80%E6%B5%8B/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%88%AC%E8%99%AB/"># 爬虫</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/08/02/python/%E7%88%AC%E8%99%AB/playwright%E6%A1%88%E4%BE%8B/">playwright案例</a>
+            
+            
+            <a class="next" rel="next" href="/2026/07/31/python/%E7%88%AC%E8%99%AB/playwright%E8%BF%9B%E9%98%B6/">playwright进阶</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

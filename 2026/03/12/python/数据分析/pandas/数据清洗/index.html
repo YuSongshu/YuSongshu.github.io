@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>数据清洗 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">数据清洗</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 12, 2026&nbsp;&nbsp;11:42:36</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
+                            
+                                <a href="/categories/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/pandas/">pandas</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Pandas-数据清洗"><a href="#Pandas-数据清洗" class="headerlink" title="Pandas 数据清洗"></a>Pandas 数据清洗</h1><p>数据清洗是对一些没有用的数据进行处理的过程。</p>
+<p>很多数据集存在数据缺失、数据格式错误、错误数据或重复数据的情况，如果要使数据分析更加准确，就需要对这些没有用的数据进行处理。</p>
+<p>在这个教程中，我们将利用 Pandas包来进行数据清洗。</p>
+<p>本文使用到的测试数据 武林大酒店每日销房表.csv 如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">          日期   镇名   省份         卧室数  浴室数 面积(平方英尺)角色名 房租费 酒店名  法人</span><br><span class="line">0    2025/12/1  七侠镇  云南省           3  1.0     1000   张无忌  345  同福客栈  佟湘玉</span><br><span class="line">1    2025/12/1  十里镇  湖南省           3  1.5       --   周芷若  689  龙门客栈  白展堂</span><br><span class="line">2    2025/12/2  桃花镇  广东省         NaN  1.0      850   陆小凤  615  桃花客栈  莫小贝</span><br><span class="line">3    2025/12/3  庆安镇  河南省           1  NaN      700    赵敏  764  青云客栈  祝无双</span><br><span class="line">4    2025/12/3  同福镇  湖北省           3  2.0     1600   小龙女  806  同福客栈  李大嘴</span><br><span class="line">5    2025/12/4  漓江镇  四川省         NaN  1.0      800    杨过  185  翠微客栈  吕轻侯</span><br><span class="line">6    2025/12/4  无名镇  北京市           2  NaN      950    郭靖  268  归云客栈  郭芙蓉</span><br><span class="line">7    2025/12/5  少林镇  山东省           1  1.0       --   李莫愁  962  少林客栈  燕小六</span><br><span class="line">8    2025/12/6  燕子镇  浙江省          na  2.0     1800    段誉  258  兰若客栈  佟湘玉</span><br><span class="line">9    2025/12/6  燕子镇  浙江省        Null  2.0     1800    虚竹  479  黑松客栈  白展堂</span><br><span class="line">10   2025/12/7  燕子镇  浙江省         NaN  2.0     1800  东方不败  620  黑松客栈  莫小贝</span><br><span class="line">11   2025/12/7  燕子镇  浙江省         NaN  2.0     1800   令狐冲  621  同福客栈  祝无双</span><br><span class="line">12   2025/12/8  环球镇  福建省           2  NaN     1200   张无忌  877  海角客栈  李大嘴</span><br><span class="line">13   2025/12/9  商埠镇  安徽省  Howareyou?  NaN      ---   周芷若  847  桃源客栈  吕轻侯</span><br><span class="line">14  2025/12/10  京城镇  江苏省           N  2.0      900   陆小凤  210  京城客栈  郭芙蓉</span><br></pre></td></tr></table></figure>
+
+<p>上表包含了四种空数据：</p>
+<ul>
+<li>n&#x2F;a</li>
+<li>NA</li>
+<li>—</li>
+<li>na</li>
+</ul>
+<h2 id="Pandas-清洗空值"><a href="#Pandas-清洗空值" class="headerlink" title="Pandas 清洗空值"></a>Pandas 清洗空值</h2><p>如果我们要删除包含空字段的行，可以使用 <strong>dropna()</strong> 方法，语法格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.dropna(axis=0, how=&#x27;any&#x27;, thresh=None, subset=None, inplace=False)</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明：</strong></p>
+<ul>
+<li>axis：默认为 <strong>0</strong>，表示逢空值剔除整<strong>行</strong>，如果设置参数 <strong>axis＝1</strong> 表示逢空值去掉整<strong>列</strong>。</li>
+<li>how：默认为 <strong>‘any’</strong> 如果一行（或一列）里任何一个数据有出现 NA 就去掉整行，如果设置 <strong>how&#x3D;’all’</strong> 一行（或列）都是 NA 才去掉这整行。</li>
+<li>thresh：设置需要多少非空值的数据才可以保留下来的。</li>
+<li>subset：设置想要检查的列。如果是多个列，可以使用列名的 list 作为参数。</li>
+<li>inplace：如果设置 True，将计算得到的值直接覆盖之前的值并返回 None，修改的是源数据。</li>
+</ul>
+<p>我们可以通过 <strong>isnull()</strong> 判断各个单元格是否为空。</p>
+<h2 id="通过-isnull-判断各个单元格是否为空"><a href="#通过-isnull-判断各个单元格是否为空" class="headerlink" title="通过 isnull() 判断各个单元格是否为空"></a>通过 <strong>isnull()</strong> 判断各个单元格是否为空</h2><p>实例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 1 导入库</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line"># 2 导入数据</span><br><span class="line">df = pd.read_csv(r&#x27;.\武林大酒店每日销房表.csv&#x27;,encoding=&#x27;gbk&#x27;)   </span><br><span class="line"></span><br><span class="line">print (df[[&#x27;卧室数&#x27;,&#x27;浴室数&#x27;,&#x27;面积(平方英尺)&#x27;]]) </span><br><span class="line">print (df[[&#x27;卧室数&#x27;,&#x27;浴室数&#x27;,&#x27;面积(平方英尺)&#x27;]].isnull())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<p> <img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/image-20260119141421901.png" alt="image-20260119141421901"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">      卧室数    浴室数  面积(平方英尺)</span><br><span class="line">0   False  False     False</span><br><span class="line">1   False  False     False</span><br><span class="line">2    True  False     False</span><br><span class="line">3   False   True     False</span><br><span class="line">4   False  False     False</span><br><span class="line">5    True  False     False</span><br><span class="line">6   False   True     False</span><br><span class="line">7   False  False     False</span><br><span class="line">8   False  False     False</span><br><span class="line">9   False  False     False</span><br><span class="line">10   True  False     False</span><br><span class="line">11   True  False     False</span><br><span class="line">12  False   True     False</span><br><span class="line">13  False   True     False</span><br><span class="line">14  False  False     False</span><br></pre></td></tr></table></figure>
+
+
+
+<p>以上例子中我们看到 Pandas 把  <strong>n&#x2F;a 和 NA、NULL、null 、NaN、空值</strong>  当作空数据，na 不是空数据，不符合我们要求，我们可以指定空数据类型：</p>
+<h4 id="注：r的作用"><a href="#注：r的作用" class="headerlink" title="注：r的作用"></a>注：r的作用</h4><p>让字符串中的反斜杠 <code>\</code> 作为<strong>普通字符</strong>，不被当作转义符</p>
+<h2 id="指定空数据类型"><a href="#指定空数据类型" class="headerlink" title="指定空数据类型"></a>指定空数据类型</h2><p>实例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">missing_values = [&quot;n/a&quot;, &quot;na&quot;, &quot;--&quot;,&quot;Null&quot;,&quot;---&quot;,&quot;N&quot;,&#x27;Y&#x27;]</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(r&#x27;.\武林大酒店每日销房表.csv&#x27;,encoding=&#x27;gbk&#x27;, na_values = missing_values) </span><br><span class="line"></span><br><span class="line">	# encoding=&#x27;gbk&#x27; =&gt; 指定读取这个 CSV 文件时使用 GBK 编码格式 来解析文件内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print (df[[&#x27;卧室数&#x27;,&#x27;浴室数&#x27;,&#x27;面积(平方英尺)&#x27;]].isnull())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">      卧室数    浴室数  面积(平方英尺)</span><br><span class="line">0   False  False     False</span><br><span class="line">1   False  False      True</span><br><span class="line">2    True  False     False</span><br><span class="line">3   False   True     False</span><br><span class="line">4   False  False     False</span><br><span class="line">5    True  False     False</span><br><span class="line">6   False   True     False</span><br><span class="line">7   False  False      True</span><br><span class="line">8    True  False     False</span><br><span class="line">9    True  False     False</span><br><span class="line">10   True  False     False</span><br><span class="line">11   True  False     False</span><br><span class="line">12  False   True     False</span><br><span class="line">13  False   True      True</span><br><span class="line">14   True  False     False</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="删除包含空数据的行"><a href="#删除包含空数据的行" class="headerlink" title="删除包含空数据的行"></a>删除包含空数据的行</h2><p>dropna()</p>
+<p>实例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 3 批量删除缺失值</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">df = pd.read_csv(r&#x27;.\武林大酒店每日销房表.csv&#x27;,encoding=&#x27;gbk&#x27;)  </span><br><span class="line">new_df = df.dropna()</span><br><span class="line">print(new_df.to_string())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/image-20260119142956493.png" alt="image-20260119142956493"></p>
+<p><strong>注意：</strong>默认情况下，dropna() 方法返回一个新的 DataFrame，不会修改源数据。</p>
+<p>如果要修改源数据 DataFrame, 可以使用 <strong>inplace &#x3D; True</strong> 参数:</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">df = pd.read_csv(&#x27;property-data.csv&#x27;)</span><br><span class="line">df.dropna(inplace = True)</span><br><span class="line">print(df.to_string())</span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果如下：</p>
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/image-20260119143241526.png" alt="image-20260119143241526"></p>
+<p>我们也可以移除指定列有空值的行：</p>
+<h2 id="移除指定列有空值的行"><a href="#移除指定列有空值的行" class="headerlink" title="移除指定列有空值的行"></a>移除指定列有空值的行</h2><p>移除 ST_NUM 列中字段值为空的行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 5 去除单列的空值，并修改原数据</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(r&#x27;.\武林大酒店每日销房表.csv&#x27;,encoding=&#x27;gbk&#x27;) </span><br><span class="line"></span><br><span class="line">df.dropna(subset=[&#x27;卧室数&#x27;], inplace = True)</span><br><span class="line"></span><br><span class="line">print(df.to_string())</span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果如下：</p>
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/image-20260119143916145.png" alt="image-20260119143916145"></p>
+<p>我们也可以 <strong>fillna()</strong> 方法来替换一些空字段：</p>
+<h2 id="fillna-替换空字段"><a href="#fillna-替换空字段" class="headerlink" title="fillna()替换空字段"></a>fillna()替换空字段</h2><p>使用 12345 替换空字段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">df = pd.read_csv(r&#x27;.\3 课堂资料\武林大酒店每日销房表.csv&#x27;,encoding=&#x27;gbk&#x27;) </span><br><span class="line">df.fillna(12345, inplace = True)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果如下：</p>
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/image-20260119144132167.png" alt="image-20260119144132167"></p>
+<h2 id="指定某一个列替换数据"><a href="#指定某一个列替换数据" class="headerlink" title="指定某一个列替换数据"></a>指定某一个列替换数据</h2><p>使用 12345 替换 PID 为空数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(r&#x27;.\武林大酒店每日销房表.csv&#x27;,encoding=&#x27;gbk&#x27;) </span><br><span class="line"></span><br><span class="line">df[&#x27;浴室数&#x27;].fillna(&quot;12345&quot;, inplace = True)</span><br><span class="line"></span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/image-20260119144718677.png" alt="image-20260119144718677"></p>
+<h2 id="mean-、median-和-mode"><a href="#mean-、median-和-mode" class="headerlink" title="mean()、median() 和 mode()"></a>mean()<strong>、</strong>median() 和 mode()</h2><p>Pandas使用 <strong>mean()<strong>、</strong>median()</strong> 和 <strong>mode()</strong> 方法计算列的均值（所有值加起来的平均值）、中位数值（排序后排在中间的数）和众数（出现频率最高的数）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 中位数</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">a = [1,2,3,4,5]</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(a)</span><br><span class="line">print(df.median())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 众数</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">a = [1,2,3,4,5,6,6]</span><br><span class="line">b = [2,1,3,4,5,6]</span><br><span class="line">df1 = pd.DataFrame(a)</span><br><span class="line">df2 = pd.DataFrame(b)</span><br><span class="line">print(df1.mode())</span><br><span class="line">print(df2.mode())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<p><code>mode()</code>返回一个 <strong>Pandas Series 对象</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   0</span><br><span class="line">0  6</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   0</span><br><span class="line">0  1</span><br><span class="line">1  2</span><br><span class="line">2  3</span><br><span class="line">3  4</span><br><span class="line">4  5</span><br><span class="line">5  6</span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<p>排序默认从小到大</p>
+<p>使用<strong>mean()</strong> 方法计算列的均值并替换空单元格：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(r&#x27;武林大酒店每日销房表.csv&#x27;,encoding=&#x27;gbk&#x27;) </span><br><span class="line">x = df[&quot;浴室数&quot;].mean()</span><br><span class="line">df[&quot;浴室数&quot;] = round(df[&quot;浴室数&quot;].fillna(x, inplace = True),2)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果如下，红框为计算的均值替换来空单元格：</p>
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/image-20260119150132497.png" alt="image-20260119150132497"></p>
+<p>使用 <strong>max()</strong> 方法计算列的中位数并替换空单元格：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(r&#x27;武林大酒店每日销房表.csv&#x27;,encoding=&#x27;gbk&#x27;) </span><br><span class="line">x = df[&quot;浴室数&quot;].max()</span><br><span class="line">df[&#x27;浴室数&#x27;] = round(df[&quot;浴室数&quot;].fillna(x, inplace = True),2)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果如下，红框为计算的最小值替换来空单元格：</p>
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/image-20260119150251058.png" alt="image-20260119150251058"></p>
+<p>使用 <strong>mode()</strong> 方法计算列的众数并替换空单元格：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(r&#x27;武林大酒店每日销房表.csv&#x27;,encoding=&#x27;gbk&#x27;) </span><br><span class="line">x = df[&quot;浴室数&quot;].mode()[0]</span><br><span class="line">df[&quot;浴室数&quot;] = df[&quot;浴室数&quot;].fillna(x, inplace = True)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果如下，红框为计算的众数替换来空单元格：</p>
+<p><img src="/img/notes/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/image-20260119150717225.png" alt="image-20260119150717225"></p>
+<p>注：</p>
+<p>所有值出现次数为 1 时，mode ()[0] 取当前顺序第一个值</p>
+<h2 id="Pandas-清洗格式错误数据"><a href="#Pandas-清洗格式错误数据" class="headerlink" title="Pandas 清洗格式错误数据"></a>Pandas 清洗格式错误数据</h2><p>数据格式错误的单元格会使数据分析变得困难，甚至不可能。</p>
+<p>我们可以通过包含空单元格的行，或者将列中的所有单元格转换为相同格式的数据。</p>
+<p>以下实例会格式化日期：</p>
+<h3 id="日期格式错误"><a href="#日期格式错误" class="headerlink" title="日期格式错误"></a>日期格式错误</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line"># 第三个日期格式错误</span><br><span class="line">data = &#123;</span><br><span class="line">  &quot;日期&quot;: [&#x27;2020/12/01&#x27;, &#x27;2020/12/02&#x27; , &#x27;20201226&#x27;,&#x27;2020-01-01&#x27;,&#x27;2020.1.1&#x27;,&#x27;2020.01.01&#x27;],</span><br><span class="line">  &quot;客栈&quot;:[&#x27;龙门客栈&#x27;,&#x27;同福客栈&#x27;,&#x27;京都客栈&#x27;,&#x27;桃源客栈&#x27;,&#x27;海角客栈&#x27;,&#x27;天涯客栈&#x27;],</span><br><span class="line">  &quot;营收&quot;: [50, 40, 45,30,20,70]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(data, index = [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;,&quot;3&quot;,&#x27;4&#x27;,&#x27;5&#x27;])</span><br><span class="line"></span><br><span class="line">df[&#x27;日期&#x27;] = pd.to_datetime(df[&#x27;日期&#x27;], format=&#x27;mixed&#x27;)</span><br><span class="line"></span><br><span class="line">print(df.to_string())</span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    日期    客栈  营收</span><br><span class="line">0 2020-12-01  龙门客栈  50</span><br><span class="line">1 2020-12-02  同福客栈  40</span><br><span class="line">2 2020-12-26  京都客栈  45</span><br><span class="line">3 2020-01-01  桃源客栈  30</span><br><span class="line">4 2020-01-01  海角客栈  20</span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<p><code>2020年12月01日</code>这种形式是无法转换为datetime形式的</p>
+<h2 id="Pandas-清洗错误数据"><a href="#Pandas-清洗错误数据" class="headerlink" title="Pandas 清洗错误数据"></a>Pandas 清洗错误数据</h2><p>数据错误也是很常见的情况，我们可以对错误的数据进行替换或移除。</p>
+<p>以下实例会替换错误年龄的数据：</p>
+<h3 id="loc定位修改数据"><a href="#loc定位修改数据" class="headerlink" title="loc定位修改数据"></a>loc定位修改数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">person = &#123;</span><br><span class="line">  &quot;客栈&quot;: [&#x27;龙门客栈&#x27;, &#x27;同福客栈&#x27; , &#x27;桃源客栈&#x27;],</span><br><span class="line">  &quot;营收&quot;: [50, 40, 123456789]    # 123456789 是错误的</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(person)</span><br><span class="line"></span><br><span class="line">df.loc[2, &#x27;营收&#x27;] = 30 # 修改数据</span><br><span class="line"></span><br><span class="line">print(df.to_string())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">     客栈  营收</span><br><span class="line">0  龙门客栈  50</span><br><span class="line">1  同福客栈  40</span><br><span class="line">2  桃源客栈  30</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="设置条件语句"><a href="#设置条件语句" class="headerlink" title="设置条件语句"></a>设置条件语句</h3><p>将 营收 大于 100 的设置为 100:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">person = &#123;</span><br><span class="line">  &quot;客栈&quot;: [&#x27;龙门客栈&#x27;, &#x27;同福客栈&#x27; , &#x27;桃源客栈&#x27;],</span><br><span class="line">  &quot;营收&quot;: [8784654, 40, 123456789]    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(person)</span><br><span class="line">df.loc[df[&#x27;营收&#x27;] &gt; 100, &#x27;营收&#x27;] = 100				# 将大于100的修改为100</span><br><span class="line">print(df.to_string())</span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">     客栈   营收</span><br><span class="line">0  龙门客栈  100</span><br><span class="line">1  同福客栈   40</span><br><span class="line">2  桃源客栈  100</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="将错误数据的行删除"><a href="#将错误数据的行删除" class="headerlink" title="将错误数据的行删除"></a>将错误数据的行删除</h3><p>将 营收 大于 100 的删除:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">person = &#123;</span><br><span class="line">  &quot;客栈&quot;: [&#x27;龙门客栈&#x27;, &#x27;同福客栈&#x27; , &#x27;桃源客栈&#x27;],</span><br><span class="line">  &quot;营收&quot;: [8784654, 40, 123456789]    # 将大于100的删除</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(person)</span><br><span class="line"></span><br><span class="line">for x in df.index:</span><br><span class="line">    if df.loc[x, &quot;营收&quot;] &gt; 100:</span><br><span class="line">        df.drop(x,inplace=True)</span><br><span class="line"></span><br><span class="line">print(df.to_string())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">     客栈  营收</span><br><span class="line">1  同福客栈  40</span><br></pre></td></tr></table></figure>
+
+<h2 id="Pandas-清洗重复数据"><a href="#Pandas-清洗重复数据" class="headerlink" title="Pandas 清洗重复数据"></a>Pandas 清洗重复数据</h2><p>如果我们要清洗重复数据，可以使用 <strong>duplicated()</strong> 和 <strong>drop_duplicates()</strong> 方法。</p>
+<h3 id="duplicated"><a href="#duplicated" class="headerlink" title="duplicated()"></a>duplicated()</h3><p>如果对应的数据是重复的，<strong>duplicated()</strong> 会返回 True，否则返回 False。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">person = &#123;</span><br><span class="line">  &quot;name&quot;: [&#x27;萧峰&#x27;, &#x27;段誉&#x27;, &#x27;段誉&#x27;, &#x27;虚竹&#x27;],</span><br><span class="line">  &quot;age&quot;: [50, 40, 33, 23]  </span><br><span class="line">&#125;</span><br><span class="line">df = pd.DataFrame(person)</span><br><span class="line"></span><br><span class="line">print(df.duplicated())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0    False</span><br><span class="line">1    False</span><br><span class="line">2    False</span><br><span class="line">3    False</span><br><span class="line">dtype: bool</span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<p>只有对应数据都相等才会被判定为True</p>
+<h4 id="也能通过subset-参数可指定-1-列-多列判断重复行"><a href="#也能通过subset-参数可指定-1-列-多列判断重复行" class="headerlink" title="也能通过subset 参数可指定 1 列 &#x2F; 多列判断重复行"></a>也能通过<code>subset</code> 参数可指定 1 列 &#x2F; 多列判断重复行</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">person = &#123;</span><br><span class="line">  &quot;name&quot;: [&#x27;萧峰&#x27;, &#x27;段誉&#x27;, &#x27;段誉&#x27;, &#x27;虚竹&#x27;],</span><br><span class="line">  &quot;age&quot;: [50, 40, 33, 23]  </span><br><span class="line">&#125;</span><br><span class="line">df = pd.DataFrame(person)</span><br><span class="line"></span><br><span class="line">print(df.duplicated(subset=[&#x27;name&#x27;]))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过<code>keep</code>参数指定 <strong>标记哪一行作为重复行</strong></p>
+<table>
+<thead>
+<tr>
+<th>keep 参数</th>
+<th>作用</th>
+<th>筛选结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>first（默认）</td>
+<td>保留第一次出现的行，标记后续重复行为 True</td>
+<td>筛选出 “后续重复的副本行”</td>
+</tr>
+<tr>
+<td>last</td>
+<td>保留最后一次出现的行，标记前面的重复行为 True</td>
+<td>筛选出 “前面的重复行”</td>
+</tr>
+<tr>
+<td>False</td>
+<td>所有重复行都标记为 True</td>
+<td>筛选出 “所有重复行（含原始行）”</td>
+</tr>
+</tbody></table>
+<p>注：保留False删除True</p>
+<h3 id="drop-duplicates"><a href="#drop-duplicates" class="headerlink" title="drop_duplicates()"></a>drop_duplicates()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">data = &#123;</span><br><span class="line">  &quot;客栈&quot;: [&#x27;同福客栈&#x27;, &#x27;同福客栈&#x27;, &#x27;龙门客栈&#x27;, &#x27;桃源客栈&#x27;],</span><br><span class="line">  &quot;营收&quot;: [40, 40, 40, 23]  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(data)</span><br><span class="line"></span><br><span class="line">df.drop_duplicates(inplace = True)					# duplicated()为Ture才会删除</span><br><span class="line">df.drop_duplicates(subset=[&#x27;客栈&#x27;], keep=&#x27;first&#x27;)		# 指定某一列是否有重复值</span><br><span class="line">print(df)		</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 如果不用inplace=True的替代方案:(赋值给用另个一变量)</span><br><span class="line"># df1 = df.drop_duplicates(subset=[&#x27;客栈&#x27;], keep=&#x27;first&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    客栈  营收</span><br><span class="line">0  同福客栈  40</span><br><span class="line">2  龙门客栈  40</span><br><span class="line">3  桃源客栈  23</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://yusongshu.github.io/2026/03/12/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/pandas/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/">https://yusongshu.github.io/2026/03/12/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/pandas/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/pandas/"># pandas</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/03/14/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E7%B1%BB%E7%9A%84%E6%95%B0%E6%8D%AE%E5%88%9D%E5%A7%8B%E5%8C%96/">类的数据初始化</a>
+            
+            
+            <a class="next" rel="next" href="/2026/03/02/python/%E7%88%AC%E8%99%AB/%E5%B8%B8%E8%A7%81%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">常见加密算法</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

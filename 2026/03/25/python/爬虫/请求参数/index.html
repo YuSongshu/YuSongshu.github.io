@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>请求参数 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">请求参数</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 25, 2026&nbsp;&nbsp;15:01:58</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E7%88%AC%E8%99%AB/">爬虫</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h1><h2 id="反爬"><a href="#反爬" class="headerlink" title="反爬"></a>反爬</h2><p>​    我们拿数据：爬取数据<br>​    反爬：阻碍我们拿到数据</p>
+<h3 id="检测请求信息"><a href="#检测请求信息" class="headerlink" title="检测请求信息"></a>检测请求信息</h3><p>user-agent(ua)：用户代理</p>
+<p>eferer：用来标识这个请求是从哪个网页过来的</p>
+<p>cookie：：网站为了辨别用户进行会话跟踪而储存在用户本地的数据，主要功能是维持当前访问会话</p>
+<p>添加请求头的时候：<br>​        如果给的请求头有错误，那么请求必定出错。<br>​        如果某个请求头没有，不一定出错。<br>同一个 ua【可以识别客户端信息的一个字符串】，如果使用同一个ua发送非常多请求，可能会封禁。<br>​    封禁会封多久？ 不知道。 封禁有网站自己设置。<br>​    为了防止这样的事情出现：<br>​        每次提交的时候，不使用相同的 ua</p>
+<h2 id="池"><a href="#池" class="headerlink" title="池"></a>池</h2><p>一种技术【池化技术】。<br>​    鱼塘【鱼池】。<br>​        在这个池里面有很多这个同类。<br>​        池里面有很多鱼 &#x3D;》鱼池。<br>​        池里面有很多 ua &#x3D;》ua 池。<br>​        池 在代码中以列表体现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ua_list = [</span><br><span class="line">    &#x27;Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Maxthon 2.0&#x27;,</span><br><span class="line">    &#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11&#x27;,</span><br><span class="line">    &#x27;Opera/9.80 (Windows NT 6.1; U; en) Presto/2.8.131 Version/11.11&#x27;,</span><br><span class="line">    &#x27;Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&#x27;,</span><br><span class="line">    &#x27;Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)&#x27;,</span><br><span class="line">    &#x27;Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50&#x27;,</span><br><span class="line">    &#x27;Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0&#x27;,</span><br><span class="line">    &#x27;Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1&#x27;,</span><br><span class="line">    &#x27;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1&#x27;,</span><br><span class="line">    &#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&#x27;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">#print(random.choice(ua_list))</span><br><span class="line"></span><br><span class="line">url = &quot;https://www.baidu.com/&quot;</span><br><span class="line">headers = &#123;</span><br><span class="line">    # 从上面的 ua 列表中随机获取一个 ua</span><br><span class="line">    &quot;user-agent&quot;: random.choice(ua_list)</span><br><span class="line">&#125;</span><br><span class="line">#print(headers)</span><br><span class="line"></span><br><span class="line">response = requests.get(url, headers=headers)</span><br><span class="line">print(response.text)</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<p>上面这个 ua 池，需要自己去维护。</p>
+<p>fake-useragent 使用<br>​    他用来维护 ua 池<br>​    pip install fake-useragent</p>
+<p>使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import random</span><br><span class="line">from fake_useragent import UserAgent</span><br><span class="line"></span><br><span class="line"># 创建 ua 对象 =&gt; 获取随机 ua</span><br><span class="line">ua = UserAgent()</span><br><span class="line"># print(ua.random)</span><br><span class="line"></span><br><span class="line">url = &quot;https://www.baidu.com/&quot;</span><br><span class="line">#</span><br><span class="line">headers = &#123;</span><br><span class="line">    &quot;user-agent&quot;: str(ua)</span><br><span class="line">   # &quot;user-agent&quot;: random.choice(ua_list)   # 从上面的 ua 列表中随机获取一个 ua</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.get(url, headers=headers)</span><br><span class="line">print(response.text)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p>​    URL 叫统一资源定位符，对于一般的网页链接，习惯称为 URL<br>​    组成格式：<br>​        协议:&#x2F;&#x2F;主机地址[&#x2F;路径][?查询]<br>​               域名【主机 电脑主机 &#x3D;》电脑】<br>​               电脑的地址：电脑在哪里。<br>​               <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> &#x3D;&gt; 153.3.238.127【ipv4地址 &#x3D;》网站所在电脑的地址】</p>
+<p>​            路径:<br>​                电脑里面的文件夹【电脑里面只有一个文件夹？】 &#x3D;》相当于找电脑里面不同的文件夹</p>
+<p>例如：<br>​    <a target="_blank" rel="noopener" href="https://www.baidu.com/dps/?username=kspider&type=spider">https://www.baidu.com/dps/?username=kspider&amp;type=spider</a><br>​       协议：https<br>​       主机地址：<a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a><br>​       路径：&#x2F;dps&#x2F;<br>​       查询：<br>​        username&#x3D;kspider<br>​        type&#x3D;spider</p>
+<p>​    <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1HAsWexEXT?spm_id_from=333.788.player.switch&vd_source=ff1361a8bb981b28e4cbf081f5ac1bea&p=12">https://www.bilibili.com/video/BV1HAsWexEXT?spm_id_from=333.788.player.switch&amp;vd_source=ff1361a8bb981b28e4cbf081f5ac1bea&amp;p=12</a></p>
+<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>​    约定，能干嘛不能干嘛</p>
+<h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><p>HTTP 超文本传输协议是一个简单的请求-响应协议，它指定了客户端可能发送给服 务器什么样的消息以及得到什么样的响应。<br>​        超文本：超越文本 &#x3D;》图片、视频、音频【包含文本】<br>​        传输：通过网络传输，客户端【浏览器】和服务端【网站】<br>​        协议：约定浏览器和网站之间能传递什么，不能传递什么，按照什么格式传递。</p>
+<h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><p>​        S &#x3D;》Secure &#x3D;》锁 S<br>​        在 HTTP 的基础上加了一把锁，让数据更加安全。</p>
+<h2 id="翻页"><a href="#翻页" class="headerlink" title="翻页"></a>翻页</h2><p>需要分析不同页面之间，数据的规律。</p>
+<p><a target="_blank" rel="noopener" href="https://vt.quark.cn/blm/vsearch-api-390/picture/list?from=kkframenew_fallback&latest=&gif=&hd=&size=&color=&tab_name=&filter_hd_person=&filter_watermark=&topimg=&sucai=&filter_qrcode=&sucai_filter_size=&sucai_tag_id=&fr=iphone&limit=50&device=pc&query=360%E5%A3%81%E7%BA%B8&tag=%E5%85%A8%E9%83%A8&start=200">https://vt.quark.cn/blm/vsearch-api-390/picture/list?from=kkframenew_fallback&amp;latest=&amp;gif=&amp;hd=&amp;size=&amp;color=&amp;tab_name=&amp;filter_hd_person=&amp;filter_watermark=&amp;topimg=&amp;sucai=&amp;filter_qrcode=&amp;sucai_filter_size=&amp;sucai_tag_id=&amp;fr=iphone&amp;limit=50&amp;device=pc&amp;query=360%E5%A3%81%E7%BA%B8&amp;tag=%E5%85%A8%E9%83%A8&amp;start=200</a></p>
+<p>?from&#x3D;kkframenew_fallback&amp;latest&#x3D;&amp;gif&#x3D;&amp;hd&#x3D;&amp;size&#x3D;&amp;color&#x3D;&amp;tab_name&#x3D;&amp;filter_hd_person&#x3D;&amp;filter_watermark&#x3D;&amp;topimg&#x3D;&amp;sucai&#x3D;&amp;filter_qrcode&#x3D;&amp;sucai_filter_size&#x3D;&amp;sucai_tag_id&#x3D;&amp;fr&#x3D;iphone&amp;limit&#x3D;50&amp;device&#x3D;pc&amp;query&#x3D;360%E5%A3%81%E7%BA%B8&amp;tag&#x3D;%E5%85%A8%E9%83%A8&amp;start&#x3D;200</p>
+<p><a target="_blank" rel="noopener" href="https://www.qiushile.com/qiushi/">https://www.qiushile.com/qiushi/</a><br><a target="_blank" rel="noopener" href="https://www.qiushile.com/qiushi/index_1.html">https://www.qiushile.com/qiushi/index_1.html</a><br><a target="_blank" rel="noopener" href="https://www.qiushile.com/qiushi/index_2.html">https://www.qiushile.com/qiushi/index_2.html</a><br><a target="_blank" rel="noopener" href="https://www.qiushile.com/qiushi/index_3.html">https://www.qiushile.com/qiushi/index_3.html</a><br><a target="_blank" rel="noopener" href="https://www.qiushile.com/qiushi/index_4.html">https://www.qiushile.com/qiushi/index_4.html</a><br><a target="_blank" rel="noopener" href="https://www.qiushile.com/qiushi/index_5.html">https://www.qiushile.com/qiushi/index_5.html</a></p>
+<h2 id="查询字符串"><a href="#查询字符串" class="headerlink" title="查询字符串"></a>查询字符串</h2><p>查询字符串的缺点：<br>​    <a target="_blank" rel="noopener" href="https://owssso.szse.cn/sso/login?%E7%94%A8%E6%88%B7%E5%90%8D=13800138000&%E5%AF%86%E7%A0%81=123456">https://owssso.szse.cn/sso/login?用户名=13800138000&amp;密码=123456</a></p>
+<p>发送请求的时候，又两种参数：<br>    1. 查询字符串参数：可以直接在 url 通过 ？携带<br>        查询字符串参数，既可以出现在 get 方式，也可以出现在 post 方式<br>        2. 表单数据：在 url 后面看不到<br>        携带方式只有一种<br>        data 参数：<br>            ​    requests.get(url, data&#x3D;{“key”:”value”})<br>            ​    参数形式：字典。<br>            ​    表单参数只会出现在 post 方式里面</p>
+<p>批量修改：按 alt 键不放，点击鼠标左键</p>
+<p>批量修改：</p>
+<p>1.将复制过来的内容改成 key value 在同一行，中间要用东西隔开<br>accept: <em>&#x2F;</em><br>accept-encoding: gzip, deflate, br, zstd</p>
+<p>2.按 <code>ctrl + r</code>【替换】</p>
+<p>3.复制任意一行到上面输入框</p>
+<p>4.修改匹配规则【正则表达式】<br>一个小括号代表一个组<br>如果要用第几个组里面的内容，就用$序号<br>$1 $2<br>‘$1’: ‘$2’,<br>‘key’: ‘value’,</p>
+<p><code>shift + 4 =&gt; 英文符号</code></p>
+<ol start="5">
+<li>点击最右边 的 “.*”</li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://yusongshu.github.io/2026/03/25/python/%E7%88%AC%E8%99%AB/%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0/">https://yusongshu.github.io/2026/03/25/python/%E7%88%AC%E8%99%AB/%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%88%AC%E8%99%AB/"># 爬虫</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/03/25/python/%E7%88%AC%E8%99%AB/cookie/">cookie</a>
+            
+            
+            <a class="next" rel="next" href="/2026/03/25/python/%E7%88%AC%E8%99%AB/requests%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82/">requests发送请求</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

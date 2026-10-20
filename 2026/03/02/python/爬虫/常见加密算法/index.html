@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>常见加密算法 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">常见加密算法</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 2, 2026&nbsp;&nbsp;22:36:41</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/%E7%88%AC%E8%99%AB/">爬虫</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="14-常见加密算法"><a href="#14-常见加密算法" class="headerlink" title="14_常见加密算法"></a>14_常见加密算法</h1><h2 id="base64-编码"><a href="#base64-编码" class="headerlink" title="base64 编码"></a>base64 编码</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li><p>密文内容：base64 的密文一般包含 <code>0-9a-zA-Z+/=</code>，而 <code>=</code> 一般用于末尾填充。</p>
+</li>
+<li><p>明文密文长度关系：<code>⌈字节数 ÷ 3⌉ × 4</code>（含填充，也就是密文大概是明文的 4&#x2F;3）。+</p>
+<p>例如：“123456” 转换成 base64，值为 MTIzNDU2，长度为 8</p>
+</li>
+</ol>
+<p><strong>注：</strong></p>
+<p>常用123456熟悉密文可快速识别加密</p>
+<h3 id="base64-的实现"><a href="#base64-的实现" class="headerlink" title="base64 的实现"></a>base64 的实现</h3><p>逆向接触最多的就是 JavaScript，其次就是 python 调用</p>
+<p>js 调用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">BASE64</span> = &#123;</span><br><span class="line">    <span class="comment">// base64 编码方法</span></span><br><span class="line">    <span class="string">&quot;encode&quot;</span>: <span class="keyword">function</span> (<span class="params">data</span>) &#123;</span><br><span class="line">        <span class="comment">// 使用Buffer的toString方法进行Base64编码</span></span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Buffer</span>.<span class="title function_">from</span>(data).<span class="title function_">toString</span>(<span class="string">&#x27;base64&#x27;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// base64 解码方法</span></span><br><span class="line">    <span class="string">&quot;decode&quot;</span>: <span class="keyword">function</span> (<span class="params">encodedData</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Buffer</span>.<span class="title function_">from</span>(encodedData, <span class="string">&#x27;base64&#x27;</span>).<span class="title function_">toString</span>(<span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">BASE64</span>.<span class="title function_">encode</span>(<span class="string">&quot;123456&quot;</span>))		<span class="comment">//&quot;123456&quot;是明文，明文必须是字符串类型</span></span><br></pre></td></tr></table></figure>
+
+<p>Buffer.from(“123456”)：创建一个 Buffer 对象，表示将括号中的内容转换成二进制数据。</p>
+<p>.toString(‘base64’)：将 Buffer 中的二进制数据转换为字符串，而字符串的编码方式则是 base64。</p>
+<p>python 调用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Base64</span>:</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;base64编码方法&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">encode</span>(<span class="params">data</span>):</span><br><span class="line">        <span class="keyword">return</span> base64.b64encode(data.encode(<span class="string">&#x27;utf-8&#x27;</span>)).decode()</span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;base64解码方法&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">decode</span>(<span class="params">data</span>):</span><br><span class="line">        <span class="keyword">return</span> base64.b64decode(data.encode(<span class="string">&#x27;utf-8&#x27;</span>)).decode()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h2 id="2-哈希算法"><a href="#2-哈希算法" class="headerlink" title="2 哈希算法"></a>2 哈希算法</h2><p>哈希算法又称为消息摘要算法、散列算法，是一种将任意长度输入数据转换为固定长度输出值（哈希值）的密码学函数，具备高效性、确定性和抗碰撞性等核心特性。</p>
+<h3 id="2-1-特点"><a href="#2-1-特点" class="headerlink" title="2.1 特点"></a>2.1 特点</h3><ol>
+<li>‌<strong>固定长度输出</strong>‌<br>无论输入数据大小，输出哈希值长度固定。</li>
+<li>‌<strong>不可逆性</strong>‌<br>无法从哈希值反推原始数据，常用于密码存储。</li>
+<li>‌<strong>高敏感性</strong>‌<br>输入数据细微变化（如修改 1 个字符）会导致输出值截然不同。</li>
+<li>‌<strong>抗碰撞性</strong>‌<br>不同输入产生相同哈希值的概率极低。</li>
+</ol>
+<h3 id="2-2-MD5"><a href="#2-2-MD5" class="headerlink" title="2.2 MD5"></a>2.2 MD5</h3><p>MD5 是一种广泛使用的密码散列函数，用于生成128位（16字节）的哈希值，通常表示为32位十六进制字符串。（16位就是32位取中间的部分）</p>
+<h4 id="2-2-1-MD5-特点"><a href="#2-2-1-MD5-特点" class="headerlink" title="2.2.1 MD5 特点"></a>2.2.1 MD5 特点</h4><ol>
+<li><strong>长度</strong>：md5 加密的结果一般有 <code>16</code>，<code>32</code> 和 40，40 的一般很少见。</li>
+<li><strong>内容</strong>：md5 加密的密文包含 <code>0-9</code> 和 <code>a-f</code>，可以是大写。（16进制）</li>
+<li><strong>关键字</strong>：如果加密方式是 md5 加密，可以通过关键 <code>md5</code> 字搜索。</li>
+</ol>
+<h4 id="2-2-2-MD5-实现"><a href="#2-2-2-MD5-实现" class="headerlink" title="2.2.2 MD5 实现"></a>2.2.2 MD5 实现</h4><p>实现加密算法，前端使用的比较多的是 <code>crypto-js</code> 库。后面实现的时候，我们也多会使用这些前端常用的，方便我们在分析网页代码的时候，能更好的了解当前加密算法是什么算法。</p>
+<p>使用 <code>crypto-js</code> 库，首先需要安装：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install crypto-js</span><br></pre></td></tr></table></figure>
+
+<p>这个库在后面还会用上，后面就不重复说明了。</p>
+<p>js 实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引用 crypto-js 加密模块</span></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">CryptoJS</span> = <span class="built_in">require</span>(<span class="string">&#x27;crypto-js&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">md5</span>(<span class="params">text</span>) &#123;</span><br><span class="line">    <span class="comment">// 调用库方法生成哈希并转为字符串</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">CryptoJS</span>.<span class="title class_">MD5</span>(text).<span class="title function_">toString</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">md5</span>(<span class="string">&quot;123456&quot;</span>))]()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">md5</span>(<span class="params">text</span>) &#123;</span><br><span class="line">    <span class="comment">// 调用库方法生成哈希并转为字符串</span></span><br><span class="line">    <span class="keyword">var</span> tm = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>();</span><br><span class="line">    <span class="comment">// 加盐加密 =》  text + tm 才是真正的明文</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">CryptoJS</span>.<span class="title class_">MD5</span>(text + tm).<span class="title function_">toString</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">md5</span>(<span class="string">&quot;123456&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>python 实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载Python内置的哈希算法库</span></span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">md5</span>(<span class="params">text</span>):</span><br><span class="line">    <span class="comment"># 创建MD5哈希对象</span></span><br><span class="line">    md5 = hashlib.md5()</span><br><span class="line">    <span class="comment"># 将输入字符串编码为UTF-8字节并更新哈希计算</span></span><br><span class="line">    md5.update(text.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">    <span class="comment"># 返回16进制格式的哈希值</span></span><br><span class="line">    <span class="keyword">return</span> md5.hexdigest()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(md5(<span class="string">&quot;123456&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-3-案例-科凡网"><a href="#2-2-3-案例-科凡网" class="headerlink" title="2.2.3 案例 - 科凡网"></a>2.2.3 案例 - 科凡网</h4><h5 id="1）需求"><a href="#1）需求" class="headerlink" title="1）需求"></a>1）需求</h5><p>网址：<a target="_blank" rel="noopener" href="https://i.fkw.com/?_ta=0">https://i.fkw.com/?_ta=0</a></p>
+<p>接口：<a target="_blank" rel="noopener" href="https://i.fkw.com/ajax/login_h.jsp?dogSrc=3">https://i.fkw.com/ajax/login_h.jsp?dogSrc=3</a></p>
+<p>逆向 - 表单：pwd e10adc3949ba59abbe56e057f20f883e</p>
+<h5 id="2）逆向"><a href="#2）逆向" class="headerlink" title="2）逆向"></a>2）逆向</h5><ol>
+<li><p>定位加密位置</p>
+<p>这里可以通过全局搜索的方式定位：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd=</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203251454-1021339524.png"><img src="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203251454-1021339524.png" alt="img"></a></p>
+<p>打上断点，看看是否能断住。</p>
+</li>
+<li><p>查看明文与密文</p>
+<p><a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203309073-1916698423.png"><img src="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203309073-1916698423.png" alt="img"></a></p>
+<p>可以看到这里刚好就是对应的值。</p>
+</li>
+</ol>
+<h3 id="2-3-SHA"><a href="#2-3-SHA" class="headerlink" title="2.3 SHA"></a>2.3 SHA</h3><p>SHA 是由美国国家安全局（NSA）设计、NIST 发布的加密哈希函数家族。没错，它是一个家族，比如 sha1，sha256，sha512等。</p>
+<h4 id="2-3-1-SHA-特点"><a href="#2-3-1-SHA-特点" class="headerlink" title="2.3.1 SHA 特点"></a>2.3.1 SHA 特点</h4><ol>
+<li><p><strong>长度</strong></p>
+<p>不同的 sha 加密后的密文长度是不一样的，常见的如下：</p>
+<ul>
+<li>SHA-1：160 位（20 字节）</li>
+<li>SHA-256：256 位（32 字节）</li>
+<li>SHA-512：512 位（64 字节）</li>
+</ul>
+</li>
+<li><p><strong>内容</strong>：一般以十六进制形式表示，也就是加密的密文包含 <code>0-9</code> 和 <code>a-f</code>，可以是大写。</p>
+</li>
+<li><p><strong>关键字</strong>：sha</p>
+</li>
+</ol>
+<h4 id="2-3-2-SHA-实现"><a href="#2-3-2-SHA-实现" class="headerlink" title="2.3.2 SHA 实现"></a>2.3.2 SHA 实现</h4><ul>
+<li><p>js 实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引用 crypto-js 加密模块</span></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">CryptoJS</span> = <span class="built_in">require</span>(<span class="string">&#x27;crypto-js&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">SHA1</span>(<span class="params">text</span>) &#123;</span><br><span class="line">    <span class="comment">// 对输入字符串进行哈希计算，并将结果转换为十六进制字符串</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">CryptoJS</span>.<span class="title class_">SHA1</span>(text).<span class="title function_">toString</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">SHA1</span>(<span class="string">&quot;123456&quot;</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>python 实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sha1</span>(<span class="params">text</span>):</span><br><span class="line">    <span class="comment"># 创建 sha1 对象</span></span><br><span class="line">    sha1 = hashlib.sha1()</span><br><span class="line">    <span class="comment"># 将输入字符串编码为UTF-8字节并更新哈希计算</span></span><br><span class="line">    sha1.update(text.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">    <span class="comment"># 返回16进制格式的哈希值</span></span><br><span class="line">    <span class="keyword">return</span> sha1.hexdigest()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(sha1(<span class="string">&#x27;123456&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2-3-3-案例-六间房"><a href="#2-3-3-案例-六间房" class="headerlink" title="2.3.3 案例 - 六间房"></a>2.3.3 案例 - 六间房</h4><h5 id="1）需求-1"><a href="#1）需求-1" class="headerlink" title="1）需求"></a>1）需求</h5><p>网址：<a target="_blank" rel="noopener" href="https://v.6.cn/channel/index.php">https://v.6.cn/channel/index.php</a></p>
+<p>接口：<a target="_blank" rel="noopener" href="https://passport.6.cn/sso/login.php?username=13800138000&amp;domain=v.6.cn">https://passport.6.cn/sso/login.php?username=13800138000&amp;domain=v.6.cn</a></p>
+<p>逆向：password 1199a3e08d94e5f59d099c6e369774737fd3da1c</p>
+<h5 id="2）逆向-1"><a href="#2）逆向-1" class="headerlink" title="2）逆向"></a>2）逆向</h5><ol>
+<li><p>定位加密位置</p>
+<p>通过全局搜索的方式定位，搜索：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">password</span>:</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203330895-668759600.png"><img src="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203330895-668759600.png" alt="img"></a></p>
+<p>这个就是。</p>
+</li>
+<li><p>断点调试</p>
+<p>在该位置打断点，再次登录：</p>
+<p><a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203343187-24989355.png"><img src="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203343187-24989355.png" alt="img"></a></p>
+<p>断点断住，查看参数和加密结果，确定就是这里了。查看加密方法。</p>
+</li>
+<li><p>n.encode 方法</p>
+<p>由于这里代码是被压缩的，并不太好调试分析，所以在分析之前先格式化一下代码，点击左下角的大括号：</p>
+<p><a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203400459-1126385684.png"><img src="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203400459-1126385684.png" alt="img"></a></p>
+<p>进入到加密方法：</p>
+<p><a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203412849-1656340588.png"><img src="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203412849-1656340588.png" alt="img"></a></p>
+</li>
+</ol>
+<h2 id="4-对称算法"><a href="#4-对称算法" class="headerlink" title="4 对称算法"></a>4 对称算法</h2><p>对称加密算法是一种加密技术，其核心特点是<strong>加密和解密使用相同的密钥</strong>，即发送方用密钥加密明文，接收方用相同密钥解密密文。这类算法速度快、效率高，适合加密大量数据。</p>
+<p><a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203429021-134985360.png"><img src="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203429021-134985360.png" alt="img"></a></p>
+<p>常见的对称加密算法有：</p>
+<ul>
+<li>DES（Data Encryption Standard），翻译为中文称为 <code>数据加密标准</code>。</li>
+<li>3DES（Triple DES）：对数据执行3次DES加密，相对于 DES 更加安全。</li>
+<li>AES（Advanced Encryption Standard）：翻译为中文为 <code>高级加密标准</code>，是 DES 的替代算法。</li>
+</ul>
+<p>我们主要讲解 DES 和 AES 加密算法。</p>
+<h3 id="4-1-DES"><a href="#4-1-DES" class="headerlink" title="4.1 DES"></a>4.1 DES</h3><h4 id="4-1-1-DES-实现"><a href="#4-1-1-DES-实现" class="headerlink" title="4.1.1 DES 实现"></a>4.1.1 DES 实现</h4><ul>
+<li><p>js 实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引用 crypto-js 加密模块</span></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">CryptoJS</span> = <span class="built_in">require</span>(<span class="string">&#x27;crypto-js&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建 DES 对象</span></span><br><span class="line"><span class="keyword">var</span> <span class="variable constant_">DES</span> = &#123;</span><br><span class="line">    <span class="comment">// 加密方法</span></span><br><span class="line">    <span class="attr">encrypt</span>: <span class="keyword">function</span> (<span class="params">data, key, iv</span>) &#123;</span><br><span class="line">        <span class="comment">// 转为 UTF-8 格式的 WordArray 对象供 DES 算法使用</span></span><br><span class="line">        <span class="keyword">var</span> key = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(key),</span><br><span class="line">            iv = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(iv),</span><br><span class="line">            srcs = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(data),</span><br><span class="line">            <span class="comment">// 使用 DES 加密</span></span><br><span class="line">            encrypted = <span class="title class_">CryptoJS</span>.<span class="property">DES</span>.<span class="title function_">encrypt</span>(srcs, key, &#123;</span><br><span class="line">                <span class="attr">iv</span>: iv,</span><br><span class="line">                <span class="comment">// CBC 加密模式，需添加初始向量（IV）增强安全性</span></span><br><span class="line">                <span class="attr">mode</span>: <span class="title class_">CryptoJS</span>.<span class="property">mode</span>.<span class="property">CBC</span>,</span><br><span class="line">                <span class="comment">// Pkcs7 填充方式，自动补足数据块至 8 字节倍数</span></span><br><span class="line">                <span class="attr">padding</span>: <span class="title class_">CryptoJS</span>.<span class="property">pad</span>.<span class="property">Pkcs7</span></span><br><span class="line">            &#125;);</span><br><span class="line">        <span class="comment">// 输出为 Base64 编码的密文字符串</span></span><br><span class="line">        <span class="keyword">return</span> encrypted.<span class="title function_">toString</span>();</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 解密方法</span></span><br><span class="line">    <span class="attr">decrypt</span>: <span class="keyword">function</span> (<span class="params">data, key, iv</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> key = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(key),</span><br><span class="line">            iv = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(iv),</span><br><span class="line">            decrypted = <span class="title class_">CryptoJS</span>.<span class="property">DES</span>.<span class="title function_">decrypt</span>(data, key, &#123;</span><br><span class="line">                <span class="attr">iv</span>: iv,</span><br><span class="line">                <span class="attr">mode</span>: <span class="title class_">CryptoJS</span>.<span class="property">mode</span>.<span class="property">CBC</span>,</span><br><span class="line">                <span class="attr">padding</span>: <span class="title class_">CryptoJS</span>.<span class="property">pad</span>.<span class="property">Pkcs7</span></span><br><span class="line">            &#125;);</span><br><span class="line">        <span class="comment">// 转换为明文字符串</span></span><br><span class="line">        <span class="keyword">return</span> decrypted.<span class="title function_">toString</span>(<span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 密钥</span></span><br><span class="line"><span class="keyword">var</span> desKey = <span class="string">&quot;12345678&quot;</span>;</span><br><span class="line"><span class="comment">// 初始向量</span></span><br><span class="line"><span class="keyword">var</span> desIv = <span class="string">&quot;12345678&quot;</span>;</span><br><span class="line"><span class="comment">// 明文内容</span></span><br><span class="line"><span class="keyword">var</span> text = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加密</span></span><br><span class="line"><span class="keyword">var</span> encryptedData = <span class="variable constant_">DES</span>.<span class="title function_">encrypt</span>(text, desKey, desIv);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;加密字符串: &quot;</span>, encryptedData);</span><br><span class="line"><span class="comment">// 解密</span></span><br><span class="line"><span class="keyword">var</span> decryptedData = <span class="variable constant_">DES</span>.<span class="title function_">decrypt</span>(encryptedData, desKey, desIv);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;解密字符串: &quot;</span>, decryptedData);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>python 实现</p>
+<p>python 想要实现 DES 加密算法，需要安装第三方库：<code>pip install pycryptodome</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提供 DES 加密算法</span></span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES</span><br><span class="line"><span class="comment"># 提供 PKCS#7 填充</span></span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad, unpad</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DESCrypto</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, key, iv</span>):</span><br><span class="line">        <span class="comment"># 接收字节密钥和IV，自动转换为bytes格式</span></span><br><span class="line">        <span class="variable language_">self</span>.key = key <span class="keyword">if</span> <span class="built_in">isinstance</span>(key, <span class="built_in">bytes</span>) <span class="keyword">else</span> key.encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.iv = iv <span class="keyword">if</span> <span class="built_in">isinstance</span>(iv, <span class="built_in">bytes</span>) <span class="keyword">else</span> iv.encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">encrypt</span>(<span class="params">self, plaintext</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;加密明文并返回Base64编码结果&quot;&quot;&quot;</span></span><br><span class="line">        <span class="comment"># 创建 DES 对象，使用 CBC 模式</span></span><br><span class="line">        cipher = DES.new(<span class="variable language_">self</span>.key, DES.MODE_CBC, <span class="variable language_">self</span>.iv)</span><br><span class="line">        <span class="comment"># 对明文的处理，使用 PKCS#7 方式填充，确保数据长度是 8 字节的倍数</span></span><br><span class="line">        padded_data = pad(plaintext.encode(<span class="string">&#x27;utf-8&#x27;</span>), DES.block_size)</span><br><span class="line">        <span class="comment"># 加密</span></span><br><span class="line">        encrypted = cipher.encrypt(padded_data)</span><br><span class="line">        <span class="comment"># 返回 Base64 字符串</span></span><br><span class="line">        <span class="keyword">return</span> base64.b64encode(encrypted).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">decrypt</span>(<span class="params">self, ciphertext</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;解密Base64编码的密文&quot;&quot;&quot;</span></span><br><span class="line">        <span class="comment"># 创建 DES 对象，使用 CBC 模式</span></span><br><span class="line">        cipher = DES.new(<span class="variable language_">self</span>.key, DES.MODE_CBC, <span class="variable language_">self</span>.iv)</span><br><span class="line">        <span class="comment"># 对明文使用 Base64 解码</span></span><br><span class="line">        encrypted_data = base64.b64decode(ciphertext)</span><br><span class="line">        <span class="comment"># 解密</span></span><br><span class="line">        decrypted = cipher.decrypt(encrypted_data)</span><br><span class="line">        <span class="comment"># 移除 PKCS#7 填充并解码为字符串</span></span><br><span class="line">        <span class="keyword">return</span> unpad(decrypted, DES.block_size).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    des = DESCrypto(<span class="string">&quot;12345678&quot;</span>, <span class="string">&quot;12345678&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(des.encrypt(<span class="string">&#x27;123456&#x27;</span>))</span><br><span class="line">    <span class="built_in">print</span>(des.decrypt(<span class="string">&#x27;HUX+7VtHgb0=&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>不论是 JavaScript 代码实现，还是 python 代码实现，我们都可以看到几个关键词：</p>
+<ol>
+<li>key（密钥）</li>
+<li>iv（初始化向量）</li>
+<li>加密模式</li>
+<li>填充模式</li>
+</ol>
+<p>这些是在 DES 和 AES 加密中都存在，也是对称加密算法的特点之一，下面我们来讲讲这些关键词。</p>
+<blockquote>
+<p>温馨提示：</p>
+<p> 关于这些关键词，主要以了解为主，知道这些分别是用来干什么的就行。</p>
+</blockquote>
+<h4 id="4-1-2-DES-特点"><a href="#4-1-2-DES-特点" class="headerlink" title="4.1.2 DES 特点"></a>4.1.2 DES 特点</h4><h5 id="1）iv"><a href="#1）iv" class="headerlink" title="1）iv"></a>1）iv</h5><p>但是当我们使用 CBC 模式实现加密的时候，需要提供一个初始化向量 <code>iv</code>，iv 必须是 8 字节。</p>
+<p><strong>什么是 iv，为什么需要有一个 iv？</strong></p>
+<p>这就需要说一下 DES 的加密模式了。</p>
+<h5 id="2）加密模式"><a href="#2）加密模式" class="headerlink" title="2）加密模式"></a>2）加密模式</h5><p>在使用 DES 加密的时候，常用的有两种加密模式，分别是 ECB 和 CBC。</p>
+<p><strong>ECB</strong></p>
+<p>ECB 全称 Electronic Codebook，译为电子密码本模式，每个数据块独立进行加密与解密。</p>
+<p>ECB 原理就是将明文分组，对每一组分别单独加密，加密后的每组密文之间没有联系，再将每一组加密的结果进行拼接。</p>
+<p><a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203441681-804584991.png"><img src="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203441681-804584991.png" alt="img"></a></p>
+<p>这种模式下，只需要密钥即可，解密也是这样的流程。</p>
+<p><strong>CBC</strong></p>
+<p>CBC 全称 Cipher Block Chaining，译为密文分组链接模式。这种模式的核心思想是每一个明文分组在被加密之前要与前一个的密文分组进行异或运算，即每一组的加密结果会参与下一个分组的加密。最后将每个密文分组按顺序合并起来就得到加密结果。</p>
+<p><a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203452834-1989587903.png"><img src="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203452834-1989587903.png" alt="img"></a></p>
+<h5 id="3）填充模式"><a href="#3）填充模式" class="headerlink" title="3）填充模式"></a>3）填充模式</h5><p>由于明文是需要被分组的，分组的每一段内容都需要和其他部分的进行运算，所以每段的长度需要一样。但是我们不能保证每次的明文都是刚好都分成一样的长度，那最后不够的部分怎么处理呢？答案就是填充了。</p>
+<h5 id="4）其他特点"><a href="#4）其他特点" class="headerlink" title="4）其他特点"></a>4）其他特点</h5><ol>
+<li><strong>内容</strong>：DES 是一种加密算法，其结果的表现形式可以是十六进制也可以是 base64，一般 base64 格式较多。</li>
+<li><strong>关键字</strong>：des、key、iv、CBC、ECB、encrypt、decrypt。</li>
+</ol>
+<h3 id="4-2-AES"><a href="#4-2-AES" class="headerlink" title="4.2 AES"></a>4.2 AES</h3><h4 id="4-2-1-AES-特点"><a href="#4-2-1-AES-特点" class="headerlink" title="4.2.1 AES 特点"></a>4.2.1 AES 特点</h4><p>AES 相对于 DES 来说，更加安全，但是不论在代码实现还是在实现原理方面来说，都比较类似。与 DES 相比，AES 的密钥长度是可选的，并非是固定的长度，其密钥长度可以是：</p>
+<ul>
+<li>128位（16字节）</li>
+<li>192位（24字节）</li>
+<li>256位（32字节）</li>
+</ul>
+<p>而 iv 也比 DES 的要长一些，固定为 128 位（ 16 字节）。</p>
+<h4 id="4-2-2-AES-实现"><a href="#4-2-2-AES-实现" class="headerlink" title="4.2.2 AES 实现"></a>4.2.2 AES 实现</h4><ul>
+<li><p>js 实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引用 crypto-js 加密模块</span></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">CryptoJS</span> = <span class="built_in">require</span>(<span class="string">&#x27;crypto-js&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="variable constant_">AES</span> = &#123;</span><br><span class="line">    <span class="attr">encrypt</span>: <span class="keyword">function</span> (<span class="params">data, key, iv</span>) &#123;</span><br><span class="line">        <span class="comment">// 转为 UTF-8 格式的 WordArray 对象供 AES 算法使用</span></span><br><span class="line">        <span class="keyword">var</span> key = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(key),</span><br><span class="line">            iv = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(iv),</span><br><span class="line">            srcs = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(data),</span><br><span class="line">            <span class="comment">// 使用 AES 加密</span></span><br><span class="line">            encrypted = <span class="title class_">CryptoJS</span>.<span class="property">AES</span>.<span class="title function_">encrypt</span>(srcs, key, &#123;</span><br><span class="line">                <span class="attr">iv</span>: iv,</span><br><span class="line">                <span class="comment">// CBC 加密模式，需添加初始向量（IV）增强安全性</span></span><br><span class="line">                <span class="attr">mode</span>: <span class="title class_">CryptoJS</span>.<span class="property">mode</span>.<span class="property">CBC</span>,</span><br><span class="line">                <span class="comment">// Pkcs7 填充方式，自动补足数据块至 8 字节倍数</span></span><br><span class="line">                <span class="attr">padding</span>: <span class="title class_">CryptoJS</span>.<span class="property">pad</span>.<span class="property">Pkcs7</span></span><br><span class="line">            &#125;);</span><br><span class="line">        <span class="comment">// 输出为 Base64 编码的密文字符串</span></span><br><span class="line">        <span class="keyword">return</span> encrypted.<span class="title function_">toString</span>();</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">decrypt</span>: <span class="keyword">function</span> (<span class="params">data, key, iv</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> key = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(key),</span><br><span class="line">            iv = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(iv),</span><br><span class="line">            decrypted = <span class="title class_">CryptoJS</span>.<span class="property">AES</span>.<span class="title function_">decrypt</span>(data, key, &#123;</span><br><span class="line">                <span class="attr">iv</span>: iv,</span><br><span class="line">                <span class="attr">mode</span>: <span class="title class_">CryptoJS</span>.<span class="property">mode</span>.<span class="property">CBC</span>,</span><br><span class="line">                <span class="attr">padding</span>: <span class="title class_">CryptoJS</span>.<span class="property">pad</span>.<span class="property">Pkcs7</span></span><br><span class="line">            &#125;);</span><br><span class="line">        <span class="comment">// 转换为明文字符串</span></span><br><span class="line">        <span class="keyword">return</span> decrypted.<span class="title function_">toString</span>(<span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 密钥</span></span><br><span class="line"><span class="keyword">var</span> aesKey = <span class="string">&quot;0123456789abcdef&quot;</span>;</span><br><span class="line"><span class="comment">// 初始向量</span></span><br><span class="line"><span class="keyword">var</span> aesIv = <span class="string">&quot;0123456789abcdef&quot;</span>;</span><br><span class="line"><span class="comment">// 明文内容</span></span><br><span class="line"><span class="keyword">var</span> text = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加密</span></span><br><span class="line"><span class="keyword">var</span> encryptedData = <span class="variable constant_">AES</span>.<span class="title function_">encrypt</span>(text, aesKey, aesIv);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;加密字符串: &quot;</span>, encryptedData);</span><br><span class="line"><span class="comment">// 解密</span></span><br><span class="line"><span class="keyword">var</span> decryptedData = <span class="variable constant_">AES</span>.<span class="title function_">decrypt</span>(encryptedData, aesKey, aesIv);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;解密字符串: &quot;</span>, decryptedData);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>python 实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提供 AES 加密算法</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 提供 PKCS#7 填充</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad, unpad</span><br><span class="line">  <span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">AESCrypto</span>:</span><br><span class="line">      <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, key, iv</span>):</span><br><span class="line">          <span class="comment"># 接收字节密钥和IV，自动转换为bytes格式</span></span><br><span class="line">          <span class="variable language_">self</span>.key = key <span class="keyword">if</span> <span class="built_in">isinstance</span>(key, <span class="built_in">bytes</span>) <span class="keyword">else</span> key.encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">          <span class="variable language_">self</span>.iv = iv <span class="keyword">if</span> <span class="built_in">isinstance</span>(iv, <span class="built_in">bytes</span>) <span class="keyword">else</span> iv.encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">            </span><br><span class="line">     <span class="keyword">def</span> <span class="title function_">encrypt</span>(<span class="params">self, plaintext</span>):</span><br><span class="line">      <span class="string">&quot;&quot;&quot;加密明文并返回Base64编码结果&quot;&quot;&quot;</span></span><br><span class="line">      <span class="comment"># 创建 AES 对象，使用 CBC 模式</span></span><br><span class="line">      cipher = AES.new(<span class="variable language_">self</span>.key, AES.MODE_CBC, <span class="variable language_">self</span>.iv)</span><br><span class="line">      <span class="comment"># 对明文的处理，使用 PKCS#7 方式填充，确保数据长度是 8 字节的倍数</span></span><br><span class="line">      padded_data = pad(plaintext.encode(<span class="string">&#x27;utf-8&#x27;</span>), AES.block_size)</span><br><span class="line">      <span class="comment"># 加密</span></span><br><span class="line">      encrypted = cipher.encrypt(padded_data)</span><br><span class="line">      <span class="comment"># 返回 Base64 字符串</span></span><br><span class="line">      <span class="keyword">return</span> base64.b64encode(encrypted).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">decrypt</span>(<span class="params">self, ciphertext</span>):</span><br><span class="line">      <span class="string">&quot;&quot;&quot;解密Base64编码的密文&quot;&quot;&quot;</span></span><br><span class="line">      <span class="comment"># 创建 AES 对象，使用 CBC 模式</span></span><br><span class="line">      cipher = AES.new(<span class="variable language_">self</span>.key, AES.MODE_CBC, <span class="variable language_">self</span>.iv)</span><br><span class="line">      <span class="comment"># 对明文使用 Base64 解码</span></span><br><span class="line">      encrypted_data = base64.b64decode(ciphertext)</span><br><span class="line">      <span class="comment"># 解密</span></span><br><span class="line">      decrypted = cipher.decrypt(encrypted_data)</span><br><span class="line">      <span class="comment"># 移除 PKCS#7 填充并解码为字符串</span></span><br><span class="line">      <span class="keyword">return</span> unpad(decrypted, AES.block_size).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">      aes = AESCrypto(<span class="string">&quot;0123456789abcdef&quot;</span>, <span class="string">&quot;0123456789abcdef&quot;</span>)</span><br><span class="line">      <span class="built_in">print</span>(aes.encrypt(<span class="string">&#x27;123456&#x27;</span>))</span><br><span class="line">      <span class="built_in">print</span>(aes.decrypt(<span class="string">&#x27;AL5riQzgwmMhXZX+5MtU0A==&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="4-2-3-案例-学习通"><a href="#4-2-3-案例-学习通" class="headerlink" title="4.2.3 案例 - 学习通"></a>4.2.3 案例 - 学习通</h4><h5 id="1）需求-2"><a href="#1）需求-2" class="headerlink" title="1）需求"></a>1）需求</h5><p>网址：<a target="_blank" rel="noopener" href="https://passport2.chaoxing.com/login">https://passport2.chaoxing.com/login</a></p>
+<p>接口：<a target="_blank" rel="noopener" href="https://passport2.chaoxing.com/fanyalogin">https://passport2.chaoxing.com/fanyalogin</a></p>
+<p>逆向：password 0QgUbMUJj2usHikiqtb8HQ&#x3D;&#x3D;</p>
+<h5 id="2）逆向-2"><a href="#2）逆向-2" class="headerlink" title="2）逆向"></a>2）逆向</h5><ol>
+<li><p>定位加密位置</p>
+<p>通过全局搜索的方式定位 password 加密的位置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;password&#x27;</span>: </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加密位置</p>
+<p><a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203539186-728702213.png"><img src="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203539186-728702213.png" alt="img"></a></p>
+<p>从单词来看，像是 AES 加密。</p>
+</li>
+<li><p>encryptByAES 函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">encryptByAES</span>(<span class="params">message, key</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="title class_">CBCOptions</span> = &#123;</span><br><span class="line">        <span class="attr">iv</span>: <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(key),</span><br><span class="line">        <span class="attr">mode</span>: <span class="title class_">CryptoJS</span>.<span class="property">mode</span>.<span class="property">CBC</span>,</span><br><span class="line">        <span class="attr">padding</span>: <span class="title class_">CryptoJS</span>.<span class="property">pad</span>.<span class="property">Pkcs7</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">let</span> aeskey = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(key);</span><br><span class="line">    <span class="keyword">let</span> secretData = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(message);</span><br><span class="line">    <span class="keyword">let</span> encrypted = <span class="title class_">CryptoJS</span>.<span class="property">AES</span>.<span class="title function_">encrypt</span>(</span><br><span class="line">        secretData,</span><br><span class="line">        aeskey,</span><br><span class="line">        <span class="title class_">CBCOptions</span></span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Base64</span>.<span class="title function_">stringify</span>(encrypted.<span class="property">ciphertext</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从代码来看，确实是 AES 加密算法，只是相对于我们自己实现的，稍微有一点格式上的区别。</p>
+</li>
+</ol>
+<h2 id="5-非对称算法-RSA"><a href="#5-非对称算法-RSA" class="headerlink" title="5 非对称算法 - RSA"></a>5 非对称算法 - RSA</h2><p>非对称加密，使用 <strong>一对密钥</strong>（公钥和私钥）进行加密和解密。与对称加密不同，非对称加密的加密和解密使用不同的密钥，解决了密钥分发问题，但计算速度较慢，所以一般不会用非对称加密算法对大量数据进行加密。</p>
+<p><a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203548886-327352988.png"><img src="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203548886-327352988.png" alt="img"></a></p>
+<h3 id="5-1-RSA-特点"><a href="#5-1-RSA-特点" class="headerlink" title="5.1 RSA 特点"></a>5.1 RSA 特点</h3><ol>
+<li><p><strong>长度</strong>：rsa 的密文与密钥的长度有关，密钥长度越长，密文长度越长。</p>
+<p>rsa 的密钥长度可以是 1024位、2048位 和 4096位。</p>
+</li>
+<li><p><strong>内容</strong>：对相同的明文加密，密文都会不同。</p>
+</li>
+<li><p><strong>关键字</strong>：key、new RSA、setPublic、encrypt、decrypt。</p>
+</li>
+</ol>
+<h3 id="5-2-RSA-实现"><a href="#5-2-RSA-实现" class="headerlink" title="5.2 RSA 实现"></a>5.2 RSA 实现</h3><ul>
+<li><p>js 实现</p>
+<p>crypto-js 模块并没有实现 rsa，需要安装另一个库：<code>npm install node-jsencrypt</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">JSEncrypt</span> = <span class="built_in">require</span>(<span class="string">&#x27;node-jsencrypt&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="variable constant_">RSA</span> = &#123;</span><br><span class="line">    <span class="attr">encrypt</span>: <span class="keyword">function</span> (<span class="params">data, key</span>) &#123;</span><br><span class="line">        <span class="comment">// 创建 JSEncrypt 对象</span></span><br><span class="line">        <span class="keyword">const</span> encryptor = <span class="keyword">new</span> <span class="title class_">JSEncrypt</span>();</span><br><span class="line">        <span class="comment">// 设置公钥</span></span><br><span class="line">        encryptor.<span class="title function_">setPublicKey</span>(key);</span><br><span class="line">        <span class="comment">// 加密数据</span></span><br><span class="line">        <span class="keyword">return</span> encryptor.<span class="title function_">encrypt</span>(data);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">decrypt</span>: <span class="keyword">function</span> (<span class="params">data, key</span>) &#123;</span><br><span class="line">        <span class="comment">// 创建 JSEncrypt 对象</span></span><br><span class="line">        <span class="keyword">const</span> decryptor = <span class="keyword">new</span> <span class="title class_">JSEncrypt</span>();</span><br><span class="line">        <span class="comment">// 设置私钥</span></span><br><span class="line">        decryptor.<span class="title function_">setPrivateKey</span>(key);</span><br><span class="line">        <span class="comment">// 解密数据</span></span><br><span class="line">        <span class="keyword">return</span> decryptor.<span class="title function_">decrypt</span>(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 加密</span></span><br><span class="line"><span class="keyword">const</span> publicKey = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;public_key.pem&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> encryptedData = <span class="variable constant_">RSA</span>.<span class="title function_">encrypt</span>(<span class="string">&quot;123456&quot;</span>, publicKey);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(encryptedData);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密</span></span><br><span class="line"><span class="keyword">const</span> privateKey = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;private_key.pem&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> decryptedData = <span class="variable constant_">RSA</span>.<span class="title function_">decrypt</span>(encryptedData, privateKey);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(decryptedData);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>python 实现</p>
+<p>需要安装第三方库：<code>pip install rsa</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> rsa</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RSA</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, publicKey, private_key</span>):</span><br><span class="line">        <span class="variable language_">self</span>.publicKey = publicKey</span><br><span class="line">        <span class="variable language_">self</span>.private_key = private_key</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">encrypt</span>(<span class="params">self, t</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;公钥加密&quot;&quot;&quot;</span></span><br><span class="line">        encrypted = rsa.encrypt(t.encode(<span class="string">&quot;utf-8&quot;</span>), <span class="variable language_">self</span>.publicKey)</span><br><span class="line">        <span class="keyword">return</span> base64.b64encode(encrypted).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">decrypt</span>(<span class="params">self, t</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;私钥解密&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> rsa.decrypt(base64.b64decode(t), <span class="variable language_">self</span>.private_key).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># 生成公钥、私钥</span></span><br><span class="line">    public_key, private_key = rsa.newkeys(<span class="number">512</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;公钥：&#x27;</span>, public_key)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;私钥：&#x27;</span>, private_key)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建 rsa 对象</span></span><br><span class="line">    rsa_ = RSA(public_key, private_key)</span><br><span class="line">    <span class="comment"># 待加密字符串</span></span><br><span class="line">    text = <span class="string">&#x27;123456&#x27;</span></span><br><span class="line">    encrypted_str = rsa_.encrypt(text)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;加密字符串：&#x27;</span>, encrypted_str)</span><br><span class="line">    decrypted_str = rsa_.decrypt(encrypted_str)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;解密字符串：&#x27;</span>, decrypted_str)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="5-3-案例-新华保险"><a href="#5-3-案例-新华保险" class="headerlink" title="5.3 案例 - 新华保险"></a>5.3 案例 - 新华保险</h3><h4 id="1）需求-3"><a href="#1）需求-3" class="headerlink" title="1）需求"></a>1）需求</h4><p>网址：<a target="_blank" rel="noopener" href="https://tms.newchinalife.com/ex//app/login/login.jsp">https://tms.newchinalife.com/ex//app/login/login.jsp</a></p>
+<p>接口：<a target="_blank" rel="noopener" href="https://tms.newchinalife.com/ex/j_spring_security_check">https://tms.newchinalife.com/ex/j_spring_security_check</a></p>
+<p>逆向 ：j_password</p>
+<p>n4NUSQ479nvK9xjCq5W2MesLXPWfJ&#x2F;mGdTENn8ptJr666++5C0w5pO1forQOTXOkFdwC1&#x2F;TdoxQLJXhwGGDZwQg331AIPrjdLJZjTjiWjKVTRUKua8eOIVX4u2421PSjNbXILrALrRxhwKE4LjLwt8VCeFXF2yGA8lMOXOKPNNelbZOUo&#x2F;eSNSBdIAHEqWZxBQiWCX6s7FAp5T5DH0a&#x2F;yd+LtgbfRCaprKvH3G7oreW8HzJKJkp3cKrF2o9ntgaws2UJlF+3rTapAa5f8Jo4KJmDHXYH7bY2fSKvjSBZxv26&#x2F;ZZaPEM4llrCcm3y6+&#x2F;Kuks+EElCIYf1Sjtg8HQr1A&#x3D;&#x3D;</p>
+<h4 id="2）逆向-3"><a href="#2）逆向-3" class="headerlink" title="2）逆向"></a>2）逆向</h4><ol>
+<li><p>定位加密位置</p>
+<p>用全局搜索的方式定位，搜索：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">j_password</span><br></pre></td></tr></table></figure>
+
+<p>由于直接用 j_password 搜索出来的结果并不多，并且能找到数据，可以直接用它搜索。</p>
+</li>
+<li><p>定位位置</p>
+<p><a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203115781-739876636.png"><img src="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203115781-739876636.png" alt="img"></a></p>
+<p>再次发送请求，确定是否断住，结果是可以断下来的。</p>
+</li>
+<li><p>数据查看</p>
+<p>查看上面的 <code>j_pwd</code> 参数，结果是密码的明文值，所以这里大概率就是了。</p>
+<p>然后在上面的代码中有看到 <code>RSAClient</code> 字样，那么很有可能是 <code>rsa</code> 加密算法进行的加密。</p>
+<p>但是这里只看到了创建 rsa 对象，并没有找到设置密钥的地方，所以暂时还不能确定。</p>
+</li>
+<li><p>rasClient.encrypt 函数</p>
+<p>进入到 rasClient.encrypt 函数：</p>
+<p><a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203236359-1686895025.png"><img src="https://img2024.cnblogs.com/blog/2327754/202509/2327754-20250917203236359-1686895025.png" alt="img"></a></p>
+<p>在这个页面可以看到 <code>setPublicKey</code> 方法的调用，并且刚好是 <code>RSAClient</code> 函数的。也就是说在创建 <code>rsa</code> 对象的时候，就已经设置了公钥，而公钥的值是 <code>PUBLICKEY</code>。</p>
+</li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://yusongshu.github.io/2026/03/02/python/%E7%88%AC%E8%99%AB/%E5%B8%B8%E8%A7%81%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">https://yusongshu.github.io/2026/03/02/python/%E7%88%AC%E8%99%AB/%E5%B8%B8%E8%A7%81%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%88%AC%E8%99%AB/"># 爬虫</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/03/12/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/pandas/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/">数据清洗</a>
+            
+            
+            <a class="next" rel="next" href="/2026/02/27/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/pandas/Pandas_%E6%95%99%E7%A8%8B/">Pandas 教程</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

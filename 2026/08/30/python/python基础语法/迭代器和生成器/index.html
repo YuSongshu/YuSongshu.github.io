@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>迭代器和生成器 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">迭代器和生成器</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 30, 2026&nbsp;&nbsp;20:28:29</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                                <a href="/categories/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">python基础语法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="28-迭代器和生成器"><a href="#28-迭代器和生成器" class="headerlink" title="28_迭代器和生成器"></a>28_迭代器和生成器</h1><h2 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h2><p>可以被for循环去循环遍历的数据或者数据类型。所有的序列类型都是可迭代对象(list&#x2F;tuple&#x2F;str),映射类型dict,文件对象等非序列类型也是可迭代对象。数据对象中的元素是可序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]</span><br><span class="line">for i in lst:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<p>作用：可迭代对象可以提供迭代器帮助执行迭代遍历</p>
+<p>满足条件：1.  对象实现了<code>__iter__</code>方法</p>
+<ol start="2">
+<li><code>__iter__</code>方法返回了迭代器对象</li>
+</ol>
+<p>工作原理：</p>
+<p>1.在内部对可迭代对象调用<code>__iter__</code>方法,获取到迭代器对象。</p>
+<p>2.通过迭代器对象,多次调用<code>_next_</code>方法获取结果</p>
+<p>isinstance(实例对象，数据类型)</p>
+<p>可迭代对象的作用： 可以提供给迭代器进行迭代遍历使用</p>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>作用：迭代器可以用于逐一遍历数据，使数据不用一次性读入，适合很大的数据集合，可以节省内存，提升速度</p>
+<p>两个基本方法：iter() : 用于创建迭代器对象</p>
+<p> next(): 用于输出可迭代对象中的元素</p>
+<p> 迭代器其实就是实现了<code>__iter__</code>和<code>__next__</code>的对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lst = [1, 2, 3]</span><br><span class="line">my_iter = iter(lst)</span><br><span class="line">print(my_iter)</span><br><span class="line">print(next(my_iter))</span><br><span class="line">print(next(my_iter))</span><br><span class="line">print(next(my_iter))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>注：元素取完之后再取会引发StopIteration异常</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lst = [1, 2, 3]</span><br><span class="line">my_iter = iter(lst)</span><br><span class="line">print(my_iter)</span><br><span class="line">print(next(my_iter))</span><br><span class="line">print(next(my_iter))</span><br><span class="line">print(next(my_iter))</span><br><span class="line">print(next(my_iter))	# StopIteration</span><br></pre></td></tr></table></figure>
+
+
+
+<p>迭代器调用对应的转换函数，可以转换成任意的可迭代对象</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>list &#x2F;tuple&#x2F;set（可迭代对象）</th>
+<th>iterator 迭代器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据存储</td>
+<td>完整保存所有元素在内存</td>
+<td>只存指针，不存全部数据</td>
+</tr>
+<tr>
+<td>遍历次数</td>
+<td>无限次，重复读取不变</td>
+<td>仅能遍历 1 次，取完直接耗尽</td>
+</tr>
+<tr>
+<td>多次转换</td>
+<td><code>list(lst)</code>、<code>set(lst)</code> 每次都有完整数据</td>
+<td>第一次转换消耗全部元素，后续转换为空</td>
+</tr>
+<tr>
+<td>是否支持索引</td>
+<td>list&#x2F;tuple 支持 <code>[0]</code>；set 不支持</td>
+<td>完全不支持下标索引</td>
+</tr>
+<tr>
+<td>重置读取</td>
+<td>随时从头遍历</td>
+<td>无法重置，只能重新生成迭代器</td>
+</tr>
+</tbody></table>
+<h3 id="判断是否为迭代器"><a href="#判断是否为迭代器" class="headerlink" title="判断是否为迭代器"></a>判断是否为迭代器</h3><p>模块：from collections.abc import Iterator, Iterable</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">isinstance(data, Iterator)：判断数据是否是迭代器</span><br><span class="line">isinstance(data, Iterable)：判断数据是否是可迭代对象</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from collections.abc import Iterator, Iterable</span><br><span class="line"></span><br><span class="line">lst = [1, 2, 3]</span><br><span class="line">print(isinstance(lst, Iterator))</span><br><span class="line">print(isinstance(lst, Iterable))</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">False</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="迭代器协议"><a href="#迭代器协议" class="headerlink" title="迭代器协议"></a>迭代器协议</h2><p>假如我们自己写了一个数据类型，希望这个数据类型 里的东西也可以使用for被一个一个的取出来，那我们 就必须满足for的要求。这个要求就叫做“协议”</p>
+<p><code>__iter__()</code> : 用于创建迭代器对象&#x2F;将可迭代对象转换成迭代器，等价于iter(lst)</p>
+<p><code>__next__() </code>: 返回迭代器中下一个元素，如果没有元素抛出stopIteration异常</p>
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Change:</span><br><span class="line"></span><br><span class="line">    def __init__(self, data):</span><br><span class="line">        self.data = data</span><br><span class="line">        self.index = 0  # 初始化一个索引值为0</span><br><span class="line"></span><br><span class="line">    def __iter__(self):</span><br><span class="line">        return self  # 调用__iter__方法，返回一个Change类的对象</span><br><span class="line"></span><br><span class="line">    def __next__(self):</span><br><span class="line">        # 返回迭代器中下一个元素</span><br><span class="line">        if self.index &gt;= len(self.data):</span><br><span class="line">            raise StopIteration(&#x27;元素取完&#x27;)</span><br><span class="line"></span><br><span class="line">        res = self.data[self.index]  # 先获取当前元素</span><br><span class="line">        self.index += 1  # 索引值的更新</span><br><span class="line">        return res  # 将迭代器中的下一个元素返回</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">c = Change(&#x27;abc&#x27;)  # 实例化一个迭代器对象</span><br><span class="line">print(c)  # &lt;__main__.Change object at 0x000001B3FB0A4380&gt;</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    print(c.__next__())</span><br><span class="line">    print(c.__next__())</span><br><span class="line">    print(c.__next__())</span><br><span class="line">    print(c.__next__())  # 报错</span><br><span class="line">except StopIteration as e:</span><br><span class="line">    print(e)</span><br><span class="line"></span><br><span class="line">for i in range(10, 2):  # 起始值为10， 步长为2，没有结束值</span><br><span class="line">    if i % 2 == 0:</span><br><span class="line">        print(i)</span><br><span class="line">    if i &gt;= 100:</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>在 Python 中，使用了 yield 的函数被称为生成器（generator），生成器就是一种自定义的迭代器，本质还是迭代器</p>
+<p>yield：yield语句一次返回一个结果，在每个结果中间，挂起函 数的状态，以便下次从它离开的地方继续执行。</p>
+<p>特点</p>
+<p>惰性求值：只在需要时才生成值，节省内存</p>
+<p>只能迭代一次：遍历结束后，生成器为空</p>
+<p>状态保持：每次yield后保存当前状态</p>
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lst = [i for i in range(1, 6)]</span><br><span class="line">dct = &#123;str(i): i for i in range(1, 6)&#125;</span><br><span class="line">se = &#123;i for i in range(1, 6)&#125;</span><br><span class="line">tu = (i for i in range(1, 6))</span><br><span class="line">print(next(tu))</span><br><span class="line">print(tuple(tu))</span><br><span class="line">print(lst, dct, se, tu, sep=&#x27;\n&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>优点：</p>
+<p>1.延迟计算，一次返回一个结果。也就是说，它不会一    次生成所有的结果，这对于大数据量处理，将会非常    有用。</p>
+<p>2.节省内存</p>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>普通迭代器 iter (list)&#x2F;map&#x2F;filter</th>
+<th>Generator 生成器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>协议方法</td>
+<td><code>__iter__</code> + <code>__next__</code></td>
+<td>自动内置 <code>__iter__</code>+<code>__next__</code></td>
+</tr>
+<tr>
+<td>数据存储</td>
+<td>只存遍历指针，不存完整数据</td>
+<td>只存生成逻辑，不存任何元素</td>
+</tr>
+<tr>
+<td>遍历次数</td>
+<td>仅 1 次，读完为空</td>
+<td>仅 1 次，读完为空</td>
+</tr>
+<tr>
+<td>随机访问</td>
+<td>完全不支持下标、len、切片</td>
+<td>完全不支持下标、len、切片</td>
+</tr>
+<tr>
+<td>内存占用</td>
+<td>中等，仅保存指针</td>
+<td>极低，惰性计算，即用即生成</td>
+</tr>
+<tr>
+<td>创建方式</td>
+<td><code>iter(容器)</code>、map、zip、filter</td>
+<td><code>(x for x in ...)</code>、带 yield 函数</td>
+</tr>
+<tr>
+<td>是否 Iterator</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>典型特点</td>
+<td>一次性遍历、流式处理小数据</td>
+<td>超大文件、无限数据流首选</td>
+</tr>
+</tbody></table>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://yusongshu.github.io/2026/08/30/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/">https://yusongshu.github.io/2026/08/30/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"># python基础语法</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/08/31/python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E7%9C%8B%E6%9D%BF/PowerBI%E4%B8%8Efinebi/">PowerBI与finebi</a>
+            
+            
+            <a class="next" rel="next" href="/2026/08/30/python/%E7%88%AC%E8%99%AB/fiddler/">fiddler</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

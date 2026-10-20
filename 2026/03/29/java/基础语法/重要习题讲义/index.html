@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>重要习题讲义 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">重要习题讲义</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 29, 2026&nbsp;&nbsp;14:45:05</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/java/">java</a>
+                            
+                                <a href="/categories/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">基础语法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="重要习题讲义"><a href="#重要习题讲义" class="headerlink" title="重要习题讲义"></a>重要习题讲义</h1><p>要什么  </p>
+<p>要就是书  SELECT * FROM</p>
+<p>要的是书名和作者  SELECT bname,bauthor  FROM</p>
+<p>要的多少个  最大 最贵  SELECT 聚合函数 FROM</p>
+<p>是否重复  多少个 个数&gt;1</p>
+<p>SELECT bname,COUNT(id) AS zs FROM books GROUP BY bname</p>
+<p>SELECT bname,COUNT(id) zs FROM books GROUP BY bname HAVING zs&gt;1</p>
+<p>最贵的书是谁? 用性能去换功能</p>
+<p>SELECT *  FROM books WHERE bprice &#x3D; (SELECT MAX(bprice) FROM books)</p>
+<p>1.已知：员工信息表，表名为：employee</p>
+<p>NAME   Sex Age Address</p>
+<p>张三   女  19  北京</p>
+<p>李四   男  20  上海</p>
+<p>王五   女  25  广州</p>
+<p>薛六   女  20  北京</p>
+<p>王五   男  22  北京</p>
+<p>赵七   男  28  上海</p>
+<p>张四   女  23  北京</p>
+<p>（1）. 写出sql语句，查询所有年龄大于20岁的员工（2分）</p>
+<p>SELECT * FROM employee WHERE age &gt; 20</p>
+<p>（2）. 写出sql语句，查询所有年龄小于25岁的女性员工（3分）</p>
+<p>SELECT * FROM employee WHERE age &lt; 25 AND sex &#x3D; ‘女’</p>
+<p>（3）. 写出sql语句，统计男女员工各有多少名（3分）</p>
+<p>SELECT sex,COUNT(NAME) FROM employee GROUP BY sex</p>
+<p>（4）. 写出sql语句，按照年龄倒序获取员工信息（3分）</p>
+<p>SELECT * FROM employee ORDER BY age DESC</p>
+<p>（5）. 写出sql语句，获取员工中哪个姓名具有重名现象（3分）</p>
+<p>SELECT NAME,COUNT(NAME) FROM employee GROUP BY NAME HAVING COUNT(NAME)&gt;1</p>
+<p>（6）. 写出sql语句，查询所有姓张的员工（3分）</p>
+<p>SELECT * FROM employee WHERE NAME LIKE ‘张%’</p>
+<p>（7）. 写出sql语句，查询住址为北京的前3条记录（3分）</p>
+<p>SELECT * FROM employee WHERE address &#x3D; ‘北京’ LIMIT 0,3</p>
+<p>（8）. 写出sql语句，查询员工总数（3分）</p>
+<p>SELECT COUNT(NAME) FROM employee</p>
+<p>（9）. 写出sql语句，向表中插入一条记录（2分）</p>
+<p>INSERT INTO employee (NAME,age,sex,address) VALUES (‘’,20,’’,’’)</p>
+<p>（10）.写出sql语句，修改员工张四的住址为南京（2分）</p>
+<p>UPDATE employee SET address &#x3D; ‘南京’ WHERE  NAME &#x3D; ‘张四’</p>
+<p>（11）.写出sql语句，删除年龄大于24岁的女员工（2分）</p>
+<p>DELETE FROM employee WHERE age &gt; 24 AND sex &#x3D; ‘女’</p>
+<p>SELECT *  FROM (SELECT bname,COUNT(id) AS zs FROM books GROUP BY bname) AS aa WHERE zs &gt; 1</p>
+<p>CREATE TABLE book (b_code VARCHAR(10),b_name VARCHAR(100),b_author VARCHAR(50),b_publish VARCHAR(100),b_pubdate DATE,b_price DOUBLE(8,2));</p>
+<p>CREATE TABLE reader (r_code VARCHAR(10),r_name VARCHAR(100),r_sex CHAR(1),r_dep VARCHAR(100));</p>
+<p>CREATE TABLE check_out(b_code VARCHAR(10),r_code VARCHAR(10),borrow_date DATE,return_date DATE);</p>
+<p>book  多</p>
+<p>b_code  bname    </p>
+<p>1   幻城     </p>
+<p>2     小时代    </p>
+<p>3   大话西游    </p>
+<p>reader  多  加外键  </p>
+<p>r_code  rname   </p>
+<p>1   张三     </p>
+<p>2     李四     </p>
+<p>3     王五    </p>
+<p>check_out</p>
+<p>b_code   r_code </p>
+<p> 1   1</p>
+<p> 1   2</p>
+<p> 2     1</p>
+<p> 2     2</p>
+<p>book.<code>b_code</code> &#x3D; check_out.<code>b_code</code> AND check_out.<code>r_code</code>&#x3D; reader.<code>r_code</code>  </p>
+<p>1.特点 三张表 实际上是 书和读者的多对多关系</p>
+<p>2.特点 别没有进行联合查询  </p>
+<p>3.虽然三张表 但是始终都是单表查询  </p>
+<p>– 插入图书信息</p>
+<p>INSERT INTO book VALUES(‘b_001’,’《幻城》’,’郭敬明’,’人民教育出版社’,’2004-5-21’,19.8);</p>
+<p>INSERT INTO book VALUES(‘b_002’,’《三重门》’,’韩寒’,’电子工业出版社’,’2001-7-22’,22.5);</p>
+<p>INSERT INTO book VALUES(‘b_003’,’《幻城》’,’郭敬明’,’中国人民大学出版社’,’2004-5-21’,20);</p>
+<p>INSERT INTO book VALUES(‘b_004’,’《围城》’,’钱钟书’,’人民教育出版社’,’2010-5-15’,21);</p>
+<p>INSERT INTO book VALUES(‘b_005’,’《幻城》’,’郭敬明’,’清华大学出版社’,’2011-5-21’,22);</p>
+<p>INSERT INTO book VALUES(‘b_006’,’《水浒传》’,’施耐庵’,’电子工业出版社’,’2008-3-21’,48);</p>
+<p>INSERT INTO book VALUES(‘b_007’,’《福尔摩斯》’,’柯南道尔’,’人民教育出版社’,’2004-5-21’,33);</p>
+<p>INSERT INTO book VALUES(‘b_008’,’《伟大的博弈》’,’张化龙’,’电子工业出版社’,’2009-2-13’,28);</p>
+<p>INSERT INTO book VALUES(‘b_009’,’《活法》’,’稻盛和夫’,’人民教育出版社’,’2000-1-2’,15);</p>
+<p>INSERT INTO book VALUES(‘b_010’,’《人性的弱点》’,’戴尔卡耐基’,’人民教育出版社’,’2007-7-31’,19.8);</p>
+<p>– 插入读者数据</p>
+<p>INSERT INTO reader VALUES(‘r_001’,’丁涛’,’男’,’人事部’);</p>
+<p>INSERT INTO reader VALUES(‘r_002’,’王壮’,’男’,’人事部’);</p>
+<p>INSERT INTO reader VALUES(‘r_003’,’王影影’,’女’,’财务部’);</p>
+<p>INSERT INTO reader VALUES(‘r_004’,’吴俊铖’,’男’,’培训部’);</p>
+<p>INSERT INTO reader VALUES(‘r_005’,’张佳’,’女’,’财务部’);</p>
+<p>INSERT INTO reader VALUES(‘r_006’,’刁钱龙’,’男’,’计算机系’);</p>
+<p>INSERT INTO reader VALUES(‘r_007’,’李佳成’,’男’,’财务部’);</p>
+<p>– 插入借阅记录信息</p>
+<p>INSERT INTO check_out VALUES(‘b_003’,’r_001’,’2008-4-9’,’2008-4-22’);</p>
+<p>INSERT INTO check_out VALUES(‘b_003’,’r_006’,’2009-4-21’,’2009-5-10’);</p>
+<p>INSERT INTO check_out VALUES(‘b_004’,’r_005’,’2009-10-2’,’2009-11-1’);</p>
+<p>INSERT INTO check_out VALUES(‘b_001’,’r_003’,’2010-3-12’,’2010-4-1’);</p>
+<p>INSERT INTO check_out VALUES(‘b_009’,’r_002’,’2010-3-22’,’2010-4-5’);</p>
+<p>INSERT INTO check_out VALUES(‘b_008’,’r_001’,’2010-8-11’,’2010-9-3’);</p>
+<p>INSERT INTO check_out VALUES(‘b_009’,’r_007’,’2010-12-3’,’2010-12-31’);</p>
+<p>INSERT INTO check_out VALUES(‘b_003’,’r_004’,’2011-4-8’,’2011-5-7’);</p>
+<p>INSERT INTO check_out VALUES(‘b_001’,’r_003’,’2012-4-9’,NULL);</p>
+<p>查询出以下结果</p>
+<p>1.查询所有图书记录、查询所有借阅记录、查询所有读者信息，采用字段选择和通配符选择！</p>
+<p>SELECT *  FROM book</p>
+<p>SELECT *  FROM reader</p>
+<p>SELECT *  FROM check_out</p>
+<p>2.查询图书馆中的书籍都有哪些出版社？</p>
+<p>SELECT DISTINCT b_publish FROM book</p>
+<p>3.查询出版日期在2008年至2010年之间的所有图书！</p>
+<p>SELECT * FROM book WHERE b_pubdate BETWEEN ‘2008’ AND ‘2010’</p>
+<p>4.查询部门是财务部、人事部、培训部的读者信息！ </p>
+<p>SELECT *  FROM reader WHERE r_dep IN(‘财务部’,’人事部’,’培训部’)</p>
+<p>5.查询所有姓张的读者详细信息!</p>
+<p>SELECT *  FROM reader WHERE r_name LIKE ‘张%’</p>
+<p>6.查询所有未归还图书的借阅记录详情！</p>
+<p>SELECT * FROM check_out WHERE return_date IS NULL</p>
+<p>7.查询读者中人事部的读者有多少个、查询作者姓李的图书共有多少本！</p>
+<p>SELECT r_dep,COUNT(r_code) FROM reader WHERE r_dep &#x3D; ‘人事部’ GROUP BY r_dep</p>
+<p>SELECT b_author,COUNT(b_code) FROM book  WHERE b_author LIKE ‘李%’ GROUP BY b_author</p>
+<p>8.查询《幻城》这本书总计价格是多少？（建议 数据录入的时候有不少于三本《幻城》）</p>
+<p>SELECT SUM(b_price) FROM book WHERE b_name &#x3D; ‘《幻城》’</p>
+<p>9.查询《幻城》这本书平均价格是多少？</p>
+<p>SELECT AVG(b_price) FROM book WHERE b_name &#x3D; ‘《幻城》’</p>
+<p>10.查找最贵的一本《幻城》的信息 ！</p>
+<p>SELECT MAX(b_price) FROM book WHERE b_name &#x3D; ‘《幻城》’</p>
+<p>11.查询借阅日期在2011年10月的前3条记录</p>
+<p>SELECT *  FROM check_out WHERE borrow_date LIKE ‘%2011-10%’</p>
+<p>12.查询所有图书并按出版日期排序、查询2011年的全年借阅记录，并按借阅日期倒序排序</p>
+<p>SELECT *  FROM book ORDER BY b_pubdate DESC</p>
+<p>13.统计读者群体中各个部门的人数</p>
+<p>SELECT r_dep,COUNT(r_code) FROM reader  GROUP BY r_dep</p>
+<p>14.统计2010年的借阅记录，查看每个图书编号都被借出去过多少次，并按照这个次数从大到小排序，以便了解书籍的畅销程度!</p>
+<p>做热榜</p>
+<p>SELECT b_code,COUNT(b_code) FROM check_out WHERE borrow_date </p>
+<p>LIKE ‘%2010%’ GROUP BY  b_code ORDER BY COUNT(b_code) DESC</p>
+<p>15.统计读者群体中各个部门的女性群体数量</p>
+<p>SELECT r_sex,r_dep,COUNT(r_code) FROM reader GROUP BY r_sex,r_dep</p>
+<p>16.查询那本书被哪个读者在什么时间借过在什么时间还的</p>
+<p>SELECT *  FROM book,reader,check_out </p>
+<p>WHERE book.<code>b_code</code> &#x3D; check_out.<code>b_code</code> AND check_out.<code>r_code</code>&#x3D; reader.<code>r_code</code></p>
+<p>SELECT b.b_name,r.r_name,co.borrow_date,co.return_date  </p>
+<p>FROM book b,reader r,check_out co </p>
+<p>WHERE b.<code>b_code</code> &#x3D; co.<code>b_code</code> AND co.<code>r_code</code>&#x3D; r.<code>r_code</code> AND co.return_date IS NULL</p>
+<p>前 后 分组 排序 分页&#x3D;&#x3D;范围</p>
+<p>查询难度分为四种的</p>
+<p>1.单表查询 条件单一</p>
+<p>2.单表查询 条件复杂多</p>
+<p>3.多表联合查询 条件单一</p>
+<p>4.多表联合查询 条件复杂多</p>
+<p>回顾一对多</p>
+<p>联合查询 一对多 和 多对多</p>
+<p>  1.普通连接  WHERE 一方的主键&#x3D;多方的外键</p>
+<p>  SELECT *  FROM class c,student s WHERE c.id &#x3D; s.c_id</p>
+<p>  2.内连接   INNER JOIN   ON 一方的主键&#x3D;多方的外键</p>
+<p>  SELECT *  FROM class c INNER JOIN student s ON c.id &#x3D; s.c_id</p>
+<p>  3.自连接   表自己连接自己  A表自己是一方 同时 也是多方 后面再讲</p>
+<p>  4.外连接   OUTER JOIN   ON 一方的主键&#x3D;多方的外键</p>
+<p>​      左外 LEFT  JOIN    ON</p>
+<p>​      表分成 左表和右表  单纯的左右</p>
+<p>​      效果 查询出左表的全部数据 和右表关系列相等的数据</p>
+<p>  SELECT *  FROM class c LEFT JOIN student s ON c.id &#x3D; s.c_id</p>
+<p>​      右外 RIGHT  JOIN    ON</p>
+<p>​      表分成 左表和右表  单纯的左右</p>
+<p>​      效果 查询出右表的全部数据 和左表关系列相等的数据</p>
+<p>  SELECT *  FROM class c RIGHT JOIN student s ON c.id &#x3D; s.c_id</p>
+<p>数据中 有 没有班级的学生  有 没有学生的班级</p>
+<p>多对多</p>
+<p>如何建立关系  </p>
+<p>1.给两个多方表 建立一个共同的关系表  关系表中是两个多方表的外键</p>
+<p>qqnum</p>
+<p>id  num   </p>
+<p>1  100828833   </p>
+<p>2  100910101</p>
+<p>3  101000011</p>
+<p>qqrole</p>
+<p>id  rname   </p>
+<p>1  蓝钻   </p>
+<p>2  绿钻   </p>
+<p>3  黄钻   </p>
+<p>关系表</p>
+<p>num_role</p>
+<p>num_id   role_id</p>
+<p>1    1</p>
+<p>1    2</p>
+<p>2    1</p>
+<p>2    2</p>
+<p>CREATE TABLE qqnum(id INT(2) PRIMARY KEY AUTO_INCREMENT,num VARCHAR(10));</p>
+<p>CREATE TABLE qqrole(id INT(2) PRIMARY KEY AUTO_INCREMENT,rname VARCHAR(10));</p>
+<p>CREATE TABLE num_role(n_id INT(2),r_id INT(2));</p>
+<p>关系列 n.id &#x3D; nr.n_id AND nr.r_id &#x3D; r.id</p>
+<p>SELECT *  FROM qqnum n,qqrole r,num_role nr</p>
+<p>WHERE n.id &#x3D; nr.n_id AND nr.r_id &#x3D; r.id</p>
+<p>知道 1008的会员身份有哪些？</p>
+<p>SELECT *  FROM qqnum n,qqrole r,num_role nr</p>
+<p>WHERE n.id &#x3D; nr.n_id AND nr.r_id &#x3D; r.id AND n.num &#x3D; ‘1008’</p>
+<p>添加两个外键约束</p>
+<p>ALTER TABLE <code>num_role</code>  </p>
+<p> ADD CONSTRAINT <code>a1</code> FOREIGN KEY (<code>n_id</code>) REFERENCES <code>qqnum</code>(<code>id</code>);</p>
+<p>ALTER TABLE <code>num_role</code>  </p>
+<p> ADD CONSTRAINT <code>a2</code> FOREIGN KEY (<code>r_id</code>) REFERENCES <code>qqrole</code>(<code>id</code>);</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://yusongshu.github.io/2026/03/29/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E9%87%8D%E8%A6%81%E4%B9%A0%E9%A2%98%E8%AE%B2%E4%B9%89/">https://yusongshu.github.io/2026/03/29/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E9%87%8D%E8%A6%81%E4%B9%A0%E9%A2%98%E8%AE%B2%E4%B9%89/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"># 基础语法</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/04/05/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/sql%E5%85%B3%E9%94%AE%E5%AD%97%E2%80%94%E2%80%94%E9%99%84%E9%A1%B5/">sql关键字——附页</a>
+            
+            
+            <a class="next" rel="next" href="/2026/03/26/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B(%E8%AF%A6%E8%AE%B2%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E7%95%A5%E8%AE%B2%E5%85%B6%E4%BB%96)/">数据类型(详讲数值类型及字符串，略讲其他)</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

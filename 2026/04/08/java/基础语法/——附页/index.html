@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>——附页 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">——附页</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 8, 2026&nbsp;&nbsp;18:20:57</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/java/">java</a>
+                            
+                                <a href="/categories/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">基础语法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="——附页"><a href="#——附页" class="headerlink" title="——附页"></a>——附页</h1><h2 id="clipse-常用快捷键大全（高频-分类整理，新手必背）"><a href="#clipse-常用快捷键大全（高频-分类整理，新手必背）" class="headerlink" title="clipse 常用快捷键大全（高频 + 分类整理，新手必背）"></a>clipse 常用快捷键大全（高频 + 分类整理，新手必背）</h2><h4 id="一、编辑与代码编写（最常用）"><a href="#一、编辑与代码编写（最常用）" class="headerlink" title="一、编辑与代码编写（最常用）"></a>一、编辑与代码编写（最常用）</h4><ol>
+<li><strong>代码补全 &#x2F; 智能提示</strong>：<code>Ctrl + Space</code>（Windows&#x2F;Linux）&#x2F; <code>Command + Space</code>（Mac）；冲突时可改 <code>Alt + /</code></li>
+<li><strong>快速修复错误</strong>：<code>Ctrl + 1</code>（自动导包、补全方法、修异常，万能快捷键）</li>
+<li><strong>格式化代码</strong>：<code>Ctrl + Shift + F</code>（一键规范缩进、换行）</li>
+<li><strong>自动导包 &#x2F; 清理无用包</strong>：<code>Ctrl + Shift + O</code>（Organize Imports，自动添加缺失、删除多余 import）</li>
+<li><strong>撤销 &#x2F; 重做</strong>：<code>Ctrl + Z</code> &#x2F; <code>Ctrl + Y</code></li>
+<li><strong>复制行 &#x2F; 删除行</strong>：<code>Ctrl + Alt + ↓</code>（复制当前行到下一行）；<code>Ctrl + D</code>（删除当前行）</li>
+<li><strong>移动行</strong>：<code>Alt + ↑</code> &#x2F; <code>Alt + ↓</code>（上下移动整行代码，无需剪切粘贴）</li>
+<li><strong>注释 &#x2F; 取消注释</strong>：单行 <code>Ctrl + /</code>；多行 <code>Ctrl + Shift + /</code>（块注释）、<code>Ctrl + Shift + \</code>（取消块注释）</li>
+<li><strong>查找 &#x2F; 替换</strong>：<code>Ctrl + F</code>（当前文件查找）；<code>Ctrl + H</code>（全局搜索，支持文件 &#x2F; 类型 &#x2F; 正则）</li>
+<li><strong>快速定位行</strong>：<code>Ctrl + L</code>（输入行号，直接跳转）</li>
+</ol>
+<h4 id="二、导航与查看（快速找代码）"><a href="#二、导航与查看（快速找代码）" class="headerlink" title="二、导航与查看（快速找代码）"></a>二、导航与查看（快速找代码）</h4><ol>
+<li><strong>打开类 &#x2F; 文件</strong>：<code>Ctrl + Shift + T</code>（Open Type，搜 Java 类，支持模糊匹配）；<code>Ctrl + Shift + R</code>（Open Resource，搜所有文件：xml、properties 等）</li>
+<li><strong>查看方法 &#x2F; 类结构</strong>：<code>Ctrl + O</code>（Outline，当前类的方法 &#x2F; 变量列表，快速跳转）；<code>Ctrl + F3</code>（快速定位当前选中元素）</li>
+<li><strong>跳转定义 &#x2F; 实现</strong>：<code>F3</code>（跳转到选中类 &#x2F; 方法的定义）；<code>Ctrl + T</code>（查看类 &#x2F; 接口的继承 &#x2F; 实现层次）</li>
+<li><strong>返回上 &#x2F; 下一个编辑位置</strong>：<code>Alt + ←</code> &#x2F; <code>Alt + →</code>（跳转后快速返回，效率神器）</li>
+<li><strong>打开最近文件</strong>：<code>Ctrl + E</code>（弹出最近打开文件列表，快速切换）</li>
+</ol>
+<h4 id="三、调试与运行（开发必备）"><a href="#三、调试与运行（开发必备）" class="headerlink" title="三、调试与运行（开发必备）"></a>三、调试与运行（开发必备）</h4><ol>
+<li><p><strong>运行程序</strong>：<code>Ctrl + F11</code>（运行上次配置）；<code>Alt + Shift + X, J</code>（直接运行当前 Java 类）</p>
+</li>
+<li><p><strong>调试程序</strong>：<code>F11</code>（调试上次配置）；<code>Alt + Shift + D, J</code>（调试当前 Java 类）</p>
+</li>
+<li><p>调试常用</p>
+<p>：</p>
+<ul>
+<li><code>F5</code>：Step Into（进入方法内部）</li>
+<li><code>F6</code>：Step Over（单步执行，不进入方法）</li>
+<li><code>F7</code>：Step Return（跳出当前方法）</li>
+<li><code>F8</code>：Resume（继续运行，直到下一个断点）</li>
+<li><code>Ctrl + Shift + B</code>：添加 &#x2F; 取消断点</li>
+</ul>
+</li>
+<li><p><strong>查看变量 &#x2F; 表达式</strong>：<code>Ctrl + Shift + I</code>（Inspect，查看选中变量值）</p>
+</li>
+</ol>
+<h4 id="四、重构与代码优化（高效改代码）"><a href="#四、重构与代码优化（高效改代码）" class="headerlink" title="四、重构与代码优化（高效改代码）"></a>四、重构与代码优化（高效改代码）</h4><ol>
+<li><strong>重命名</strong>：<code>F2</code>（重命名类 &#x2F; 方法 &#x2F; 变量，自动同步所有引用）</li>
+<li><strong>提取方法</strong>：<code>Alt + Shift + M</code>（选中代码块，提取为独立方法）</li>
+<li><strong>提取变量</strong>：<code>Alt + Shift + L</code>（选中表达式，提取为局部变量）</li>
+<li><strong>提取常量</strong>：<code>Alt + Shift + C</code>（提取为静态常量）</li>
+<li><strong>移动代码</strong>：<code>Alt + Shift + V</code>（移动类 &#x2F; 方法到其他包 &#x2F; 类）</li>
+</ol>
+<h4 id="五、窗口与视图（界面操作）"><a href="#五、窗口与视图（界面操作）" class="headerlink" title="五、窗口与视图（界面操作）"></a>五、窗口与视图（界面操作）</h4><ol>
+<li><strong>最大化编辑器</strong>：<code>Ctrl + M</code>（一键放大 &#x2F; 还原代码编辑区）</li>
+<li><strong>关闭当前标签</strong>：<code>Ctrl + W</code>；关闭所有：<code>Ctrl + Shift + W</code></li>
+<li><strong>切换视图 &#x2F; 透视图</strong>：<code>Ctrl + F7</code>（切换视图）；<code>Ctrl + F8</code>（切换透视图：Java、Debug、Git 等）</li>
+<li><strong>打开控制台</strong>：<code>Ctrl + Alt + C</code>（快速调出 Console 控制台）</li>
+</ol>
+<h4 id="六、快捷键冲突与自定义"><a href="#六、快捷键冲突与自定义" class="headerlink" title="六、快捷键冲突与自定义"></a>六、快捷键冲突与自定义</h4><ul>
+<li>常见冲突：<code>Ctrl + Space</code> 与输入法冲突 → 改 <code>Alt + /</code>（Window → Preferences → General → Keys，搜索 Content Assist 修改）</li>
+<li>自定义：Window → Preferences → General → Keys，搜索对应功能，修改 &#x2F; 添加快捷键</li>
+</ul>
+<h3 id="高频必背精简版（记这-10-个足够日常）"><a href="#高频必背精简版（记这-10-个足够日常）" class="headerlink" title="高频必背精简版（记这 10 个足够日常）"></a>高频必背精简版（记这 10 个足够日常）</h3><ol>
+<li><code>Ctrl + 1</code>（快速修复）</li>
+<li><code>Ctrl + Shift + O</code>（导包）</li>
+<li><code>Ctrl + Shift + F</code>（格式化）</li>
+<li><code>Ctrl + D</code>（删行）</li>
+<li><code>Alt + ↑/↓</code>（移动行）</li>
+<li><code>F3</code>（跳转定义）</li>
+<li><code>Ctrl + Shift + T</code>（搜类）</li>
+<li><code>F2</code>（重命名）</li>
+<li><code>Ctrl + M</code>（最大化编辑区）</li>
+<li><code>F8</code>（调试继续）</li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://yusongshu.github.io/2026/04/08/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E2%80%94%E2%80%94%E9%99%84%E9%A1%B5/">https://yusongshu.github.io/2026/04/08/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E2%80%94%E2%80%94%E9%99%84%E9%A1%B5/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"># 基础语法</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/04/08/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/MySQL%E8%BF%9B%E9%98%B6_%E5%85%B3%E7%B3%BB%E5%BB%BA%E7%AB%8B/">MySQL进阶 关系建立</a>
+            
+            
+            <a class="next" rel="next" href="/2026/04/05/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/sql%E5%85%B3%E9%94%AE%E5%AD%97%E2%80%94%E2%80%94%E9%99%84%E9%A1%B5/">sql关键字——附页</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

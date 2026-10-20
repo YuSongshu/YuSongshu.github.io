@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="瑜淞蜀">
+
+
+
+
+
+<title>MySQL进阶 关系建立 | 瑜淞蜀</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">瑜淞蜀的博客</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">瑜淞蜀的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">MySQL进阶 关系建立</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">瑜淞蜀</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 8, 2026&nbsp;&nbsp;19:40:52</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/java/">java</a>
+                            
+                                <a href="/categories/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">基础语法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="MySQL进阶"><a href="#MySQL进阶" class="headerlink" title="MySQL进阶"></a>MySQL进阶</h1><p>SELECT *  FROM dog</p>
+<p>只要执行select 语句一定会从表数据中的到结果</p>
+<p>java或python永远只能获取结果不能获取表数据</p>
+<p>java或python只能获取select语句查询的结果无法直接获取表中的数据</p>
+<p>数据导入导出 -&gt;数据迁移  ETL工程师</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> `books` (</span><br><span class="line"></span><br><span class="line">  `id` <span class="type">INT</span>(<span class="number">10</span>) <span class="keyword">NOT NULL</span> AUTO_INCREMENT,</span><br><span class="line"></span><br><span class="line">  `bname` <span class="type">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line"></span><br><span class="line">  `bauthor` <span class="type">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line"></span><br><span class="line">  `bdate` <span class="type">DATE</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line"></span><br><span class="line">  `bprice` <span class="keyword">DOUBLE</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line"></span><br><span class="line">  `btype` <span class="type">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line"></span><br><span class="line">  <span class="keyword">PRIMARY KEY</span>  (`id`)</span><br><span class="line"></span><br><span class="line">) ENGINE<span class="operator">=</span>INNODB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>gb2312;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT  INTO</span> `books`(`id`,`bname`,`bauthor`,`bdate`,`bprice`,`btype`) <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="string">&#x27;盗墓笔记-七星鲁王宫&#x27;</span>,<span class="string">&#x27;南派三叔&#x27;</span>,<span class="string">&#x27;2001-03-20&#x27;</span>,<span class="number">23.5</span>,<span class="string">&#x27;小说类&#x27;</span>),(<span class="number">2</span>,<span class="string">&#x27;盗墓笔记-怒海潜沙&#x27;</span>,<span class="string">&#x27;南派三叔&#x27;</span>,<span class="string">&#x27;2002-03-21&#x27;</span>,<span class="number">24.5</span>,<span class="string">&#x27;小说类&#x27;</span>),(<span class="number">3</span>,<span class="string">&#x27;盗墓笔记-云顶天宫&#x27;</span>,<span class="string">&#x27;南派三叔&#x27;</span>,<span class="string">&#x27;2003-03-22&#x27;</span>,<span class="number">24.6</span>,<span class="string">&#x27;小说类&#x27;</span>),(<span class="number">4</span>,<span class="string">&#x27;鬼吹灯-精绝古城&#x27;</span>,<span class="string">&#x27;天下霸唱&#x27;</span>,<span class="string">&#x27;2001-04-20&#x27;</span>,<span class="number">26.5</span>,<span class="string">&#x27;小说类&#x27;</span>),(<span class="number">5</span>,<span class="string">&#x27;鬼吹灯-龙岭迷窟&#x27;</span>,<span class="string">&#x27;天下霸唱&#x27;</span>,<span class="string">&#x27;2002-04-21&#x27;</span>,<span class="number">27.5</span>,<span class="string">&#x27;小说类&#x27;</span>),(<span class="number">6</span>,<span class="string">&#x27;鬼吹灯-云南虫谷&#x27;</span>,<span class="string">&#x27;天下霸唱&#x27;</span>,<span class="string">&#x27;2003-04-20&#x27;</span>,<span class="number">28.6</span>,<span class="string">&#x27;小说类&#x27;</span>),(<span class="number">7</span>,<span class="string">&#x27;茅山后裔-传国玉玺&#x27;</span>,<span class="string">&#x27;大力金刚掌&#x27;</span>,<span class="string">&#x27;2003-06-20&#x27;</span>,<span class="number">29.6</span>,<span class="string">&#x27;小说类&#x27;</span>),(<span class="number">8</span>,<span class="string">&#x27;茅山后裔-兰亭集序&#x27;</span>,<span class="string">&#x27;大力金刚掌&#x27;</span>,<span class="string">&#x27;2004-06-20&#x27;</span>,<span class="number">30.6</span>,<span class="string">&#x27;小说类&#x27;</span>),(<span class="number">9</span>,<span class="string">&#x27;茅山后裔-将门虎子&#x27;</span>,<span class="string">&#x27;大力金刚掌&#x27;</span>,<span class="string">&#x27;2005-06-20&#x27;</span>,<span class="number">31.6</span>,<span class="string">&#x27;小说类&#x27;</span>),(<span class="number">10</span>,<span class="string">&#x27;海贼王&#x27;</span>,<span class="string">&#x27;尾田荣一郎&#x27;</span>,<span class="string">&#x27;2002-06-21&#x27;</span>,<span class="number">19.6</span>,<span class="string">&#x27;动漫类&#x27;</span>),(<span class="number">11</span>,<span class="string">&#x27;火影忍者&#x27;</span>,<span class="string">&#x27;岸本齐史&#x27;</span>,<span class="string">&#x27;2003-06-20&#x27;</span>,<span class="number">20.6</span>,<span class="string">&#x27;动漫类&#x27;</span>),(<span class="number">12</span>,<span class="string">&#x27;七龙珠&#x27;</span>,<span class="string">&#x27;鸟山鸣&#x27;</span>,<span class="string">&#x27;2000-06-20&#x27;</span>,<span class="number">21.6</span>,<span class="string">&#x27;动漫类&#x27;</span>),(<span class="number">13</span>,<span class="string">&#x27;不良人&#x27;</span>,<span class="string">&#x27;关心&#x27;</span>,<span class="string">&#x27;2017-06-21&#x27;</span>,<span class="number">23.7</span>,<span class="string">&#x27;动漫类&#x27;</span>),(<span class="number">14</span>,<span class="string">&#x27;斗罗大陆&#x27;</span>,<span class="string">&#x27;张三&#x27;</span>,<span class="string">&#x27;2017-07-20&#x27;</span>,<span class="number">24.6</span>,<span class="string">&#x27;动漫类&#x27;</span>),(<span class="number">15</span>,<span class="string">&#x27;一念永恒&#x27;</span>,<span class="string">&#x27;耳根&#x27;</span>,<span class="string">&#x27;2021-08-20&#x27;</span>,<span class="number">26.6</span>,<span class="string">&#x27;动漫类&#x27;</span>),(<span class="number">16</span>,<span class="string">&#x27;C语言基础&#x27;</span>,<span class="string">&#x27;谭浩强&#x27;</span>,<span class="string">&#x27;2000-07-20&#x27;</span>,<span class="number">36.6</span>,<span class="string">&#x27;计算机类&#x27;</span>),(<span class="number">17</span>,<span class="string">&#x27;数据结构&#x27;</span>,<span class="string">&#x27;严蔚敏&#x27;</span>,<span class="string">&#x27;2001-08-20&#x27;</span>,<span class="number">37.6</span>,<span class="string">&#x27;计算机类&#x27;</span>),(<span class="number">18</span>,<span class="string">&#x27;操作系统&#x27;</span>,<span class="string">&#x27;严蔚敏&#x27;</span>,<span class="string">&#x27;2002-09-20&#x27;</span>,<span class="number">38.6</span>,<span class="string">&#x27;计算机类&#x27;</span>),(<span class="number">19</span>,<span class="string">&#x27;故事会&#x27;</span>,<span class="string">&#x27;团体&#x27;</span>,<span class="string">&#x27;2000-07-20&#x27;</span>,<span class="number">16.6</span>,<span class="string">&#x27;文学类&#x27;</span>),(<span class="number">20</span>,<span class="string">&#x27;意林&#x27;</span>,<span class="string">&#x27;团体&#x27;</span>,<span class="string">&#x27;2001-08-20&#x27;</span>,<span class="number">17.6</span>,<span class="string">&#x27;文学类&#x27;</span>),(<span class="number">21</span>,<span class="string">&#x27;计算机报&#x27;</span>,<span class="string">&#x27;团体&#x27;</span>,<span class="string">&#x27;2002-09-20&#x27;</span>,<span class="number">18.6</span>,<span class="string">&#x27;文学类&#x27;</span>),(<span class="number">22</span>,<span class="string">&#x27;幻城&#x27;</span>,<span class="string">&#x27;郭敬明&#x27;</span>,<span class="string">&#x27;2002-09-20&#x27;</span>,<span class="number">18.6</span>,<span class="string">&#x27;小说类&#x27;</span>),(<span class="number">23</span>,<span class="string">&#x27;幻城&#x27;</span>,<span class="string">&#x27;郭敬明&#x27;</span>,<span class="string">&#x27;2002-09-20&#x27;</span>,<span class="number">38.6</span>,<span class="keyword">NULL</span>),(<span class="number">24</span>,<span class="string">&#x27;不良人&#x27;</span>,<span class="string">&#x27;关心&#x27;</span>,<span class="string">&#x27;2017-06-21&#x27;</span>,<span class="number">23.7</span>,<span class="string">&#x27;动漫类&#x27;</span>),(<span class="number">25</span>,<span class="string">&#x27;11&#x27;</span>,<span class="string">&#x27;11&#x27;</span>,<span class="string">&#x27;2017-09-22&#x27;</span>,<span class="number">12.8</span>,<span class="keyword">NULL</span>);</span><br></pre></td></tr></table></figure>
+
+<p>软件 图形化界面 （你点击图片人家帮你生成sql）</p>
+<p>生成sql 可能跟我们平时用的不太一样</p>
+<p>正常sql语法就很多种  </p>
+<p>生成 标准语法  文言文</p>
+<p>我们用的 应用语法  现代汉语</p>
+<p>对这个表要有一个基本的认知 </p>
+<p>做项目-&gt;得到需求-&gt;根据需求设计数据库 （需要几张表 每张表中都有什么列 建立表和表什么关系） 数据建模</p>
+<p>设计一个优秀的表  </p>
+<h2 id="三范式"><a href="#三范式" class="headerlink" title="三范式"></a>三范式</h2><p>符合数据库的3INF   三范式</p>
+<p>1.关系型数据要符合原子性 第一范式</p>
+<p>2.第一范式成立才会有第二范式  关系型数据每行数据必须有唯一标识  主键</p>
+<p>3.第二范式成立才会有第三范式  不应该在一个表中的列应该拿出去单独建表    配置关系 否则产生数据冗余</p>
+<p>查询图书表中的图书都有哪些类型</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  btype <span class="keyword">FROM</span> books</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/img/notes/java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-MySQL%E8%BF%9B%E9%98%B6_%E5%85%B3%E7%B3%BB%E5%BB%BA%E7%AB%8B/ScreenShot_2026-03-22_153455_839.png" alt="ScreenShot_2026-03-22_153455_839"></p>
+<p>数据冗余解决方案</p>
+<h3 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a>DISTINCT</h3><p><code>DISTINCT</code> 是 SQL 中<strong>用于去除查询结果中重复数据</strong>的关键字，核心作用是<strong>只返回唯一不重复的值</strong>，常和 <code>SELECT</code> 配合使用。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> 字段名 <span class="keyword">FROM</span> 表名;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> btype <span class="keyword">FROM</span> books</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/notes/java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-MySQL%E8%BF%9B%E9%98%B6_%E5%85%B3%E7%B3%BB%E5%BB%BA%E7%AB%8B/ScreenShot_2026-03-22_154050_022.png" alt="ScreenShot_2026-03-22_154050_022"></p>
+<p>数据冗余根源是 类型其实不应该在图书表中 </p>
+<p>应该单独建立一个图书类型表 和 图书表建立关系</p>
+<p>影片表</p>
+<p>id      yname           yzy……</p>
+<p>1       大话西游-月光宝盒   周星驰,朱茵,莫文蔚,蓝洁瑛</p>
+<p>2       大话西游-大圣娶亲       周星驰,朱茵,莫文蔚,蓝洁瑛</p>
+<h2 id="前条件"><a href="#前条件" class="headerlink" title="前条件"></a>前条件</h2><p>SELECT *  FROM 表名   *     所有列</p>
+<p>SELECT 列名,列名 FROM 表名  两列</p>
+<p>SELECT 聚合函数 FROM 表名</p>
+<p>建表 考虑性能问题   列数   数据类型大小</p>
+<h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><p>1.分组 通过某个特定条件  类型   把一个大的数据集合 分成若干个小的数据集合</p>
+<p>2.目的 为了统计个数 为了方便管理</p>
+<p>正式分组要求前条件必须带聚合函数  参与分组的条件 必须和聚合函数一起成为前条件 </p>
+<p>使用count(id) 命中了id列带的索引  索引增加查询的效率 降低修改和删除的效率</p>
+<p>SELECT btype,COUNT(id)  FROM books GROUP BY btype   无效数据</p>
+<p>前条件&gt;后条件&gt;分组&gt;排序&gt;LIMIT  书写顺序  执行顺序</p>
+<p>查询计算机类的图书有多少本</p>
+<p>有两种写法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> btype,<span class="built_in">COUNT</span>(id)  <span class="keyword">FROM</span> books <span class="keyword">WHERE</span> btype <span class="operator">=</span> <span class="string">&#x27;计算机类&#x27;</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> btype</span><br></pre></td></tr></table></figure>
+
+<p>想分组完成在这个分组的结果中在继续找 HAVING  不能用where</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> btype,<span class="built_in">COUNT</span>(id)  <span class="keyword">FROM</span> books <span class="keyword">GROUP</span> <span class="keyword">BY</span> btype  <span class="keyword">HAVING</span> btype <span class="operator">=</span> <span class="string">&#x27;计算机类&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>查询价格最贵的图书是谁？</p>
+<p>SELECT MAX(bprice) FROM books</p>
+<h2 id="嵌套查询"><a href="#嵌套查询" class="headerlink" title="嵌套查询"></a>嵌套查询</h2><p>当遇见难题的时候 一个sql怎么的都解决不了问题了 </p>
+<p>用嵌套查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> books <span class="keyword">WHERE</span> bprice <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">MAX</span>(bprice) <span class="keyword">FROM</span> books)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><p>一对一  不学</p>
+<p>一对多  学习</p>
+<p>多对多</p>
+<p>A表和B表建立关系有三种 以上三种</p>
+<p>A表中数据一行对应B表中的一行</p>
+<p>A表中数据一行对应B表中的多行</p>
+<p>A表中数据多行对应B表中的多行</p>
+<h3 id="1-如何建立一对多关系"><a href="#1-如何建立一对多关系" class="headerlink" title="1.如何建立一对多关系"></a>1.如何建立一对多关系</h3><p>​    想建立关系选先挑选和是的实体模型 表</p>
+<p>​    例如 班级和学生 一对多  或  老师和学生 多对多</p>
+<p>​    确定谁是一 谁是多</p>
+<p>​    班级一方</p>
+<p>​    学生多方</p>
+<p>​    </p>
+<p>​    想建立一对多关系只需要在多方表中额外创建一列用来存储一方的主键</p>
+<p>​    建立一对多关系只需要在多方表中建立外键</p>
+<p>​    class</p>
+<p>​    id    cname</p>
+<p>​    1     一年一班</p>
+<p>​    2     一年二班</p>
+<p>​    3     一年三班</p>
+<p>​    </p>
+<p>​    student</p>
+<p>​    id    sname   class_id (建立关系额外创建的列 &#x3D;&#x3D; 外键)</p>
+<p>​    1     小红  1</p>
+<p>​    2     小强  1</p>
+<p>​    3     小刚  2</p>
+<p>​    4     小明  2</p>
+<p>​    </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> class (id <span class="type">INT</span>(<span class="number">2</span>) <span class="keyword">PRIMARY KEY</span> AUTO_INCREMENT,cname <span class="type">VARCHAR</span>(<span class="number">10</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE TABLE</span> student (id <span class="type">INT</span>(<span class="number">2</span>) <span class="keyword">PRIMARY KEY</span> AUTO_INCREMENT,sname <span class="type">VARCHAR</span>(<span class="number">10</span>),c_id <span class="type">INT</span>(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-如何使用关系-基于关系列进行联合查询"><a href="#2-如何使用关系-基于关系列进行联合查询" class="headerlink" title="2.如何使用关系  基于关系列进行联合查询"></a>2.如何使用关系  基于关系列进行联合查询</h3><p>​    关系列  class.id &#x3D;&#x3D; student.class_id   进行联合查询</p>
+<p>​    sql允许多表查询   </p>
+<p>​    查询出的数据叫笛卡尔积</p>
+<p>​            class中有M行数据 student中有N行数据  笛卡尔积 M*N</p>
+<p>​    SELECT *  FROM class,student </p>
+<h4 id="基于关系"><a href="#基于关系" class="headerlink" title="基于关系"></a>基于关系</h4><p>​    SELECT *  FROM class,student WHERE class.id &#x3D; student.c_id</p>
+<p>​    </p>
+<p>​    SELECT c.cname,s.sname  FROM class c,student s WHERE c.id &#x3D; s.c_id</p>
+<p>​    </p>
+<p>​    数据库有5大约束</p>
+<p>​    PRIMARY KEY 主键</p>
+<p>​    NOT NULL 非空</p>
+<p>​    UNIQUE 唯一</p>
+<p>​    DEFAULT 默认值</p>
+<p>​    FOREIGN KEY 外键约束</p>
+<p>​    </p>
+<h4 id="添加外键约束"><a href="#添加外键约束" class="headerlink" title="添加外键约束"></a>添加外键约束</h4><p>建表时添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONSTRAINT 外键名 FOREIGN KEY (本表字段) REFERENCES 另一张表(另一张表的主键)</span><br></pre></td></tr></table></figure>
+
+<p>  表已存在时添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 子表名</span><br><span class="line">ADD CONSTRAINT 外键名 FOREIGN KEY (本表字段) REFERENCES 主表名(主表主键);</span><br></pre></td></tr></table></figure>
+
+<p>  1.通过给多方设置外键c_id 建立一对多关系 但是没有给外键c_id添加约束  &#x3D;&#x3D; 逻辑关联</p>
+<p>​    2.通过给多方设置外键c_id 建立一对多关系 给外键c_id添加约束  &#x3D;&#x3D; 物理关联</p>
+<p>​    设置外键约束</p>
+<p>​    1.通过图形化界面</p>
+<p>​    2.写语句</p>
+<p>​    ALTER TABLE <code>student</code>  </p>
+<p>​    ADD CONSTRAINT <code>t1</code> FOREIGN KEY (<code>c_id</code>) REFERENCES <code>class</code>(<code>id</code>);</p>
+<p>​    </p>
+<p>​    外键约束只能操作多方表</p>
+<p>3.如何解除关系</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>瑜淞蜀</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://yusongshu.github.io/2026/04/08/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/MySQL%E8%BF%9B%E9%98%B6_%E5%85%B3%E7%B3%BB%E5%BB%BA%E7%AB%8B/">https://yusongshu.github.io/2026/04/08/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/MySQL%E8%BF%9B%E9%98%B6_%E5%85%B3%E7%B3%BB%E5%BB%BA%E7%AB%8B/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"># 基础语法</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2026/04/08/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E5%81%9A%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%A0%87%E5%87%86%E6%B5%81%E7%A8%8B/">做项目的标准流程</a>
+            
+            
+            <a class="next" rel="next" href="/2026/04/08/java/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E2%80%94%E2%80%94%E9%99%84%E9%A1%B5/">——附页</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 瑜淞蜀 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
